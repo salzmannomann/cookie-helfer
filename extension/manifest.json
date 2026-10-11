@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Cookie-Helfer",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Erledigt Cookie-Banner nach deinen Vorgaben – ablehnen, wo es geht. Alles lokal, nichts geht an einen Server.",
   "background": {
     "service_worker": "background.js",
@@ -9,7 +9,8 @@
   },
   "permissions": [
     "storage",
-    "scripting"
+    "scripting",
+    "offscreen"
   ],
   "host_permissions": [
     "http://*/*",
@@ -49,6 +50,16 @@
         "tcf-bruecke.js"
       ],
       "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "ki-banner.js"
+      ],
+      "run_at": "document_idle"
     }
   ],
   "action": {
@@ -61,7 +72,10 @@
       "128": "icons/icon128.png"
     }
   },
-  "options_ui": { "page": "options.html", "open_in_tab": true },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
   "icons": {
     "16": "icons/icon16.png",
     "32": "icons/icon32.png",

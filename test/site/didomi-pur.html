@@ -1,0 +1,16 @@
+<!doctype html><meta charset="utf-8"><title>Didomi Pur</title><script src="gemeinsam.js"></script>
+<h1>Zeitung</h1>
+<div id="didomi-host">
+  <div id="didomi-popup" style="position:fixed;inset:20px;background:#fff;border:1px solid #888;padding:16px">
+    <h2>Verwalten Sie Ihre Privatsphäre-Einstellungen</h2>
+    <p>Wenn Sie den Bereich „Werbung“ ablehnen, können Sie unser Angebot nur nutzen, indem Sie ein „Pur“ abschließen. 160 Anbieter (Partner).</p>
+    <button id="kaufen">PUR KAUFEN</button>
+    <button id="alle">ALLE AKZEPTIEREN</button>
+    <button id="speichern">SPEICHERN</button>
+  </div>
+</div>
+<script>
+merken(document.getElementById('kaufen'), 'd-kaufen');
+merken(document.getElementById('alle'), 'd-alle', '#didomi-popup');
+merken(document.getElementById('speichern'), 'd-speichern');
+</script>

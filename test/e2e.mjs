@@ -117,6 +117,13 @@ test('consentmanager Pur (wie chefkoch.de): zugestimmt, nie Abo', async () => {
   assert.deepEqual(r.geklickt, ['cmp-ja']);
 });
 
+test('Didomi mit „Pur kaufen“ (wie kleinezeitung.at): Alle akzeptieren, nie kaufen', async () => {
+  await setzePrefs(STANDARD);
+  const r = await oeffnen('didomi-pur.html', ['pur-zugestimmt'], 20000);
+  assert.deepEqual(r.geklickt, ['d-alle']);
+  assert.equal(r.status, 'pur-zugestimmt');
+});
+
 test('contentpass im Shadow DOM (wie wetter.com): zugestimmt, nie Abo', async () => {
   await setzePrefs(STANDARD);
   const r = await oeffnen('contentpass.html', ['pur-zugestimmt']);
@@ -154,11 +161,54 @@ test('TCF-Kontrolle: berechtigtes Interesse bleibt an → Hinweis', async () => 
   assert.equal(protokoll.localhost[0].status, 'abweichung');
 });
 
-test('Unbekanntes Banner: nichts geklickt, Hinweis', async () => {
+test('Unbekanntes Banner: nichts geklickt, aber Vorschlag „Nur notwendige“', async () => {
   await setzePrefs(STANDARD);
-  const r = await oeffnen('unbekannt.html', ['unbekannt'], 40000);
-  assert.deepEqual(r.geklickt, []);
-  assert.equal(r.status, 'unbekannt');
+  await sw.evaluate(() => chrome.storage.local.set({ kiAttrappe: true, gelernt: {} }));
+  const page = await ctx.newPage();
+  const url = `${basis}/unbekannt.html`;
+  await page.goto(url);
+  const s = await warteAuf(async () => { const st = await status(url); return st?.ki ? st : null; }, 40000);
+  assert.ok(s, 'Einordnung vorhanden');
+  assert.equal(s.status, 'unbekannt');
+  assert.deepEqual(s.ki.vorschlag, { nr: 2, text: 'Nur notwendige' });
+  assert.equal(s.ki.quelle, 'ki');
+  assert.deepEqual(await page.evaluate(() => window.geklickt), [], 'ohne Bestätigung nichts geklickt');
+
+  // Bestätigen im Popup → Klick, Status abgelehnt, Knopf gemerkt
+  const tabId = await sw.evaluate(async (u) => (await chrome.tabs.query({ url: u }))[0].id, url);
+  const popup = await ctx.newPage();
+  await popup.goto(`chrome-extension://${new URL(sw.url()).host}/popup.html?tab=${tabId}`);
+  await popup.waitForSelector('#kiFrage:not([hidden])');
+  assert.equal(await popup.textContent('#kiKnopf'), 'Nur notwendige');
+  await popup.click('#kiJa');
+  await warteAuf(async () => (await status(url))?.status === 'abgelehnt', 5000);
+  assert.deepEqual(await page.evaluate(() => window.geklickt), ['u-nein']);
+  const gelernt = await warteAuf(async () => {
+    const { gelernt: g } = await sw.evaluate(() => chrome.storage.local.get('gelernt'));
+    return g?.localhost ? g : null;
+  }, 3000);
+  assert.deepEqual(gelernt, { localhost: ['Nur notwendige'] });
+  await popup.close();
+  await page.close();
+
+  // Nächster Besuch: gemerkter Knopf wird selbst geklickt
+  const r = await oeffnen('unbekannt.html', ['abgelehnt'], 40000);
+  assert.deepEqual(r.geklickt, ['u-nein']);
+  assert.equal(r.s.cmp, 'gemerkter Knopf');
+  await sw.evaluate(() => chrome.storage.local.set({ gelernt: {} }));
+});
+
+test('Unbekanntes Banner ohne sicheren Ablehnen-Knopf: kein Vorschlag, nichts geklickt', async () => {
+  await setzePrefs(STANDARD);
+  const page = await ctx.newPage();
+  const url = `${basis}/unbekannt-ohne.html`;
+  await page.goto(url);
+  const s = await warteAuf(async () => { const st = await status(url); return st?.ki ? st : null; }, 40000);
+  assert.ok(s, 'Einordnung vorhanden');
+  assert.equal(s.ki.vorschlag, null);
+  await page.waitForTimeout(1000);
+  assert.deepEqual(await page.evaluate(() => window.geklickt), []);
+  await page.close();
 });
 
 test('Vorgabe „nichts tun“: Pur-Banner bleibt offen, Hinweis', async () => {

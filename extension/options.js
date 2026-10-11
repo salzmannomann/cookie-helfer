@@ -1,5 +1,6 @@
 import { laden, speichern, seitenName } from './lib/prefs.js';
 import { STATUS, zeit } from './texte.js';
+import { verfuegbarkeit, sitzung } from './lib/nano.js';
 
 const $ = (id) => document.getElementById(id);
 const el = (tag, eigenschaften = {}, ...kinder) => {
@@ -37,6 +38,24 @@ async function zeigeVorgaben() {
   const p = await laden();
   $('aktiv').checked = p.aktiv;
   document.querySelectorAll('input[name=pur]').forEach((r) => (r.checked = r.value === p.pur));
+  document.querySelectorAll('input[name=ki]').forEach((r) => (r.checked = r.value === p.ki));
+  const { gelernt = {} } = await chrome.storage.local.get('gelernt');
+  const eintraege = Object.entries(gelernt).flatMap(([seite, texte]) => texte.map((text) => ({ seite, text })));
+  $('gelernt').replaceChildren(
+    ...(eintraege.length
+      ? eintraege.map(({ seite, text }) => {
+          const knopf = el('button', { textContent: 'vergessen' });
+          knopf.addEventListener('click', async () => {
+            const { gelernt: g = {} } = await chrome.storage.local.get('gelernt');
+            g[seite] = (g[seite] || []).filter((t) => t !== text);
+            if (!g[seite].length) delete g[seite];
+            await chrome.storage.local.set({ gelernt: g });
+            gespeichert();
+          });
+          return el('li', {}, el('span', { className: 'name', textContent: seite }), el('span', { className: 'txt', textContent: `„${text}“` }), knopf);
+        })
+      : [el('li', { className: 'leer', textContent: 'Noch keine.' })]),
+  );
   const seiten = Object.keys(p.ausnahmen).sort();
   $('ausnahmen').replaceChildren(
     ...(seiten.length
@@ -51,6 +70,34 @@ async function zeigeVorgaben() {
 
 $('aktiv').addEventListener('change', (e) => aendern((p) => (p.aktiv = e.target.checked)));
 document.querySelectorAll('input[name=pur]').forEach((r) => r.addEventListener('change', () => aendern((p) => (p.pur = r.value))));
+document.querySelectorAll('input[name=ki]').forEach((r) => r.addEventListener('change', () => aendern((p) => (p.ki = r.value))));
+
+// --- Lokale KI: Status und Download (braucht einen Klick, deshalb hier und nicht im Hintergrund) ---
+const KI_TEXT = {
+  available: 'bereit – läuft lokal auf diesem Rechner',
+  downloadable: 'nicht geladen – Chrome lädt das Modell einmalig herunter (ca. 2–4 GB)',
+  downloading: 'wird heruntergeladen …',
+  unavailable: 'auf diesem Rechner nicht verfügbar – Vorschläge nur aus festen Regeln',
+};
+async function kiStatus() {
+  const a = await verfuegbarkeit();
+  $('kiStatus').textContent = KI_TEXT[a] || a;
+  $('kiLaden').hidden = a !== 'downloadable';
+}
+$('kiLaden').addEventListener('click', async () => {
+  $('kiLaden').disabled = true;
+  try {
+    const s = await sitzung('Test', (m) =>
+      m.addEventListener('downloadprogress', (e) => ($('kiStatus').textContent = `wird heruntergeladen … ${Math.round(e.loaded * 100)} %`)),
+    );
+    s.destroy();
+  } catch (e) {
+    $('kiStatus').textContent = `Laden fehlgeschlagen: ${e.message}`;
+  }
+  $('kiLaden').disabled = false;
+  kiStatus();
+});
+kiStatus();
 $('neueAusnahme').addEventListener('submit', (e) => {
   e.preventDefault();
   const s = seitenName($('ausnahmeSeite').value);

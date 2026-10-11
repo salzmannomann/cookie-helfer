@@ -9,7 +9,7 @@
   if (window.__cookieHelferPur) return;
   window.__cookieHelferPur = true;
 
-  const ZUSTIMMEN = /zustimm|einverstanden|akzeptier|einwillig|mit werbung|accept|agree|^ok$/i;
+  const ZUSTIMMEN = /zustimm|einverstanden|akzeptier|annehm|einwillig|mit werbung|accept|agree|^ok$/i;
   const VERBOTEN = /abo\b|abos\b|abonn|kauf|bezahl|zahlen|€|\beur\b|\bpur\b|kostenpflichtig|anmeld|login|einlogg|registr|testen|subscribe|\bpay\b|sign.?in/i;
   const PUR_TEXT = /\bpur\b|abo\b|abonn|werbefrei|ohne werbung|contentpass|bezahl/i;
 
@@ -60,6 +60,21 @@
         return PUR_TEXT.test(box.innerText || '')
           ? { art: 'pur', knopf: ja, grund: 'Abo-Angebot im Banner', stabil: 2 }
           : { art: 'kein-pur', stabil: 12 };
+      },
+    },
+    {
+      // Didomi (z. B. kleinezeitung.at): nach dem Ablehnen erscheint ein Fenster mit „Pur kaufen“
+      cmp: 'Didomi',
+      passt: () => true,
+      pruefen() {
+        const box = ['#didomi-popup', '#didomi-notice'].map((s) => document.querySelector(s)).find(sichtbar);
+        if (!box) return null;
+        const knoepfe = [...box.querySelectorAll('button')].filter(sichtbar);
+        const text = (b) => (b.innerText || b.textContent || '').trim();
+        const abo = knoepfe.some((b) => VERBOTEN.test(text(b)));
+        if (!abo || !PUR_TEXT.test(box.innerText || '')) return { art: 'kein-pur', stabil: 12 };
+        const ja = knoepfe.find((b) => ZUSTIMMEN.test(text(b)) && !VERBOTEN.test(text(b)));
+        return ja ? { art: 'pur', knopf: ja, grund: 'Pur-Angebot im Banner', stabil: 2 } : null;
       },
     },
     {
@@ -119,7 +134,7 @@
       if (r.art === 'kein-pur') offen = offen.filter((x) => x !== e);
       else return behandeln(e, r);
     }
-    if (runden < 40) setTimeout(runde, 500); // höchstens 20 s nach dem Laden
+    if (runden < 60) setTimeout(runde, 500); // höchstens 30 s nach dem Laden (Pur-Fenster kommt oft erst nach dem Ablehnen)
   }
 
   if (offen.length) {

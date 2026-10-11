@@ -9,7 +9,7 @@ export const STATUS = {
   'pur-offen': ['Zustimmen oder bezahlen – deine Entscheidung', 'pur'],
   fehlgeschlagen: ['Nicht erledigt', 'fehler'],
   abweichung: ['Abgelehnt – aber nicht alles', 'pur'],
-  unbekannt: ['Unbekanntes Banner – nichts geklickt', ''],
+  unbekannt: ['Unbekanntes Banner', ''],
   aus: ['Auf dieser Seite ausgeschaltet', ''],
 };
 

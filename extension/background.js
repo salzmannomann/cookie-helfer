@@ -5,6 +5,7 @@
 import { evalSnippets, filterCompactRules } from './vendor/autoconsent/autoconsent.esm.js';
 import { laden, istAus, seitenName } from './lib/prefs.js';
 import { abweichungen, tcfKurz } from './lib/tcf.js';
+import { bereinigen as kiBereinigen, regelEinordnung, vorschlag as kiVorschlag, sicherFuer } from './lib/ki.js';
 
 const PROTOKOLL_MAX = 20; // Einträge je Seite
 
@@ -173,6 +174,8 @@ async function autoconsentNachricht(msg, sender) {
           return s;
         });
         zeigeBadge(tabId, neu.status);
+        // Banner, die autoconsent gar nicht bemerkt (kein Muster, keine Regel): später selbst nachsehen
+        if (neu.status === 'suche') setTimeout(() => unbekanntesBanner(tabId, neu.start), 7000);
       }
       const rules = { autoconsent: await eigeneRegeln(), compact: filterCompactRules(await regeln(), { url: frameUrl, mainFrame: hauptframe }) };
       await senden(tabId, frameId, { type: 'initResp', rules, config: acConfig(prefs, seitenUrl) });
@@ -221,7 +224,11 @@ async function autoconsentNachricht(msg, sender) {
       if (!muster.length && !nichts) break;
       await aendern(tabId, (s) => {
         if (s.status !== 'suche' && s.status !== 'nichts') return s;
-        if (muster.length) return s.status === 'unbekannt' ? s : setzeStatus(s, 'unbekannt', 'Banner-Text erkannt, aber keine Regel – nichts geklickt');
+        if (muster.length) {
+          if (s.status === 'unbekannt') return s;
+          setTimeout(() => unbekanntesBanner(tabId), 1500); // Banner fertig aufbauen lassen
+          return setzeStatus(s, 'unbekannt', 'Banner-Text erkannt, aber keine Regel – nichts geklickt');
+        }
         return setzeStatus(s, 'nichts', 'kein bekanntes Banner');
       });
       break;
@@ -234,7 +241,153 @@ async function autoconsentNachricht(msg, sender) {
   }
 }
 
+// --- Unbekannte Banner: gemerkter Knopf, sonst Einordnung durch die lokale KI → Vorschlag im Popup ---
+
+let offscreenBereit = null;
+async function offscreen() {
+  const da = await chrome.runtime.getContexts({ contextTypes: ['OFFSCREEN_DOCUMENT'] });
+  if (!da.length) offscreenBereit = null;
+  if (!offscreenBereit) {
+    offscreenBereit = (async () => {
+      if (!da.length) {
+        await chrome.offscreen
+          .createDocument({ url: 'offscreen.html', reasons: ['DOM_PARSER'], justification: 'Lokales Sprachmodell (Gemini Nano) für unbekannte Cookie-Banner' })
+          .catch((e) => {
+            if (!String(e?.message).includes('single offscreen')) throw e;
+          });
+      }
+      // createDocument ist fertig, bevor die Skripte zuhören: auf Antwort warten
+      for (let i = 0; i < 100; i++) {
+        if (await chrome.runtime.sendMessage({ target: 'offscreen', type: 'ping' }).catch(() => false)) return;
+        await new Promise((r) => setTimeout(r, 50));
+      }
+      throw new Error('Offscreen Document antwortet nicht');
+    })().catch((e) => {
+      offscreenBereit = null;
+      throw e;
+    });
+  }
+  return offscreenBereit;
+}
+
+async function anOffscreen(msg) {
+  await offscreen();
+  const { kiAttrappe } = await chrome.storage.local.get('kiAttrappe'); // nur automatische Tests
+  return chrome.runtime.sendMessage({ target: 'offscreen', attrappe: kiAttrappe === true, ...msg });
+}
+
+let kiKette = Promise.resolve(); // Modellaufrufe nacheinander
+function kiEinordnen(banner) {
+  const p = kiKette.then(async () => {
+    const status = await anOffscreen({ type: 'kiStatus' }).catch(() => 'unavailable');
+    if (status !== 'available') return { quelle: 'regeln', einordnung: regelEinordnung(banner), grund: `KI: ${status}` };
+    const r = await Promise.race([
+      anOffscreen({ type: 'kiEinordnen', banner }),
+      new Promise((ok) => setTimeout(() => ok({ ok: false, fehler: 'keine Antwort nach 60 s' }), 60000)),
+    ]).catch((e) => ({ ok: false, fehler: String(e) }));
+    if (!r?.ok) return { quelle: 'regeln', einordnung: regelEinordnung(banner), grund: `KI-Fehler: ${r?.fehler}` };
+    return { quelle: 'ki', einordnung: kiBereinigen(r.einordnung, banner), ms: r.ms };
+  });
+  kiKette = p.catch(() => {});
+  return p;
+}
+
+async function kiMessen(eintrag) {
+  return nacheinander(async () => {
+    const { kiMessungen = [] } = await chrome.storage.local.get('kiMessungen');
+    kiMessungen.unshift({ t: Date.now(), ...eintrag });
+    await chrome.storage.local.set({ kiMessungen: kiMessungen.slice(0, 300) });
+  });
+}
+
+const OFFEN = ['suche', 'nichts', 'unbekannt'];
+
+async function unbekanntesBanner(tabId, start) {
+  const s0 = await tabStatus(tabId);
+  if (!s0 || !OFFEN.includes(s0.status) || s0.ki || s0.kiLaeuft || (start && s0.start !== start)) return;
+  await aendern(tabId, (s) => ((s.kiLaeuft = true), s));
+  const banner = await chrome.tabs.sendMessage(tabId, { type: 'ch:bannerLesen' }, { frameId: 0 }).catch(() => null);
+  if (!banner?.knoepfe?.length) {
+    await aendern(tabId, (s) => {
+      s.kiLaeuft = false;
+      if (s.status !== 'unbekannt') return s;
+      s.status = 'nichts';
+      s.ereignisse.push({ t: Date.now(), text: 'kein Banner mit Knöpfen gefunden' });
+      return s;
+    });
+    return;
+  }
+  await aendern(tabId, (s) => (OFFEN.includes(s.status) && s.status !== 'unbekannt' ? setzeStatus(s, 'unbekannt', 'Banner ohne passende Regel gefunden') : s));
+
+  // Auf dieser Seite schon einmal bestätigt? Dann denselben Knopf wieder klicken.
+  const { gelernt = {} } = await chrome.storage.local.get('gelernt');
+  const gemerkt = banner.knoepfe.find((k) => (gelernt[s0.seite] || []).includes(k.text) && sicherFuer(banner, k.text));
+  if (gemerkt) {
+    await klickAusfuehren(tabId, gemerkt, 'gemerkt');
+    return;
+  }
+
+  const prefs = await laden();
+  const r = prefs.ki === 'aus' ? { quelle: 'regeln', einordnung: regelEinordnung(banner), grund: 'KI ausgeschaltet' } : await kiEinordnen(banner);
+  const v = kiVorschlag(r.einordnung, banner);
+  await aendern(tabId, (s) => {
+    s.kiLaeuft = false;
+    if (s.status !== 'unbekannt') return s;
+    const art = new Map(r.einordnung.knoepfe.map((k) => [k.nr, k.art]));
+    s.ki = {
+      quelle: r.quelle,
+      grund: r.grund,
+      zusammenfassung: r.einordnung.zusammenfassung,
+      zwecke: r.einordnung.zwecke,
+      partner: r.einordnung.partner,
+      pur: r.einordnung.zustimmenOderBezahlen,
+      knoepfe: banner.knoepfe.map((k) => ({ ...k, art: art.get(k.nr) || 'sonstiges' })),
+      vorschlag: v,
+    };
+    const wer = r.quelle === 'ki' ? `KI (${Math.round((r.ms || 0) / 100) / 10} s)` : `Regeln${r.grund ? ` – ${r.grund}` : ''}`;
+    s.ereignisse.push({ t: Date.now(), text: v ? `${wer}: Vorschlag „${v.text}“ – wartet auf Bestätigung` : `${wer}: kein sicherer Ablehnen-Knopf` });
+    return s;
+  });
+  kiMessen({ seite: s0.seite, quelle: r.quelle, knoepfe: banner.knoepfe.map((k) => ({ text: k.text, art: r.einordnung.knoepfe.find((x) => x.nr === k.nr)?.art })), vorschlag: v?.text || null });
+}
+
+async function klickAusfuehren(tabId, knopf, wie) {
+  const r = await chrome.tabs.sendMessage(tabId, { type: 'ch:klick', nr: knopf.nr, text: knopf.text }, { frameId: 0 }).catch(() => null);
+  const s = await tabStatus(tabId);
+  if (!r?.ok) {
+    await aendern(tabId, (x) => setzeStatus(x, 'fehlgeschlagen', `Klick auf „${knopf.text}“ nicht möglich (${r?.grund || 'keine Antwort'})`));
+    return false;
+  }
+  const cmp = wie === 'gemerkt' ? 'gemerkter Knopf' : 'KI-Vorschlag';
+  const was = knopf.hinweis ? 'Hinweis geschlossen' : 'abgelehnt';
+  await aendern(tabId, (x) => bewerten(setzeStatus(x, 'abgelehnt', `${was}: „${knopf.text}“ (${cmp})`, { cmp })));
+  if (s) protokollieren(s.seite, { t: Date.now(), status: 'abgelehnt', cmp });
+  return true;
+}
+
 async function eigeneNachricht(msg, sender) {
+  if (msg.type === 'ch:kiKlick' || msg.type === 'ch:kiNein') {
+    // vom Popup: msg.tabId statt sender.tab
+    const s = await tabStatus(msg.tabId);
+    const v = s?.ki?.vorschlag;
+    if (!v) return { ok: false };
+    if (msg.type === 'ch:kiNein') {
+      await aendern(msg.tabId, (x) => ((x.ki.verworfen = true), x.ereignisse.push({ t: Date.now(), text: 'Vorschlag verworfen' }), x));
+      kiMessen({ seite: s.seite, entscheidung: 'nein', vorschlag: v.text });
+      return { ok: true };
+    }
+    const ok = await klickAusfuehren(msg.tabId, v, 'vorschlag');
+    kiMessen({ seite: s.seite, entscheidung: ok ? 'geklickt' : 'klick-fehler', vorschlag: v.text });
+    if (ok && msg.merken) {
+      await nacheinander(async () => {
+        const { gelernt = {} } = await chrome.storage.local.get('gelernt');
+        gelernt[s.seite] = [...new Set([...(gelernt[s.seite] || []), v.text])].slice(-5);
+        await chrome.storage.local.set({ gelernt });
+      });
+    }
+    return { ok };
+  }
+
   const tabId = sender.tab?.id;
   const seitenUrl = sender.tab?.url || sender.url || '';
   switch (msg.type) {

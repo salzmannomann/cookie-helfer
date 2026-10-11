@@ -2,6 +2,12 @@ import { laden, speichern, seitenName, istAus } from './lib/prefs.js';
 import { STATUS, zeit } from './texte.js';
 import { abweichungen, ZWECKE } from './lib/tcf.js';
 
+const ZWECK_NAMEN = { funktional: 'Funktion', statistik: 'Statistik', werbung: 'Werbung', personalisierung: 'Personalisierung', partner: 'Partner', social_media: 'Soziale Medien' };
+const ART_NAMEN = {
+  ablehnen: 'Ablehnen', nur_notwendige: 'Nur Notwendige', einstellungen: 'Einstellungen', auswahl_speichern: 'Auswahl speichern',
+  alle_akzeptieren: 'Zustimmen', schliessen: 'Schließen', abo_oder_kauf: 'Abo/Kauf', anmelden: 'Anmelden', sonstiges: 'sonstiges',
+};
+
 const $ = (id) => document.getElementById(id);
 const li = (text, klasse = '') => Object.assign(document.createElement('li'), { textContent: text, className: klasse });
 
@@ -25,6 +31,27 @@ async function zeigen() {
   box.replaceChildren(Object.assign(document.createElement('b'), { textContent: titel }));
   if (s?.cmp) box.append(Object.assign(document.createElement('span'), { className: 'host', textContent: `Anbieter: ${s.cmp}` }));
   if (s?.selbsttest === false) box.append(Object.assign(document.createElement('span'), { className: 'host', textContent: 'Kontrolle: Ablehnung nicht bestätigt' }));
+
+  // Unbekanntes Banner: Einordnung und Vorschlag
+  const ki = s?.ki;
+  const zeigeKi = !!ki && s.status === 'unbekannt';
+  $('ki').hidden = !zeigeKi;
+  if (zeigeKi) {
+    const teile = [];
+    if (ki.zusammenfassung) teile.push(ki.zusammenfassung);
+    if (ki.zwecke?.length) teile.push(`Zwecke: ${ki.zwecke.map((z) => ZWECK_NAMEN[z] || z).join(', ')}`);
+    if (ki.partner) teile.push(`${ki.partner} Partner`);
+    if (ki.pur) teile.push('Zustimmen oder bezahlen');
+    $('kiText').textContent = teile.join(' · ');
+    $('kiText').hidden = !teile.length;
+    const frage = !!ki.vorschlag && !ki.verworfen;
+    $('kiFrage').hidden = !frage;
+    $('kiKein').hidden = frage || ki.verworfen;
+    if (frage) $('kiKnopf').textContent = ki.vorschlag.text;
+    $('kiHinweis').hidden = !(frage && ki.vorschlag.hinweis);
+    $('kiListe').replaceChildren(...ki.knoepfe.map((k) => li(`${k.text} → ${ART_NAMEN[k.art] || k.art}`)));
+    $('kiQuelle').textContent = ki.quelle === 'ki' ? 'Eingeordnet von der lokalen KI (Gemini Nano).' : `Eingeordnet mit festen Regeln${ki.grund ? ` (${ki.grund})` : ''}.`;
+  }
 
   // TCF: was die Seite laut eigener Schnittstelle tatsächlich erlaubt hat
   const t = s?.tcf;
@@ -69,6 +96,12 @@ $('seiteAn').addEventListener('change', async (e) => {
   await speichern(p);
   chrome.tabs.reload(tab.id);
 });
+$('kiJa').addEventListener('click', async () => {
+  $('kiJa').disabled = true;
+  await chrome.runtime.sendMessage({ type: 'ch:kiKlick', tabId: tab.id, merken: $('kiMerken').checked });
+  $('kiJa').disabled = false;
+});
+$('kiNein').addEventListener('click', () => chrome.runtime.sendMessage({ type: 'ch:kiNein', tabId: tab.id }));
 $('vorgaben').addEventListener('click', (e) => {
   e.preventDefault();
   chrome.runtime.openOptionsPage();

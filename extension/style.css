@@ -34,7 +34,7 @@ h2 { font-size: 15px; margin: 0 0 8px; }
 p.hint { margin: 4px 0 0; }
 a { color: var(--accent); }
 button { font: inherit; padding: 6px 12px; border-radius: 6px; border: 1px solid var(--line); background: var(--card); color: var(--fg); cursor: pointer; }
-button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+button.primary { background: var(--accent); border-color: var(--accent); color: var(--bg); }
 button:hover { filter: brightness(0.97); }
 input[type="text"], select { font: inherit; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; }
 label { cursor: pointer; }

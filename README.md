@@ -4,23 +4,31 @@ Chrome-Erweiterung, die Cookie-Banner automatisch nach eigenen Vorgaben beantwor
 nur das Nötigste erlauben. Alles läuft lokal, nichts wird an einen Server geschickt.
 Projektbeschreibung: [docs/projektbeschreibung.md](docs/projektbeschreibung.md) · Vorgaben: [docs/vorgaben.md](docs/vorgaben.md)
 
-## Stand: Version 0.2
+## Stand: Version 0.3
 
 - **Feste Regeln** (autoconsent von DuckDuckGo, 886 Banner-Typen): Banner werden abgelehnt.
 - **„Zustimmen oder bezahlen“** (Pur-Abo, contentpass): nach Vorgabe *zustimmen* – oder in den Vorgaben auf
   *nichts tun* umstellen. Erkannt werden Sourcepoint (derStandard, Spiegel, heute, FAZ, Welt, Bild, heise, golem …),
-  consentmanager (chefkoch, vienna.at) und contentpass (wetter.com). Geklickt wird nur der vom Anbieter
+  consentmanager (chefkoch, vienna.at), Didomi mit „Pur kaufen“ (kleinezeitung.at) und contentpass (wetter.com). Geklickt wird nur der vom Anbieter
   gekennzeichnete Zustimmen-Knopf, und nur wenn sein Text nach Zustimmen klingt und nichts von Abo/Bezahlen enthält.
 - **Eigene Regeln** (`extension/regeln/eigene.json`) für Anbieter, die autoconsent nicht kennt: Piwik PRO.
 - **TCF-Kontrolle** (neu in 0.2): Nach dem Ablehnen liest `tcf-probe.js` über `__tcfapi` aus, was die Seite
   tatsächlich gespeichert hat. Ist mehr erlaubt als das Notwendige (z. B. „berechtigtes Interesse“ oder Partner),
   zeigt das Popup „Abgelehnt – aber nicht alles“ mit den Zwecken (Symbol „!“ orange). Gemessen: sn.at, tt.com und
   willhaben lassen nach „Alle ablehnen“ das berechtigte Interesse für 6 Zwecke an.
-- **Unbekannte Banner**: nichts klicken, Hinweis im Popup (Symbol „?“).
+- **Unbekannte Banner** (neu in 0.3): Die lokale KI (Gemini Nano, `offscreen.js` + `lib/nano.js` wie bei Ruhepol)
+  ordnet Text und Knöpfe ein; das Popup fragt „„Nur Notwendige“ klicken?“. Vorgeschlagen wird nur ein Knopf, den
+  zusätzlich die festen Regeln in `lib/ki.js` als eindeutiges „Ablehnen“/„Nur Notwendige“ erkennen – oder bei einem
+  reinen Hinweis („ausschließlich technisch notwendige Cookies“) dessen „Verstanden“. Ohne Gemini Nano kommen die
+  Vorschläge nur aus diesen Regeln. Bestätigte Knöpfe werden je Seite gemerkt und beim nächsten Besuch selbst geklickt.
+  Jede Einordnung und Entscheidung wird lokal festgehalten (`kiMessungen`) – Grundlage für die Messung vor 0.4.
+  Probelauf ohne KI (nur Regeln): ÖBB „Nicht technische Cookies ablehnen“, wien.gv.at „Nur Notwendige“,
+  Sozialversicherung „Nur essentielle Cookies akzeptieren“, Bank Austria „REFUSE ALL“, Kleine Zeitung (Abo-Seite)
+  „Verstanden“; kein Vorschlag bei Sparkasse und durchblicker.
 - **Popup**: Status der Seite, Ablauf, frühere Besuche, Schalter „auf dieser Seite ausschalten“.
 - Symbol am Erweiterungsknopf: ✓ abgelehnt · Z zugestimmt (Zustimmen oder bezahlen) · € offen (deine Entscheidung) · ! rot nicht erledigt · ! orange abgelehnt, aber laut TCF nicht alles · ? unbekanntes Banner.
 
-Noch nicht: berechtigtes Interesse selbst ausschalten (nach Messung), lokale KI für unbekannte Banner (0.3).
+Noch nicht: berechtigtes Interesse selbst ausschalten (nach Messung), KI klickt selbst (0.4, erst nach Messung).
 
 ## Installation (einmalig)
 

@@ -5,18 +5,22 @@ export const STANDARD = Object.freeze({
   aktiv: true,
   // „Zustimmen oder bezahlen“: 'zustimmen' (nie bezahlen) oder 'nichts' (selbst entscheiden)
   pur: 'zustimmen',
+  // Unbekannte Banner: 'vorschlag' (lokale KI schlägt einen Knopf vor, ich bestätige) oder 'aus'
+  ki: 'vorschlag',
   // Ausnahmen je Seite: { 'derstandard.at': 'aus' }
   ausnahmen: {},
 });
 
 const PUR_WERTE = ['zustimmen', 'nichts'];
 const AUSNAHME_WERTE = ['aus'];
+const KI_WERTE = ['vorschlag', 'aus'];
 
 export function bereinigen(roh) {
   const p = { ...STANDARD, ausnahmen: {} };
   if (!roh || typeof roh !== 'object') return p;
   if (typeof roh.aktiv === 'boolean') p.aktiv = roh.aktiv;
   if (PUR_WERTE.includes(roh.pur)) p.pur = roh.pur;
+  if (KI_WERTE.includes(roh.ki)) p.ki = roh.ki;
   if (roh.ausnahmen && typeof roh.ausnahmen === 'object') {
     for (const [domain, wert] of Object.entries(roh.ausnahmen)) {
       const d = seitenName(domain);

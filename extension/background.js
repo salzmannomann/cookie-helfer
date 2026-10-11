@@ -196,8 +196,10 @@ async function autoconsentNachricht(msg, sender) {
       }
       break;
     case 'autoconsentDone': {
-      const status = msg.isCosmetic ? 'ausgeblendet' : 'abgelehnt';
-      const text = msg.isCosmetic ? `Banner ausgeblendet (${msg.cmp})` : `abgelehnt (${msg.cmp}, ${msg.totalClicks} Klick${msg.totalClicks === 1 ? '' : 's'})`;
+      // sourcepoint-top blendet nur das äußere Banner aus; abgelehnt (oder zugestimmt) wird im Iframe
+      const nurAusgeblendet = msg.isCosmetic || msg.cmp === 'sourcepoint-top';
+      const status = nurAusgeblendet ? 'ausgeblendet' : 'abgelehnt';
+      const text = nurAusgeblendet ? `Banner ausgeblendet (${msg.cmp})` : `abgelehnt (${msg.cmp}, ${msg.totalClicks} Klick${msg.totalClicks === 1 ? '' : 's'})`;
       await aendern(tabId, (s) => bewerten(setzeStatus(s, status, text, { cmp: msg.cmp })));
       const s = await tabStatus(tabId);
       if (s) protokollieren(s.seite, { t: Date.now(), status: s.status, cmp: msg.cmp, tcf: s.tcf ? tcfKurz(s.tcf) : undefined });

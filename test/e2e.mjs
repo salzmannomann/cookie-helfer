@@ -151,6 +151,13 @@ test('Piwik PRO (eigene Regel): abgelehnt', async () => {
   assert.equal(r.s.cmp, 'piwik-pro');
 });
 
+test('GEM2GO (Gemeindeseiten, eigene Regel): Statistik abwählen, Speichern', async () => {
+  await setzePrefs(STANDARD);
+  const r = await oeffnen('gem2go.html', ['abgelehnt'], 20000);
+  assert.deepEqual(r.geklickt, ['speichern-nur-essenziell']);
+  assert.equal(r.s.cmp, 'gem2go');
+});
+
 test('TCF-Kontrolle: nach dem Ablehnen nur Notwendiges → passt', async () => {
   await setzePrefs(STANDARD);
   const r = await oeffnen('onetrust.html', ['abgelehnt'], 20000);

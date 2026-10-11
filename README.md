@@ -11,7 +11,8 @@ Projektbeschreibung: [docs/projektbeschreibung.md](docs/projektbeschreibung.md) 
   *nichts tun* umstellen. Erkannt werden Sourcepoint (derStandard, Spiegel, heute, FAZ, Welt, Bild, heise, golem …),
   consentmanager (chefkoch, vienna.at), Didomi mit „Pur kaufen“ (kleinezeitung.at) und contentpass (wetter.com). Geklickt wird nur der vom Anbieter
   gekennzeichnete Zustimmen-Knopf, und nur wenn sein Text nach Zustimmen klingt und nichts von Abo/Bezahlen enthält.
-- **Eigene Regeln** (`extension/regeln/eigene.json`) für Anbieter, die autoconsent nicht kennt: Piwik PRO.
+- **Eigene Regeln** (`extension/regeln/eigene.json`) für Anbieter, die autoconsent nicht kennt: Piwik PRO,
+  GEM2GO (Gemeindeseiten, z. B. haslach.ooe.gv.at: Statistik abwählen, „Speichern“).
 - **KI-Messung und „selbst klicken“** (neu in 0.4): `extension/ki-faelle.json` enthält 30 echte Banner
   (gesammelt mit `test/faelle-sammeln.mjs`) und 6 knifflige, je mit dem richtigen Knopf. In den Vorgaben unter
   „KI-Messung“ läuft Gemini Nano lokal über alle Fälle (Treffer, Fehlgriffe, vom Regelwerk abgefangene Modellirrtümer).

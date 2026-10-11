@@ -8,6 +8,7 @@ export const STATUS = {
   'pur-zugestimmt': ['Zugestimmt (Zustimmen oder bezahlen)', 'pur'],
   'pur-offen': ['Zustimmen oder bezahlen – deine Entscheidung', 'pur'],
   fehlgeschlagen: ['Nicht erledigt', 'fehler'],
+  abweichung: ['Abgelehnt – aber nicht alles', 'pur'],
   unbekannt: ['Unbekanntes Banner – nichts geklickt', ''],
   aus: ['Auf dieser Seite ausgeschaltet', ''],
 };

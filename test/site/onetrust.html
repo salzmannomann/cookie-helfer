@@ -9,4 +9,9 @@
 <script>
 merken(document.getElementById('onetrust-accept-btn-handler'), 'ot-ja', '#onetrust-banner-sdk');
 merken(document.getElementById('onetrust-reject-all-handler'), 'ot-nein', '#onetrust-banner-sdk');
+// TCF nach dem Ablehnen: ?bi=2,7 simuliert eine Seite, die „berechtigtes Interesse“ eingeschaltet lässt
+document.getElementById('onetrust-reject-all-handler').addEventListener('click', () => {
+  const bi = (new URLSearchParams(location.search).get('bi') || '').split(',').filter(Boolean).map(Number);
+  setTimeout(() => tcfSetzen({ bi, partner: bi.length ? 12 : 0 }), 200);
+});
 </script>

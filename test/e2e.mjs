@@ -130,6 +130,30 @@ test('OneTrust: abgelehnt über autoconsent', async () => {
   assert.equal(r.s.cmp, 'Onetrust');
 });
 
+test('Piwik PRO (eigene Regel): abgelehnt', async () => {
+  await setzePrefs(STANDARD);
+  const r = await oeffnen('piwik.html', ['abgelehnt'], 20000);
+  assert.deepEqual(r.geklickt, ['pp-nein']);
+  assert.equal(r.s.cmp, 'piwik-pro');
+});
+
+test('TCF-Kontrolle: nach dem Ablehnen nur Notwendiges → passt', async () => {
+  await setzePrefs(STANDARD);
+  const r = await oeffnen('onetrust.html', ['abgelehnt'], 20000);
+  assert.equal(r.status, 'abgelehnt');
+  assert.ok(r.s.tcf, 'TCF-Daten vorhanden');
+  assert.ok(r.s.ereignisse.some((e) => e.text.includes('TCF-Kontrolle: passt')), JSON.stringify(r.s.ereignisse));
+});
+
+test('TCF-Kontrolle: berechtigtes Interesse bleibt an → Hinweis', async () => {
+  await setzePrefs(STANDARD);
+  const r = await oeffnen('onetrust.html?bi=2,7', ['abweichung'], 20000);
+  assert.equal(r.status, 'abweichung');
+  assert.deepEqual(r.s.abweichungen, ['berechtigtes Interesse: einfache Werbung, Werbemessung', '12 Partner mit Zustimmung']);
+  const { protokoll } = await sw.evaluate(() => chrome.storage.local.get('protokoll'));
+  assert.equal(protokoll.localhost[0].status, 'abweichung');
+});
+
 test('Unbekanntes Banner: nichts geklickt, Hinweis', async () => {
   await setzePrefs(STANDARD);
   const r = await oeffnen('unbekannt.html', ['unbekannt'], 40000);
@@ -171,6 +195,7 @@ test('Popup zeigt den Status der Seite', async () => {
   await popup.waitForSelector('#status b');
   await popup.waitForFunction(() => document.querySelector('#status b').textContent === 'Abgelehnt');
   assert.equal(await popup.textContent('#seite'), 'localhost');
+  assert.equal(await popup.textContent('#tcfListe'), '✓ nur Notwendiges erlaubt');
   await popup.close();
   await page.close();
 });

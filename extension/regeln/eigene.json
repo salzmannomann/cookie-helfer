@@ -1,0 +1,11 @@
+[
+  {
+    "name": "piwik-pro",
+    "vendorUrl": "https://piwik.pro/consent-manager/",
+    "prehideSelectors": ["#ppms_cm_popup_overlay"],
+    "detectCmp": [{ "exists": "#ppms_cm_reject-all" }],
+    "detectPopup": [{ "visible": "#ppms_cm_reject-all" }],
+    "optIn": [{ "waitForThenClick": "#ppms_cm_agree-to-all" }],
+    "optOut": [{ "waitForThenClick": "#ppms_cm_reject-all" }]
+  }
+]

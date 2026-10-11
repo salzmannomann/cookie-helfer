@@ -4,13 +4,20 @@
 
 import { evalSnippets, filterCompactRules } from './vendor/autoconsent/autoconsent.esm.js';
 import { laden, istAus, seitenName } from './lib/prefs.js';
+import { abweichungen, tcfKurz } from './lib/tcf.js';
 
 const PROTOKOLL_MAX = 20; // Einträge je Seite
 
 let regelnCache = null;
+let eigeneCache = null;
 async function regeln() {
   if (!regelnCache) regelnCache = await (await fetch(chrome.runtime.getURL('vendor/autoconsent/compact-rules.json'))).json();
   return regelnCache;
+}
+// Eigene Regeln (autoconsent-Format) für Anbieter, die autoconsent nicht kennt, z. B. Piwik PRO
+async function eigeneRegeln() {
+  if (!eigeneCache) eigeneCache = await (await fetch(chrome.runtime.getURL('regeln/eigene.json'))).json();
+  return eigeneCache;
 }
 
 function acConfig(prefs, url) {
@@ -45,7 +52,7 @@ async function tabStatus(tabId) {
 }
 
 // Rangfolge: ein späteres, „schwächeres“ Ereignis überschreibt kein stärkeres
-const RANG = { suche: 0, nichts: 1, unbekannt: 2, gefunden: 3, ausgeblendet: 4, abgelehnt: 5, fehlgeschlagen: 5, 'pur-offen': 6, 'pur-zugestimmt': 7, aus: 8 };
+const RANG = { suche: 0, nichts: 1, unbekannt: 2, gefunden: 3, ausgeblendet: 4, abgelehnt: 5, fehlgeschlagen: 5, abweichung: 5.5, 'pur-offen': 6, 'pur-zugestimmt': 7, aus: 8 };
 
 const BADGE = {
   abgelehnt: ['✓', '#2e7d32'],
@@ -53,6 +60,7 @@ const BADGE = {
   'pur-zugestimmt': ['Z', '#b26a00'],
   'pur-offen': ['€', '#b26a00'],
   fehlgeschlagen: ['!', '#c62828'],
+  abweichung: ['!', '#b26a00'],
   unbekannt: ['?', '#616161'],
   aus: ['aus', '#616161'],
 };
@@ -80,6 +88,25 @@ function setzeStatus(s, status, text, extra = {}) {
     Object.assign(s, extra);
   }
   return s;
+}
+
+// TCF-Kontrolle: Nach dem Ablehnen darf laut Vorgabe nichts außer dem Notwendigen erlaubt sein.
+// Läuft, sobald TCF-Daten und Ergebnis beide da sind (Reihenfolge der Nachrichten ist beliebig).
+function bewerten(s) {
+  if (!s.tcf || s.tcfBewertet) return s; // auch „tcloaded“: viele Seiten laden nach dem Ablehnen neu
+  if (!['abgelehnt', 'ausgeblendet'].includes(s.status) || s.purLaeuft) return s;
+  s.tcfBewertet = true;
+  if (!s.tcf.gdpr) {
+    s.ereignisse.push({ t: Date.now(), text: 'TCF-Kontrolle: DSGVO gilt laut Seite nicht' });
+    return s;
+  }
+  const abw = abweichungen(s.tcf);
+  if (!abw.length) {
+    s.ereignisse.push({ t: Date.now(), text: 'TCF-Kontrolle: passt (nur Notwendiges erlaubt)' });
+    return s;
+  }
+  s.abweichungen = abw;
+  return setzeStatus(s, 'abweichung', `TCF-Kontrolle: nach dem Ablehnen noch erlaubt – ${abw.join('; ')}`);
 }
 
 function protokollieren(seite, eintrag) {
@@ -147,7 +174,7 @@ async function autoconsentNachricht(msg, sender) {
         });
         zeigeBadge(tabId, neu.status);
       }
-      const rules = { autoconsent: [], compact: filterCompactRules(await regeln(), { url: frameUrl, mainFrame: hauptframe }) };
+      const rules = { autoconsent: await eigeneRegeln(), compact: filterCompactRules(await regeln(), { url: frameUrl, mainFrame: hauptframe }) };
       await senden(tabId, frameId, { type: 'initResp', rules, config: acConfig(prefs, seitenUrl) });
       break;
     }
@@ -168,9 +195,9 @@ async function autoconsentNachricht(msg, sender) {
     case 'autoconsentDone': {
       const status = msg.isCosmetic ? 'ausgeblendet' : 'abgelehnt';
       const text = msg.isCosmetic ? `Banner ausgeblendet (${msg.cmp})` : `abgelehnt (${msg.cmp}, ${msg.totalClicks} Klick${msg.totalClicks === 1 ? '' : 's'})`;
-      await aendern(tabId, (s) => setzeStatus(s, status, text, { cmp: msg.cmp }));
+      await aendern(tabId, (s) => bewerten(setzeStatus(s, status, text, { cmp: msg.cmp })));
       const s = await tabStatus(tabId);
-      if (s) protokollieren(s.seite, { t: Date.now(), status, cmp: msg.cmp });
+      if (s) protokollieren(s.seite, { t: Date.now(), status: s.status, cmp: msg.cmp, tcf: s.tcf ? tcfKurz(s.tcf) : undefined });
       const key = `selbsttest:${tabId}`;
       const stFrame = (await chrome.storage.session.get(key))[key];
       if (typeof stFrame === 'number') {
@@ -211,9 +238,29 @@ async function eigeneNachricht(msg, sender) {
   const tabId = sender.tab?.id;
   const seitenUrl = sender.tab?.url || sender.url || '';
   switch (msg.type) {
+    case 'ch:tcf': {
+      if (sender.frameId !== 0) return null;
+      let vorher = null;
+      let nachher = null;
+      await aendern(tabId, (s) => {
+        vorher = s.status;
+        s.tcf = msg.daten;
+        const neu = msg.daten.status === 'tcloaded' ? 'gespeicherte Entscheidung' : 'Entscheidung';
+        s.ereignisse.push({ t: Date.now(), text: `TCF (${neu}): ${tcfKurz(msg.daten)}` });
+        bewerten(s);
+        nachher = s.status;
+        return s;
+      });
+      if (nachher === 'abweichung' && vorher !== 'abweichung') {
+        const s = await tabStatus(tabId);
+        protokollieren(s.seite, { t: Date.now(), status: 'abweichung', cmp: s.cmp, tcf: tcfKurz(s.tcf) });
+      }
+      return { ok: true };
+    }
     case 'ch:pur': {
       const prefs = await laden();
       const aktion = istAus(prefs, seitenUrl) ? 'aus' : prefs.pur;
+      if (aktion === 'zustimmen') await aendern(tabId, (s) => ((s.purLaeuft = true), s));
       if (aktion === 'nichts') {
         await aendern(tabId, (s) => setzeStatus(s, 'pur-offen', `Zustimmen oder bezahlen (${msg.cmp}) – laut Vorgabe nichts getan`, { cmp: msg.cmp }));
         protokollieren(seitenName(seitenUrl), { t: Date.now(), status: 'pur-offen', cmp: msg.cmp });

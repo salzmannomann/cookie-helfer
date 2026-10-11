@@ -4,18 +4,23 @@ Chrome-Erweiterung, die Cookie-Banner automatisch nach eigenen Vorgaben beantwor
 nur das Nötigste erlauben. Alles läuft lokal, nichts wird an einen Server geschickt.
 Projektbeschreibung: [docs/projektbeschreibung.md](docs/projektbeschreibung.md) · Vorgaben: [docs/vorgaben.md](docs/vorgaben.md)
 
-## Stand: Version 0.1
+## Stand: Version 0.2
 
 - **Feste Regeln** (autoconsent von DuckDuckGo, 886 Banner-Typen): Banner werden abgelehnt.
 - **„Zustimmen oder bezahlen“** (Pur-Abo, contentpass): nach Vorgabe *zustimmen* – oder in den Vorgaben auf
   *nichts tun* umstellen. Erkannt werden Sourcepoint (derStandard, Spiegel, heute, FAZ, Welt, Bild, heise, golem …),
   consentmanager (chefkoch, vienna.at) und contentpass (wetter.com). Geklickt wird nur der vom Anbieter
   gekennzeichnete Zustimmen-Knopf, und nur wenn sein Text nach Zustimmen klingt und nichts von Abo/Bezahlen enthält.
+- **Eigene Regeln** (`extension/regeln/eigene.json`) für Anbieter, die autoconsent nicht kennt: Piwik PRO.
+- **TCF-Kontrolle** (neu in 0.2): Nach dem Ablehnen liest `tcf-probe.js` über `__tcfapi` aus, was die Seite
+  tatsächlich gespeichert hat. Ist mehr erlaubt als das Notwendige (z. B. „berechtigtes Interesse“ oder Partner),
+  zeigt das Popup „Abgelehnt – aber nicht alles“ mit den Zwecken (Symbol „!“ orange). Gemessen: sn.at, tt.com und
+  willhaben lassen nach „Alle ablehnen“ das berechtigte Interesse für 6 Zwecke an.
 - **Unbekannte Banner**: nichts klicken, Hinweis im Popup (Symbol „?“).
 - **Popup**: Status der Seite, Ablauf, frühere Besuche, Schalter „auf dieser Seite ausschalten“.
-- Symbol am Erweiterungsknopf: ✓ abgelehnt · Z zugestimmt (Zustimmen oder bezahlen) · € offen (deine Entscheidung) · ! nicht erledigt · ? unbekanntes Banner.
+- Symbol am Erweiterungsknopf: ✓ abgelehnt · Z zugestimmt (Zustimmen oder bezahlen) · € offen (deine Entscheidung) · ! rot nicht erledigt · ! orange abgelehnt, aber laut TCF nicht alles · ? unbekanntes Banner.
 
-Noch nicht in 0.1: TCF-Kontrolle nach dem Klick (0.2), lokale KI für unbekannte Banner (0.3).
+Noch nicht: berechtigtes Interesse selbst ausschalten (nach Messung), lokale KI für unbekannte Banner (0.3).
 
 ## Installation (einmalig)
 

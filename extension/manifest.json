@@ -1,25 +1,71 @@
 {
   "manifest_version": 3,
   "name": "Cookie-Helfer",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Erledigt Cookie-Banner nach deinen Vorgaben – ablehnen, wo es geht. Alles lokal, nichts geht an einen Server.",
-  "background": { "service_worker": "background.js", "type": "module" },
-  "permissions": ["storage", "scripting"],
-  "host_permissions": ["http://*/*", "https://*/*"],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "permissions": [
+    "storage",
+    "scripting"
+  ],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
   "content_scripts": [
     {
-      "matches": ["http://*/*", "https://*/*"],
-      "js": ["vendor/autoconsent/content.bundle.js", "pur.js"],
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "vendor/autoconsent/content.bundle.js",
+        "pur.js"
+      ],
       "run_at": "document_start",
       "all_frames": true,
       "match_origin_as_fallback": true
+    },
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "tcf-probe.js"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "tcf-bruecke.js"
+      ],
+      "run_at": "document_start"
     }
   ],
   "action": {
     "default_title": "Cookie-Helfer",
     "default_popup": "popup.html",
-    "default_icon": { "16": "icons/icon16.png", "32": "icons/icon32.png", "48": "icons/icon48.png", "128": "icons/icon128.png" }
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
   },
   "options_page": "options.html",
-  "icons": { "16": "icons/icon16.png", "32": "icons/icon32.png", "48": "icons/icon48.png", "128": "icons/icon128.png" }
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
 }

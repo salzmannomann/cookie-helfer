@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="de">
+<head><meta charset="utf-8"><title>Cookie-Helfer – Vorgaben</title><link rel="stylesheet" href="style.css">
+<style>body { max-width: 680px; margin: 24px auto; padding: 0 16px; }</style></head>
+<body>
+  <h1>Cookie-Helfer – Vorgaben</h1>
+  <label><input type="checkbox" id="aktiv"> Cookie-Helfer eingeschaltet</label>
+
+  <h2>Was erlaubt wird</h2>
+  <table>
+    <tr><td>Unbedingt notwendige Cookies</td><td>immer erlaubt</td></tr>
+    <tr><td>Funktionale Cookies (Sprache, Region)</td><td>werden beim Ablehnen meist mitabgelehnt (feinere Auswahl in einer späteren Version)</td></tr>
+    <tr><td>Statistik / Reichweitenmessung</td><td>nein</td></tr>
+    <tr><td>Personalisierte Werbung, Profile, Partner</td><td>nein</td></tr>
+    <tr><td>„Berechtigtes Interesse“</td><td>aus (Kontrolle folgt in Version 0.2)</td></tr>
+    <tr><td>Unbekanntes Banner</td><td>nichts klicken, nur Hinweis</td></tr>
+    <tr>
+      <td>„Zustimmen oder bezahlen“ (Pur-Abo, contentpass)</td>
+      <td><select id="pur">
+        <option value="zustimmen">zustimmen (nie bezahlen)</option>
+        <option value="nichts">nichts tun, ich entscheide selbst</option>
+      </select></td>
+    </tr>
+  </table>
+  <p class="leise">Es wird nie etwas gekauft, kein Abo abgeschlossen, nicht angemeldet und kein Formular ausgefüllt.
+  Nichts wird an einen Server geschickt.</p>
+
+  <h2>Ausgeschaltet auf diesen Seiten</h2>
+  <ul id="ausnahmen"></ul>
+  <p class="leise" id="gespeichert"></p>
+  <script type="module" src="options.js"></script>
+</body>
+</html>

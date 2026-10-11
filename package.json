@@ -1,9 +1,14 @@
 {
   "name": "cookie-helfer",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Chrome-Erweiterung, die Cookie-Banner nach eigenen Vorgaben erledigt",
   "scripts": {
-    "messung": "node messung/messen.mjs"
+    "test": "node --test test/prefs.test.mjs && node test/e2e.mjs",
+    "zip": "node scripts/zip.mjs",
+    "vendor": "node scripts/vendor.mjs",
+    "icons": "node scripts/make-icons.mjs",
+    "messung": "node messung/messen.mjs",
+    "echt": "node test/echt.mjs"
   },
   "repository": {
     "type": "git",

@@ -1,0 +1,14 @@
+<!doctype html><meta charset="utf-8"><title>contentpass</title><script src="gemeinsam.js"></script>
+<h1>Wetter</h1>
+<div id="wurzel"></div>
+<script>
+// Banner im Shadow DOM, wie bei wetter.com
+const host = document.getElementById('wurzel');
+const sr = host.attachShadow({ mode: 'open' });
+sr.innerHTML = `<div style="position:fixed;inset:20px;background:#fff;border:1px solid #888;padding:16px">
+  <p>Mit Werbung weiterlesen – Cookies und Tracking. Oder werbefrei mit contentpass.</p>
+  <button id="cmp-btn-accept">Akzeptieren und weiter</button>
+  <button id="cmp-btn-signup">Werbefrei für 3,99€ / Monat</button></div>`;
+merken(sr.getElementById('cmp-btn-accept'), 'cp-ja');
+merken(sr.getElementById('cmp-btn-signup'), 'cp-abo');
+</script>

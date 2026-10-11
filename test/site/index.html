@@ -1,0 +1,33 @@
+<!doctype html><meta charset="utf-8"><title>Sourcepoint-Nachricht</title>
+<style>body{font:14px sans-serif;margin:0;padding:16px}button{margin:4px;padding:8px}</style>
+<div id="inhalt"></div>
+<script>
+// Nachgebautes Sourcepoint-Nachrichtenfenster (läuft im Iframe unter /index.html?message_id=…)
+const v = new URLSearchParams(location.search).get('variante');
+const knoepfe = {
+  pur: [['sp_choice_type_11', 'Einverstanden'], ['sp_choice_type_9', 'Jetzt abonnieren']],
+  nurzustimmen: [['sp_choice_type_11', 'Zustimmen und weiter']],
+  normal: [['sp_choice_type_11', 'Alle akzeptieren'], ['sp_choice_type_12', 'Einstellungen'], ['sp_choice_type_13', 'Alle ablehnen']],
+  spaet: [['sp_choice_type_11', 'Alle akzeptieren']], // Ablehnen kommt erst nach 1,5 s dazu
+  trick: [['sp_choice_type_11', 'Pur-Abo abschließen'], ['sp_choice_type_9', 'Jetzt abonnieren']],
+}[v];
+setTimeout(() => {
+  document.getElementById('inhalt').innerHTML = '<p>Wir und unsere Partner verwenden Cookies. Mit Werbung weiterlesen oder werbefreies Abo.</p>';
+  for (const [klasse, text] of knoepfe) {
+    const b = document.createElement('button');
+    b.className = `message-component message-button ${klasse}`;
+    b.textContent = text;
+    b.onclick = () => parent.postMessage({ geklickt: klasse }, '*');
+    document.getElementById('inhalt').append(b);
+  }
+  if (v === 'spaet') setTimeout(() => {
+    for (const [klasse, text] of [['sp_choice_type_12', 'Einstellungen'], ['sp_choice_type_13', 'Alle ablehnen']]) {
+      const b = document.createElement('button');
+      b.className = `message-component message-button ${klasse}`;
+      b.textContent = text;
+      b.onclick = () => parent.postMessage({ geklickt: klasse }, '*');
+      document.getElementById('inhalt').append(b);
+    }
+  }, 1500);
+}, 300);
+</script>

@@ -1,0 +1,14 @@
+:root { --text:#1f1f1f; --leise:#666; --rand:#ddd; --hg:#fff; --flaeche:#f5f5f5; --gruen:#2e7d32; --orange:#b26a00; --rot:#c62828; color-scheme: light dark; }
+@media (prefers-color-scheme: dark) { :root { --text:#eee; --leise:#aaa; --rand:#444; --hg:#202124; --flaeche:#2b2c2f; } }
+body { font: 13px/1.4 system-ui, -apple-system, sans-serif; color: var(--text); background: var(--hg); margin: 0; }
+h1 { font-size: 15px; margin: 0 0 8px; }
+h2 { font-size: 13px; margin: 14px 0 6px; }
+.leise { color: var(--leise); }
+.status { padding: 10px; border-radius: 8px; background: var(--flaeche); margin-bottom: 10px; }
+.status b { display: block; font-size: 14px; margin-bottom: 2px; }
+.ok b { color: var(--gruen); } .pur b { color: var(--orange); } .fehler b { color: var(--rot); }
+ul { margin: 0; padding-left: 16px; } li { margin: 2px 0; }
+label { display: flex; gap: 8px; align-items: center; margin: 6px 0; cursor: pointer; }
+button, select { font: inherit; }
+a { color: inherit; }
+table { border-collapse: collapse; width: 100%; } td, th { text-align: left; padding: 5px 8px; border-bottom: 1px solid var(--rand); vertical-align: top; }

@@ -1,6 +1,6 @@
 import { laden, speichern, seitenName } from './lib/prefs.js';
 import { STATUS, zeit } from './texte.js';
-import { verfuegbarkeit, sitzung, json } from './lib/nano.js';
+import { verfuegbarkeit, sitzung, fragen } from './lib/nano.js';
 import { SYSTEM, SCHEMA, eingabe, regelEinordnung, messen } from './lib/ki.js';
 
 const $ = (id) => document.getElementById(id);
@@ -192,17 +192,8 @@ $('messungStart').addEventListener('click', async () => {
   let s = null;
   try {
     if (mitKi) s = await sitzung(SYSTEM);
-    const einordnen = mitKi
-      ? async (b) => {
-          const k = await s.clone(); // jedes Banner für sich, ohne Verlauf
-          try {
-            return json(await k.prompt(eingabe(b), { responseConstraint: SCHEMA }));
-          } finally {
-            k.destroy();
-          }
-        }
-      : async (b) => regelEinordnung(b);
-    const r = await messen(faelle, einordnen, (i, n) => ($('messungStatus').textContent = `${i} / ${n} …`));
+    const einordnen = mitKi ? (b) => fragen(s, eingabe(b), SCHEMA) : async (b) => regelEinordnung(b);
+    const r = await messen(faelle, einordnen, (i, n) => ($('messungStatus').textContent = `${i} / ${n} … ${faelle[i]?.seite || ''}`));
     const m = { t: Date.now(), quelle: mitKi ? 'ki' : 'regeln', version: chrome.runtime.getManifest().version, ...r };
     await chrome.storage.local.set({ kiMessergebnis: m });
     // fällt die Messung durch, wird „selbst klicken“ zurückgenommen

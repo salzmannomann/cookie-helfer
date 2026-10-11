@@ -1,5 +1,5 @@
 // Offscreen Document: hier läuft Gemini Nano (Prompt API ist im Service Worker nicht verfügbar).
-import { verfuegbarkeit, sitzung, json } from './lib/nano.js';
+import { verfuegbarkeit, sitzung, fragen } from './lib/nano.js';
 import { SYSTEM, SCHEMA, eingabe, regelEinordnung } from './lib/ki.js';
 
 // msg.attrappe: nur automatische Tests – Modell-Attrappe, die wie die festen Regeln einordnet.
@@ -11,7 +11,7 @@ async function einordnen(banner, attrappe) {
   }
   const s = await sitzung(SYSTEM);
   try {
-    return json(await s.prompt(eingabe(banner), { responseConstraint: SCHEMA }));
+    return await fragen(s, eingabe(banner), SCHEMA);
   } finally {
     s.destroy();
   }

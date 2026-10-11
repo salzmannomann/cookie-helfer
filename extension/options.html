@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cookie-Helfer – Vorgaben</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .layout { display: grid; grid-template-columns: 220px minmax(0, 1fr); min-height: 100vh; }
+    nav { position: sticky; top: 0; align-self: start; height: 100vh; padding: 24px 14px; border-right: 1px solid var(--line); background: var(--card); display: flex; flex-direction: column; gap: 4px; }
+    nav .brand { display: flex; align-items: center; gap: 10px; font-size: 19px; font-weight: 700; margin: 0 8px 18px; }
+    nav .brand img { border-radius: 22%; }
+    nav a { display: block; padding: 8px 12px; border-radius: 8px; color: var(--fg); text-decoration: none; font-size: 14.5px; }
+    nav a:hover { background: var(--bg); }
+    nav a[aria-current="page"] { background: var(--accent); color: var(--bg); }
+    nav .foot { margin-top: auto; padding: 0 8px; font-size: 12px; color: var(--muted); line-height: 1.5; }
+    main { padding: 28px 32px 60px; max-width: 820px; }
+    .page { display: none; }
+    .page.active { display: block; }
+    .page > h1 { font-size: 22px; margin: 0 0 4px; }
+    .page > .lead { color: var(--muted); margin: 0 0 18px; }
+    section { background: var(--card); border-radius: 12px; padding: 16px 18px; margin: 0 0 14px; }
+    section h2 { margin: 0 0 6px; }
+    .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+
+    /* Vorgaben-Liste */
+    .regeln { list-style: none; margin: 8px 0 0; padding: 0; }
+    .regeln li { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 9px 0; border-top: 1px solid var(--line); margin: 0; }
+    .regeln li:first-child { border-top: 0; }
+    .regeln small { display: block; color: var(--muted); font-size: 12px; }
+    .pill { flex: none; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; background: var(--bg); border: 1px solid var(--line); }
+    .pill.ja { color: var(--ok); border-color: color-mix(in srgb, var(--ok) 40%, transparent); }
+    .pill.nein { color: var(--err); border-color: color-mix(in srgb, var(--err) 40%, transparent); }
+    .pill.immer { color: var(--muted); }
+
+    .radio-card { display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; margin: 8px 0; background: var(--bg); cursor: pointer; }
+    .radio-card:has(input:checked) { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
+    .radio-card input { margin-top: 3px; accent-color: var(--accent); }
+    .radio-card b, .radio-card .hint { display: block; }
+
+    .nie { margin: 6px 0 0; padding-left: 20px; }
+
+    /* Listen: Ausnahmen, Protokoll */
+    .liste { list-style: none; margin: 8px 0 0; padding: 0; font-size: 13px; }
+    .liste li { display: flex; gap: 10px; align-items: baseline; padding: 6px 0; border-top: 1px solid var(--line); margin: 0; }
+    .liste li:first-child { border-top: 0; }
+    .liste .name { font-weight: 600; flex: none; min-width: 150px; }
+    .liste .txt { flex: 1; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .liste .zeit { flex: none; color: var(--muted); font-size: 12px; }
+    .liste button { flex: none; padding: 1px 8px; font-size: 12px; }
+    .lbl { flex: none; width: 92px; font-weight: 600; font-size: 12.5px; }
+    .lbl.ok { color: var(--ok); } .lbl.pur { color: var(--warn); } .lbl.fehler { color: var(--err); } .lbl.leise { color: var(--muted); }
+    .leer { color: var(--muted); font-size: 13px; padding: 6px 0; }
+
+    .knopf { font: inherit; padding: 6px 12px; border-radius: 6px; border: 1px solid var(--line); background: var(--card); color: var(--fg); cursor: pointer; }
+    #gespeichert { position: fixed; right: 20px; bottom: 18px; padding: 8px 14px; border-radius: 8px; background: var(--fg); color: var(--bg); font-size: 13px; opacity: 0; transform: translateY(6px); transition: opacity .2s, transform .2s; pointer-events: none; }
+    #gespeichert.zeigen { opacity: 1; transform: none; }
+
+    @media (max-width: 760px) {
+      .layout { grid-template-columns: 1fr; }
+      nav { position: static; height: auto; flex-direction: row; flex-wrap: wrap; padding: 12px; border-right: 0; border-bottom: 1px solid var(--line); }
+      nav .brand { width: 100%; margin-bottom: 6px; }
+      nav .foot { display: none; }
+      main { padding: 18px 16px 60px; }
+      .liste .name { min-width: 0; }
+    }
+  </style>
+</head>
+<body>
+<div class="layout">
+  <nav aria-label="Bereiche">
+    <div class="brand"><img src="icons/icon.svg" alt="" width="30" height="30">Cookie-Helfer</div>
+    <a href="#vorgaben" data-page="vorgaben">Vorgaben</a>
+    <a href="#seiten" data-page="seiten">Seiten</a>
+    <a href="#protokoll" data-page="protokoll">Protokoll</a>
+    <a href="#messung" data-page="messung">KI-Messung</a>
+    <a href="#info" data-page="info">Über</a>
+    <div class="foot">Alles läuft lokal auf diesem Rechner, nichts wird an einen Server geschickt. Vorgaben werden nur über die Chrome-Synchronisierung deines Google-Kontos abgeglichen. Änderungen werden sofort gespeichert.</div>
+  </nav>
+
+  <main>
+    <!-- ───────────── Vorgaben ───────────── -->
+    <div class="page" id="page-vorgaben">
+      <h1>Vorgaben</h1>
+      <p class="lead">Wie Cookie-Banner beantwortet werden.</p>
+
+      <section>
+        <label class="switch"><span><b>Cookie-Helfer eingeschaltet</b><br><span class="hint">Aus: Banner bleiben überall unangetastet.</span></span><input type="checkbox" id="aktiv"></label>
+      </section>
+
+      <section>
+        <h2>Was erlaubt wird</h2>
+        <p class="hint">Bei bekannten Bannern wählt der Cookie-Helfer „Alle ablehnen“ bzw. „Nur Notwendige“ – eine feinere Auswahl je Zweck bieten die Banner nicht einheitlich an. Danach prüft die TCF-Kontrolle, ob die Seite das auch so gespeichert hat. Für einzelne Seiten kannst du stattdessen „Zustimmen“ wählen (Popup oder Bereich „Seiten“).</p>
+        <ul class="regeln">
+          <li><span>Unbedingt notwendige Cookies<small>Anmeldung, Warenkorb, die Entscheidung selbst – lassen sich nicht ablehnen</small></span><span class="pill immer">immer</span></li>
+          <li><span>Funktionale Cookies<small>Sprache, Region, eingebettete Videos – werden beim Ablehnen meist mitabgelehnt</small></span><span class="pill immer">meist nein</span></li>
+          <li><span>Statistik / Reichweitenmessung</span><span class="pill nein">nein</span></li>
+          <li><span>Personalisierte Werbung, Profile, Partner</span><span class="pill nein">nein</span></li>
+          <li><span>„Berechtigtes Interesse“<small>wird nach dem Klick geprüft, bei Abweichung Hinweis im Popup</small></span><span class="pill nein">aus</span></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>„Zustimmen oder bezahlen“</h2>
+        <p class="hint">Seiten wie derStandard, Spiegel oder heise bieten nur „Zustimmen“ oder ein Pur-Abo bzw. contentpass an – ein „Ablehnen“ gibt es dort nicht.</p>
+        <label class="radio-card"><input type="radio" name="pur" value="zustimmen"><span><b>Zustimmen</b><span class="hint">Der Zustimmen-Knopf wird geklickt. Nie bezahlen, nie ein Abo-Knopf.</span></span></label>
+        <label class="radio-card"><input type="radio" name="pur" value="nichts"><span><b>Nichts tun, ich entscheide selbst</b><span class="hint">Das Banner bleibt stehen, das Popup zeigt einen Hinweis.</span></span></label>
+      </section>
+
+      <section>
+        <h2>Unbekannte Banner</h2>
+        <p class="hint">Banner, für die es keinen bekannten Anbieter gibt. Feste Regeln suchen einen eindeutigen Ablehnen-Knopf und schlagen ihn im Popup vor; die lokale KI fasst zusammen, was die Seite will, und darf einen Vorschlag nur verhindern (z. B. bei einem Pur-Abo). Bestätigte Knöpfe werden je Seite gemerkt.</p>
+        <label class="radio-card"><input type="radio" name="ki" value="vorschlag"><span><b>Vorschlag im Popup</b><span class="hint">Symbol „?“ am Erweiterungsknopf, im Popup „… klicken?“.</span></span></label>
+        <label class="radio-card" id="kiSelbstKarte"><input type="radio" name="ki" value="selbst" id="kiSelbst"><span><b>Selbst klicken</b><span class="hint" id="kiSelbstHinweis">Erst möglich, wenn die KI-Messung ohne Fehlgriff durchgelaufen ist.</span></span></label>
+        <label class="radio-card"><input type="radio" name="ki" value="aus"><span><b>Nur Hinweis</b><span class="hint">Keine KI; Vorschläge nur aus festen Regeln für eindeutige Knöpfe wie „Ablehnen“.</span></span></label>
+        <div class="row" style="justify-content:space-between;margin-top:10px">
+          <span><b>Lokale KI (Gemini Nano)</b><br><span class="hint" id="kiStatus">wird geprüft …</span></span>
+          <button id="kiLaden" hidden>Modell laden</button>
+        </div>
+      </section>
+
+      <section>
+        <h2>Nie</h2>
+        <ul class="nie hint">
+          <li>etwas kaufen oder ein Abo abschließen</li>
+          <li>anmelden oder ein Formular mit Daten ausfüllen</li>
+          <li>Knöpfe außerhalb des Banners klicken</li>
+          <li>Daten an einen Server schicken</li>
+        </ul>
+      </section>
+    </div>
+
+    <!-- ───────────── Seiten ───────────── -->
+    <div class="page" id="page-seiten">
+      <h1>Seiten</h1>
+      <p class="lead">Deine Wahl für einzelne Seiten. Alle anderen werden abgelehnt.</p>
+      <section>
+        <h2>Eigene Wahl je Seite</h2>
+        <p class="hint"><b>Zustimmen</b> – für Seiten, die du unterstützen willst oder die mit „Ablehnen“ nicht richtig funktionieren. <b>Aus</b> – der Cookie-Helfer tut dort nichts. Gilt auch für Unterseiten (z. B. „derstandard.at“ für „apps.derstandard.at“). Am schnellsten über das Popup der Seite.</p>
+        <ul class="liste" id="ausnahmen"></ul>
+        <form class="row" id="neueAusnahme" style="margin-top:10px">
+          <input type="text" id="ausnahmeSeite" placeholder="z. B. derstandard.at" style="flex:1;min-width:200px">
+          <select id="ausnahmeModus"><option value="zustimmen">Zustimmen</option><option value="aus">Aus</option></select>
+          <button type="submit">Hinzufügen</button>
+        </form>
+      </section>
+      <section>
+        <h2>Gemerkte Knöpfe</h2>
+        <p class="hint">Hier hast du einen Vorschlag für ein unbekanntes Banner bestätigt – dieser Knopf wird beim nächsten Besuch selbst geklickt.</p>
+        <ul class="liste" id="gelernt"></ul>
+      </section>
+    </div>
+
+    <!-- ───────────── Protokoll ───────────── -->
+    <div class="page" id="page-protokoll">
+      <h1>Protokoll</h1>
+      <p class="lead">Was zuletzt auf welcher Seite passiert ist (je Seite die letzten 20 Besuche, nur auf diesem Rechner gespeichert).</p>
+      <section>
+        <div class="row" style="justify-content:space-between">
+          <h2 style="margin:0">Zuletzt</h2>
+          <button id="protokollLoeschen">Protokoll löschen</button>
+        </div>
+        <ul class="liste" id="protokoll"></ul>
+      </section>
+    </div>
+
+    <!-- ───────────── KI-Messung ───────────── -->
+    <div class="page" id="page-messung">
+      <h1>KI-Messung</h1>
+      <p class="lead">Bevor selbst geklickt wird: Wie gut werden echte Banner eingeordnet? Den Knopf wählen die festen Regeln, Gemini Nano darf nur bremsen.</p>
+      <section>
+        <h2>Messung mit echten Bannern</h2>
+        <p class="hint"><span id="faelleAnzahl"></span> Banner, gesammelt auf österreichischen und deutschen Seiten, dazu einige absichtlich knifflige. Für jedes ist festgelegt, welcher Knopf richtig ist (oder dass es keinen gibt). Die Messung läuft lokal; nichts wird geklickt.</p>
+        <div class="row" style="margin-top:10px">
+          <button class="primary" id="messungStart">Messung starten</button>
+          <span class="hint" id="messungStatus"></span>
+        </div>
+        <div id="messungErgebnis" hidden>
+          <ul class="regeln" id="messungZahlen"></ul>
+          <details style="margin-top:8px"><summary class="hint">Alle Fälle</summary><ul class="liste" id="messungFaelle"></ul></details>
+          <div class="row" style="margin-top:10px"><button id="messungKopieren">Ergebnis kopieren</button><span class="hint">zum Weitergeben, z. B. an Claude</span></div>
+        </div>
+      </section>
+      <section>
+        <h2>Aus dem Alltag</h2>
+        <p class="hint">Vorschläge bei unbekannten Bannern seit 0.3 und was du damit gemacht hast.</p>
+        <ul class="regeln" id="alltag"></ul>
+      </section>
+    </div>
+
+    <!-- ───────────── Über ───────────── -->
+    <div class="page" id="page-info">
+      <h1>Über</h1>
+      <p class="lead">Cookie-Helfer <span id="version"></span></p>
+      <section>
+        <h2>So funktioniert es</h2>
+        <ul class="nie hint">
+          <li>Feste Regeln für bekannte Banner-Anbieter aus <a href="https://github.com/duckduckgo/autoconsent" target="_blank" rel="noopener">autoconsent</a> von DuckDuckGo (Mozilla Public License 2.0), dazu eigene Regeln (z. B. Piwik PRO).</li>
+          <li>„Zustimmen oder bezahlen“ für Sourcepoint, consentmanager und contentpass nach deiner Vorgabe.</li>
+          <li>TCF-Kontrolle: Nach dem Klick wird über die Schnittstelle der Seite gelesen, was wirklich erlaubt wurde.</li>
+          <li>Unbekannte Banner: Die lokale KI (Gemini Nano, in Chrome eingebaut) ordnet die Knöpfe ein. Vorgeschlagen wird nur ein Knopf, der nach festen Regeln eindeutig „Ablehnen“ oder „Nur Notwendige“ ist.</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Synchronisierung und Sicherung</h2>
+        <p class="hint">Vorgaben, ausgeschaltete Seiten und gemerkte Knöpfe werden über die Chrome-Synchronisierung deines Google-Kontos auf deine anderen Rechner übertragen. Protokoll und Messungen bleiben auf diesem Rechner.</p>
+        <div class="row" style="margin-top:10px">
+          <button id="sichern">Sichern …</button>
+          <label class="knopf">Wiederherstellen …<input type="file" id="wiederherstellenDatei" accept="application/json" hidden></label>
+          <span class="hint" id="sicherungStatus"></span>
+        </div>
+      </section>
+      <section>
+        <h2>Symbol am Erweiterungsknopf</h2>
+        <ul class="liste">
+          <li><span class="lbl ok">✓</span><span class="txt">abgelehnt</span></li>
+          <li><span class="lbl pur">Z</span><span class="txt">zugestimmt (Zustimmen oder bezahlen)</span></li>
+          <li><span class="lbl pur">€</span><span class="txt">Zustimmen oder bezahlen – deine Entscheidung</span></li>
+          <li><span class="lbl pur">!</span><span class="txt">abgelehnt, laut TCF aber nicht alles</span></li>
+          <li><span class="lbl fehler">!</span><span class="txt">nicht erledigt</span></li>
+          <li><span class="lbl leise">?</span><span class="txt">unbekanntes Banner – Vorschlag im Popup</span></li>
+        </ul>
+      </section>
+    </div>
+  </main>
+</div>
+<div id="gespeichert" role="status">Gespeichert</div>
+<script type="module" src="options.js"></script>
+</body>
+</html>

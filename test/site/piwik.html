@@ -1,0 +1,14 @@
+<!doctype html><meta charset="utf-8"><title>Piwik PRO</title><script src="gemeinsam.js"></script>
+<h1>Energie</h1>
+<div id="ppms_cm_popup_overlay" style="position:fixed;inset:0;background:rgba(0,0,0,.5)">
+  <div style="background:#fff;margin:60px auto;width:600px;padding:20px">
+    <h1>Datenschutzeinstellungen</h1><p>Analytics, Conversion tracking …</p>
+    <button id="ppms_cm_agree-to-all">Allen zustimmen</button>
+    <button id="ppms_cm_reject-all">Alles ablehnen</button>
+    <button id="ppms_cm_save-choices">Optionen speichern</button>
+  </div>
+</div>
+<script>
+merken(document.getElementById('ppms_cm_agree-to-all'), 'pp-ja', '#ppms_cm_popup_overlay');
+merken(document.getElementById('ppms_cm_reject-all'), 'pp-nein', '#ppms_cm_popup_overlay');
+</script>

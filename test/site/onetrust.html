@@ -1,0 +1,17 @@
+<!doctype html><meta charset="utf-8"><title>OneTrust</title><script src="gemeinsam.js"></script>
+<h1>Shop</h1>
+<div id="onetrust-consent-sdk"><div id="onetrust-banner-sdk" style="position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #888;padding:16px">
+  <p>Wir und unsere Partner verwenden Cookies.</p>
+  <button id="onetrust-accept-btn-handler">Alle akzeptieren</button>
+  <button id="onetrust-reject-all-handler">Alle ablehnen</button>
+  <button id="onetrust-pc-btn-handler">Einstellungen</button>
+</div></div>
+<script>
+merken(document.getElementById('onetrust-accept-btn-handler'), 'ot-ja', '#onetrust-banner-sdk');
+merken(document.getElementById('onetrust-reject-all-handler'), 'ot-nein', '#onetrust-banner-sdk');
+// TCF nach dem Ablehnen: ?bi=2,7 simuliert eine Seite, die „berechtigtes Interesse“ eingeschaltet lässt
+document.getElementById('onetrust-reject-all-handler').addEventListener('click', () => {
+  const bi = (new URLSearchParams(location.search).get('bi') || '').split(',').filter(Boolean).map(Number);
+  setTimeout(() => tcfSetzen({ bi, partner: bi.length ? 12 : 0 }), 200);
+});
+</script>

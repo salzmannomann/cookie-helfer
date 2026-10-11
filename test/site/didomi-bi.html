@@ -1,0 +1,25 @@
+<!doctype html><meta charset="utf-8"><title>Didomi berechtigtes Interesse</title><script src="gemeinsam.js"></script>
+<h1>Marktplatz</h1>
+<div id="didomi-host">
+  <div id="didomi-notice" style="position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #888;padding:16px">
+    <p>Wir und unsere Partner verwenden Cookies.</p>
+    <button id="didomi-notice-agree-button">Cookies akzeptieren</button>
+    <button id="didomi-notice-disagree-button">Ablehnen und Schließen</button>
+  </div>
+</div>
+<script>
+// wie willhaben: nach „Ablehnen“ bleibt berechtigtes Interesse an, bis man es über die Didomi-Schnittstelle abstellt
+window.Didomi = {
+  getCurrentUserStatus: () => ({ purposes: { werbung: { enabled: false } } }),
+  setUserStatusForAll: (o) => {
+    window.geklickt.push('didomi-api');
+    if (!o.purposesLIStatus) tcfSetzen({ bi: [] });
+  },
+};
+document.getElementById('didomi-notice-disagree-button').addEventListener('click', () => {
+  window.geklickt.push('d-nein');
+  document.getElementById('didomi-notice').remove();
+  setTimeout(() => tcfSetzen({ bi: [2, 7, 8, 9, 10, 11] }), 200);
+});
+merken(document.getElementById('didomi-notice-agree-button'), 'd-ja', '#didomi-notice');
+</script>

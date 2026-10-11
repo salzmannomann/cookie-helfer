@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F5B342"/><stop offset="1" stop-color="#E5663A"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6"/></filter>
+    <mask id="keks">
+      <rect width="128" height="128" fill="#fff"/>
+      <circle cx="92" cy="38" r="15" fill="#000"/>
+      <circle cx="80" cy="56" r="10" fill="#000"/>
+      <circle cx="49" cy="52" r="7" fill="#000"/>
+      <circle cx="56" cy="82" r="7" fill="#000"/>
+      <circle cx="82" cy="85" r="6" fill="#000"/>
+    </mask>
+  </defs>
+  <rect x="4" y="4" width="120" height="120" rx="30" fill="url(#g)"/>
+  <circle cx="64" cy="66" r="40" fill="#fff" opacity=".35" filter="url(#glow)" mask="url(#keks)"/>
+  <circle cx="64" cy="66" r="36" fill="#fff" mask="url(#keks)"/>
+</svg>

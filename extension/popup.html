@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>Cookie-Helfer</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { width: 300px; padding: 14px 16px; }
+    .host { color: var(--muted); font-size: 12px; word-break: break-all; }
+    .status { margin: 10px 0 8px; }
+    .status b { font-size: 16px; }
+    .status .host { display: block; }
+    .karte { margin: 0 0 8px; padding: 9px 12px; background: var(--card); border-radius: 8px; font-size: 12.5px; }
+    .karte h2 { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin: 0 0 4px; }
+    .karte ul { list-style: none; padding: 0; }
+    .karte li.ok { color: var(--ok); }
+    .karte li.warn { color: var(--warn); }
+    details { margin: 6px 0 0; font-size: 12.5px; }
+    summary { cursor: pointer; color: var(--muted); padding: 3px 0; }
+    details ul { color: var(--muted); padding-left: 16px; margin-top: 2px; }
+    .seitenwahl { padding: 8px 0; }
+    .seitenwahl > span { display: block; margin-bottom: 6px; }
+    .segmente { display: flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    .segmente label { cursor: pointer; flex: 1; text-align: center; }
+    .segmente input { position: absolute; opacity: 0; pointer-events: none; }
+    .segmente span { display: block; padding: 5px 8px; font-size: 12.5px; }
+    .segmente label + label span { border-left: 1px solid var(--line); }
+    .segmente input:checked + span { background: var(--accent); color: var(--bg); }
+    .segmente input:disabled + span { opacity: .4; }
+    .segmente input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: -2px; }
+    .kitext { margin: 0 0 6px; }
+    .frage { margin: 6px 0; font-weight: 600; font-size: 13.5px; }
+    .knoepfe { display: flex; gap: 8px; }
+    .merken { display: flex; gap: 6px; align-items: center; margin-top: 8px; color: var(--muted); }
+    .merken input { accent-color: var(--accent); }
+    #ki details { margin-top: 8px; }
+    .footer { margin-top: 12px; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+  <h1 class="brand"><img src="icons/icon.svg" alt="" width="24" height="24">Cookie-Helfer</h1>
+  <label class="switch">Cookie-Helfer aktiv <input type="checkbox" id="aktiv"></label>
+  <div class="seitenwahl">
+    <span>Auf dieser Seite <span class="host" id="seite">–</span></span>
+    <div class="segmente" role="radiogroup" aria-label="Auf dieser Seite">
+      <label><input type="radio" name="modus" value="ablehnen"><span>Ablehnen</span></label>
+      <label><input type="radio" name="modus" value="zustimmen"><span>Zustimmen</span></label>
+      <label><input type="radio" name="modus" value="aus"><span>Aus</span></label>
+    </div>
+  </div>
+
+  <div id="status" class="status"><b>…</b></div>
+
+  <div class="karte" id="ki" hidden>
+    <h2 id="kiTitel">Vorschlag</h2>
+    <p id="kiText" class="kitext"></p>
+    <div id="kiFrage" hidden>
+      <p class="frage">„<span id="kiKnopf"></span>“ klicken?</p>
+      <p class="hint" id="kiHinweis" hidden>Laut Banner nur notwendige Cookies – nur ein Hinweis zum Wegklicken.</p>
+      <div class="knoepfe"><button class="primary" id="kiJa">Klicken</button><button id="kiNein">Nein</button></div>
+      <label class="merken"><input type="checkbox" id="kiMerken" checked> auf dieser Seite künftig selbst klicken</label>
+    </div>
+    <p id="kiKein" class="hint" hidden>Kein eindeutiger Ablehnen-Knopf – bitte selbst wählen.</p>
+    <details><summary>Knöpfe im Banner</summary><ul id="kiListe"></ul></details>
+    <p id="kiQuelle" class="hint"></p>
+  </div>
+
+  <div class="karte" id="tcf" hidden>
+    <h2>Kontrolle (TCF)</h2>
+    <ul id="tcfListe"></ul>
+  </div>
+
+  <details>
+    <summary>Ablauf auf dieser Seite</summary>
+    <ul id="ereignisse"></ul>
+  </details>
+  <details>
+    <summary>Frühere Besuche</summary>
+    <ul id="protokoll"></ul>
+  </details>
+
+  <div class="footer">
+    <a href="#" id="vorgaben">Vorgaben</a>
+    <span class="hint" id="version"></span>
+  </div>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,987 @@
+[
+  {
+    "name": "orf.at",
+    "status": "abgelehnt",
+    "cmp": "didomi",
+    "ereignisse": [
+      "Seite geladen",
+      "Banner gefunden (didomi)",
+      "abgelehnt (didomi, 1 Klick)"
+    ],
+    "tcf": {
+      "status": "useractioncomplete",
+      "zwecke": [],
+      "bi": [],
+      "partner": 0
+    }
+  },
+  {
+    "name": "derstandard.at",
+    "status": "pur-zugestimmt",
+    "cmp": "Sourcepoint",
+    "ereignisse": [
+      "Seite geladen",
+      "Banner gefunden (sourcepoint-top)",
+      "abgelehnt (sourcepoint-top, 0 Klicks)",
+      "Zustimmen oder bezahlen: zugestimmt („Einverstanden“, Sourcepoint)",
+      "Seite neu geladen"
+    ],
+    "tcf": {
+      "status": "tcloaded",
+      "zwecke": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "bi": [
+        2
+      ],
+      "partner": 140
+    }
+  },
+  {
+    "name": "krone.at",
+    "status": "abgelehnt",
+    "cmp": "didomi",
+    "ereignisse": [
+      "Seite geladen",
+      "Banner-Text erkannt, aber keine Regel – nichts geklickt",
+      "Banner gefunden (didomi)",
+      "abgelehnt (didomi, 1 Klick)"
+    ],
+    "tcf": {
+      "status": "useractioncomplete",
+      "zwecke": [],
+      "bi": [],
+      "partner": 0
+    }
+  },
+  {
+    "name": "kurier.at",
+    "status": "abgelehnt",
+    "cmp": "didomi",
+    "ereignisse": [
+      "Seite geladen",
+      "Banner gefunden (didomi)",
+      "abgelehnt (didomi, 1 Klick)"
+    ],
+    "tcf": {
+      "status": "useractioncomplete",
+      "zwecke": [],
+      "bi": [],
+      "partner": 0
+    }
+  },
+  {
+    "name": "heute.at",
+    "status": "pur-zugestimmt",
+    "cmp": "Sourcepoint",
+    "ereignisse": [
+      "Seite geladen",
+      "Banner gefunden (sourcepoint-top)",
+      "abgelehnt (sourcepoint-top, 0 Klicks)",
+      "Zustimmen oder bezahlen: zugestimmt („Jetzt zustimmen und kostenlos weiter“, Sourcepoint)",
+      "Banner gefunden (Sourcepoint-frame)",
+      "Ablehnen fehlgeschlagen (Sourcepoint-frame)"
+    ],
+    "tcf": {
+      "status": "tcloaded",
+      "zwecke": [],
+      "bi": [],
+      "partner": 0
+    }
+  },
+  {
+    "name": "diepresse.com",
+    "status": "abgelehnt",
+    "cmp": "didomi",
+    "ereignisse": [
+      "Seite geladen",
+      "Banner gefunden (didomi)",
+      "abgelehnt (didomi, 0 Klicks)"
+    ],
+    "tcf": {
+      "status": "useractioncomplete",
+      "zwecke": [],
+      "bi": [],
+      "partner": 0
+    }
+  },
+  {
+    "name": "kleinezeitung.at",
+    "status": "abgelehnt",
+    "cmp": "didomi",
+    "ereignisse": [
+      "Seite geladen",
+      "Banner-Text erkannt, aber keine Regel – nichts geklickt",
+      "Banner gefunden (didomi)",
+      "abgelehnt (didomi, 1 Klick)"
+    ],
+    "tcf": {
+      "status": "useractioncomplete",
+      "zwecke": [],
+      "bi": [],
+      "partner": 0
+    }
+  },
+  {
+    "name": "oe24.at",
+    "status": "suche",
+    "cmp": null,
+    "ereignisse": [
+      "Seite geladen"
+    ],
+    "tcf": {
+      "status": "tcloaded",
+      "zwecke": [],
+      "bi": [],
+      "partner": 0
+    }
+  },
+  {
+    "name": "sn.at",
+    "status": "abgelehnt",
+    "cmp": "Onetrust",
+    "ereignisse": [
+      "Seite geladen",
+      "Banner-Text erkannt, aber keine Regel – nichts geklickt",
+      "Banner gefunden (Onetrust)",
+      "abgelehnt (Onetrust, 3 Klicks)"
+    ],
+    "tcf": {
+      "status": "useractioncomplete",
+      "zwecke": [],
+      "bi": [
+        2,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "partner": 244
+    }
+  },
+  {
+    "name": "nachrichten.at",
+    "status": "abgelehnt",
+    "cmp": "Onetrust",
+    "ereignisse": [
+      "Seite geladen",
+      "Banner-Text erkannt, aber keine Regel – nichts geklickt",
+      "Banner gefunden (Onetrust)",
+      "abgelehnt (Onetrust, 3 Klicks)"
+    ],
+    "tcf": {
+      "status": "useractioncomplete",
+      "zwecke": [],
+      "bi": [],
+      "partner": 0
+    }
+  },
+  {
+    "name": "tt.com",
+    "status": "abgelehnt",
+    "cmp": "Onetrust",
+    "ereignisse": [
+      "Seite geladen",
+      "Banner gefunden (Onetrust)",
+      "abgelehnt (Onetrust, 3 Klicks)"
+    ],
+    "tcf": {
+      "status": "useractioncomplete",
+      "zwecke": [],
+      "bi": [
+        2,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "partner": 407
+    }
+  },
+  {
+    "name": "profil.at",
+    "status": "abgelehnt",
+    "cmp": "didomi",
+    "ereignisse": [
+      "Seite geladen",
+      "Banner-Text erkannt, aber keine Regel – nichts geklickt",
+      "Banner gefunden (didomi)",
+      "abgelehnt (didomi, 1 Klick)"
+    ],
+    "tcf": {
+      "status": "useractioncomplete",
+      "zwecke": [],
+      "bi": [],
+      "partner": 0
+    }
+  },
+  {
+    "name": "falter.at",
+    "status": "abgelehnt",
+    "cmp": "didomi",
+    "ereignisse": [
+      "Seite geladen",
+      "Banner-Text erkannt, aber keine Regel – nichts geklickt",
+      "Banner gefunden (didomi)",
+      "abgelehnt (didomi, 1 Klick)"
+    ],
+    "tcf": {
+      "status": "useractioncomplete",
+      "zwecke": [],
+      "bi": [],
+      "partner": 0
+    }
+  },
+  {
+    "name": "vienna.at",
+    "status": "abgelehnt",
+    "cmp": "consentmanager.net",
+    "ereignisse": [
+      "Seite geladen",
+      "Banner gefunden (consentmanager.net)",
+      "abgelehnt (consentmanager.net, 0 Klicks)"
+    ],
+    "tcf": null
+  },
+  {
+    "name": "puls24.at",
+    "status": "suche",
+    "cmp": null,
+    "ereignisse": [
+      "Seite geladen"
+    ],
+    "tcf": {
+      "status": "cmpuishown",
+      "zwecke": [],
+      "bi": [],
+      "partner": 0
+    }
+  },
+  {
+    "name": "spiegel.de",
+    "status": "pur-zugestimmt",
+    "cmp": "Sourcepoint",
+    "ereignisse": [
+      "Seite geladen",
+      "Banner gefunden (sourcepoint-top)",
+      "abgelehnt (sourcepoint-top, 0 Klicks)",
+      "Zustimmen oder bezahlen: zugestimmt („Einwilligen und weiter“, Sourcepoint)"
+    ],
+    "tcf": {
+      "status": "useractioncomplete",
+      "zwecke": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "bi": [
+        7,
+        9,
+        10
+      ],
+      "partner": 134
+    }
+  },
+  {
+    "name": "zeit.de",
+    "status": "suche",
+    "cmp": null,
+    "ereignisse": [
+      "Seite geladen"
+    ],
+    "tcf": null
+  },
+  {
+    "name": "faz.net",
+    "status": "fehlgeschlagen",
+    "cmp": "Sourcepoint-frame",
+    "ereignisse": [
+      "Seite geladen",
+      "Banner gefunden (Sourcepoint-frame)",
+      "Banner gefunden (sourcepoint-top)",
+      "abgelehnt (sourcepoint-top, 0 Klicks)",
+      "Banner gefunden (Sourcepoint-frame)",
+      "Ablehnen fehlgeschlagen (Sourcepoint-frame)"
+    ],
+    "tcf": {
+      "status": "cmpuishown",
+      "zwecke": [],
+      "bi": [
+        10
+      ],
+      "partner": 0
+    }
+  },
+  {
+    "name": "sueddeutsche.de",
+    "status": "pur-zugestimmt",
+    "cmp": "Sourcepoint",
+    "ereignisse": [
+      "Seite geladen",
+      "Banner gefunden (sourcepoint-top)",
+      "abgelehnt (sourcepoint-top, 0 Klicks)",
+      "Zustimmen oder bezahlen: zugestimmt („Ich bin einverstanden“, Sourcepoint)"
+    ],
+    "tcf": {
+      "status": "useractioncomplete",
+      "zwecke": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "bi": [],
+      "partner": 140
+    }
+  },
+  {
+    "name": "welt.de",
+    "status": "pur-zugestimmt",
+    "cmp": "Sourcepoint",
+    "ereignisse": [
+      "Seite geladen",
+      "Banner gefunden (sourcepoint-top)",
+      "abgelehnt (sourcepoint-top, 0 Klicks)",
+      "Zustimmen oder bezahlen: zugestimmt („ALLE AKZEPTIEREN“, Sourcepoint)"
+    ],
+    "tcf": {
+      "status": "useractioncomplete",
+      "zwecke": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "bi": [],
+      "partner": 215
+    }
+  },
+  {
+    "name": "bild.de",
+    "status": "pur-zugestimmt",
+    "cmp": "Sourcepoint",
+    "ereignisse": [
+      "Seite geladen",
+      "Banner gefunden (sourcepoint-top)",
+      "abgelehnt (sourcepoint-top, 0 Klicks)",
+      "Zustimmen oder bezahlen: zugestimmt („Alle akzeptieren“, Sourcepoint)"
+    ],
+    "tcf": {
+      "status": "useractioncomplete",
+      "zwecke": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "bi": [],
+      "partner": 219
+    }
+  },
+  {
+    "name": "heise.de",
+    "status": "abgelehnt",
+    "cmp": "Sourcepoint-frame",
+    "ereignisse": [
+      "Seite geladen",
+      "Banner gefunden (Sourcepoint-frame)",
+      "Banner gefunden (sourcepoint-top)",
+      "abgelehnt (sourcepoint-top, 0 Klicks)",
+      "Banner gefunden (Sourcepoint-frame)",
+      "abgelehnt (Sourcepoint-frame, 4 Klicks)"
+    ],
+    "tcf": {
+      "status": "cmpuishown",
+      "zwecke": [],
+      "bi": [],
+      "partner": 0
+    }
+  },
+  {
+    "name": "golem.de",
+    "status": "pur-zugestimmt",
+    "cmp": "Sourcepoint",
+    "ereignisse": [
+      "Seite geladen",
+      "Banner-Text erkannt, aber keine Regel – nichts geklickt",
+      "Banner gefunden (Sourcepoint-frame)",
+      "Banner gefunden (sourcepoint-top)",
+      "abgelehnt (sourcepoint-top, 0 Klicks)",
+      "Zustimmen oder bezahlen: zugestimmt („Zustimmen und weiter“, Sourcepoint)"
+    ],
+    "tcf": {
+      "status": "useractioncomplete",
+      "zwecke": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "bi": [],
+      "partner": 151
+    }
+  },
+  {
+    "name": "t-online.de",
+    "status": "abgelehnt",
+    "cmp": "sourcepoint-top",
+    "ereignisse": [
+      "Seite geladen",
+      "Banner gefunden (sourcepoint-top)",
+      "abgelehnt (sourcepoint-top, 0 Klicks)"
+    ],
+    "tcf": {
+      "status": "cmpuishown",
+      "zwecke": [],
+      "bi": [],
+      "partner": 0
+    }
+  },
+  {
+    "name": "n-tv.de",
+    "status": "pur-zugestimmt",
+    "cmp": "Sourcepoint",
+    "ereignisse": [
+      "Seite geladen",
+      "Banner gefunden (sourcepoint-top)",
+      "abgelehnt (sourcepoint-top, 0 Klicks)",
+      "Zustimmen oder bezahlen: zugestimmt („Einwilligen und weiter“, Sourcepoint)"
+    ],
+    "tcf": {
+      "status": "useractioncomplete",
+      "zwecke": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "bi": [
+        7,
+        8,
+        9,
+        10
+      ],
+      "partner": 134
+    }
+  },
+  {
+    "name": "stern.de",
+    "status": "pur-zugestimmt",
+    "cmp": "Sourcepoint",
+    "ereignisse": [
+      "Seite geladen",
+      "Banner gefunden (sourcepoint-top)",
+      "abgelehnt (sourcepoint-top, 0 Klicks)",
+      "Zustimmen oder bezahlen: zugestimmt („ZUSTIMMEN UND WEITER“, Sourcepoint)"
+    ],
+    "tcf": {
+      "status": "useractioncomplete",
+      "zwecke": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "bi": [
+        7,
+        9,
+        10,
+        11
+      ],
+      "partner": 118
+    }
+  },
+  {
+    "name": "focus.de",
+    "status": "pur-zugestimmt",
+    "cmp": "Sourcepoint",
+    "ereignisse": [
+      "Seite geladen",
+      "Banner gefunden (sourcepoint-top)",
+      "abgelehnt (sourcepoint-top, 0 Klicks)",
+      "Zustimmen oder bezahlen: zugestimmt („AKZEPTIEREN“, Sourcepoint)"
+    ],
+    "tcf": {
+      "status": "useractioncomplete",
+      "zwecke": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "bi": [],
+      "partner": 198
+    }
+  },
+  {
+    "name": "chip.de",
+    "status": "pur-zugestimmt",
+    "cmp": "Sourcepoint",
+    "ereignisse": [
+      "Seite geladen",
+      "Banner gefunden (sourcepoint-top)",
+      "abgelehnt (sourcepoint-top, 0 Klicks)",
+      "Zustimmen oder bezahlen: zugestimmt („AKZEPTIEREN“, Sourcepoint)"
+    ],
+    "tcf": {
+      "status": "useractioncomplete",
+      "zwecke": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "bi": [],
+      "partner": 176
+    }
+  },
+  {
+    "name": "tagesschau.de",
+    "status": "suche",
+    "cmp": null,
+    "ereignisse": [
+      "Seite geladen"
+    ],
+    "tcf": null
+  },
+  {
+    "name": "willhaben.at",
+    "status": "abgelehnt",
+    "cmp": "didomi",
+    "ereignisse": [
+      "Seite geladen",
+      "Banner gefunden (didomi)",
+      "abgelehnt (didomi, 1 Klick)",
+      "Seite neu geladen"
+    ],
+    "tcf": {
+      "status": "tcloaded",
+      "zwecke": [],
+      "bi": [
+        2,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "partner": 0
+    }
+  },
+  {
+    "name": "geizhals.at",
+    "status": "abgelehnt",
+    "cmp": "Onetrust",
+    "ereignisse": [
+      "Seite geladen",
+      "Banner-Text erkannt, aber keine Regel – nichts geklickt",
+      "Banner gefunden (Onetrust)",
+      "abgelehnt (Onetrust, 1 Klick)"
+    ],
+    "tcf": {
+      "status": "useractioncomplete",
+      "zwecke": [],
+      "bi": [],
+      "partner": 0
+    }
+  },
+  {
+    "name": "amazon.de",
+    "status": "suche",
+    "cmp": null,
+    "ereignisse": [
+      "Seite geladen"
+    ],
+    "tcf": null
+  },
+  {
+    "name": "ebay.at",
+    "status": "suche",
+    "cmp": null,
+    "ereignisse": [
+      "Seite geladen"
+    ],
+    "tcf": null
+  },
+  {
+    "name": "mediamarkt.at",
+    "status": "fehlgeschlagen",
+    "cmp": "mediamarkt.de",
+    "ereignisse": [
+      "Seite geladen",
+      "Banner-Text erkannt, aber keine Regel – nichts geklickt",
+      "Banner gefunden (mediamarkt.de)",
+      "Ablehnen fehlgeschlagen (mediamarkt.de)"
+    ],
+    "tcf": null
+  },
+  {
+    "name": "idealo.de",
+    "status": "abgelehnt",
+    "cmp": "usercentrics-api",
+    "ereignisse": [
+      "Seite geladen",
+      "Banner gefunden (usercentrics-api)",
+      "abgelehnt (usercentrics-api, 1 Klick)"
+    ],
+    "tcf": null
+  },
+  {
+    "name": "zalando.at",
+    "status": "suche",
+    "cmp": null,
+    "ereignisse": [
+      "Seite geladen"
+    ],
+    "tcf": null
+  },
+  {
+    "name": "ikea.com",
+    "status": "abgelehnt",
+    "cmp": "Onetrust",
+    "ereignisse": [
+      "Seite geladen",
+      "Banner-Text erkannt, aber keine Regel – nichts geklickt",
+      "Banner gefunden (Onetrust)",
+      "abgelehnt (Onetrust, 1 Klick)"
+    ],
+    "tcf": null
+  },
+  {
+    "name": "billa.at",
+    "status": "abgelehnt",
+    "cmp": "usercentrics-api",
+    "ereignisse": [
+      "Seite geladen",
+      "Banner gefunden (usercentrics-api)",
+      "abgelehnt (usercentrics-api, 1 Klick)"
+    ],
+    "tcf": null
+  },
+  {
+    "name": "spar.at",
+    "status": "abgelehnt",
+    "cmp": "consentmanager.net",
+    "ereignisse": [
+      "Seite geladen",
+      "Banner gefunden (consentmanager.net)",
+      "abgelehnt (consentmanager.net, 0 Klicks)"
+    ],
+    "tcf": null
+  },
+  {
+    "name": "hofer.at",
+    "status": "abgelehnt",
+    "cmp": "Onetrust",
+    "ereignisse": [
+      "Seite geladen",
+      "Banner-Text erkannt, aber keine Regel – nichts geklickt",
+      "Banner gefunden (Onetrust)",
+      "abgelehnt (Onetrust, 1 Klick)"
+    ],
+    "tcf": null
+  },
+  {
+    "name": "otto.de",
+    "status": "abgelehnt",
+    "cmp": "Onetrust",
+    "ereignisse": [
+      "Seite geladen",
+      "Banner-Text erkannt, aber keine Regel – nichts geklickt",
+      "Banner gefunden (Onetrust)",
+      "abgelehnt (Onetrust, 1 Klick)"
+    ],
+    "tcf": {
+      "status": "useractioncomplete",
+      "zwecke": [],
+      "bi": [],
+      "partner": 0
+    }
+  },
+  {
+    "name": "oebb.at",
+    "status": "unbekannt",
+    "cmp": null,
+    "ereignisse": [
+      "Seite geladen",
+      "Banner-Text erkannt, aber keine Regel – nichts geklickt"
+    ],
+    "tcf": null
+  },
+  {
+    "name": "bahn.de",
+    "status": "abgelehnt",
+    "cmp": "bahn-de",
+    "ereignisse": [
+      "Seite geladen",
+      "Banner gefunden (bahn-de)",
+      "abgelehnt (bahn-de, 1 Klick)"
+    ],
+    "tcf": null
+  },
+  {
+    "name": "booking.com",
+    "status": "suche",
+    "cmp": null,
+    "ereignisse": [
+      "Seite geladen"
+    ],
+    "tcf": null
+  },
+  {
+    "name": "oesterreich.gv.at",
+    "status": "suche",
+    "cmp": null,
+    "ereignisse": [
+      "Seite geladen"
+    ],
+    "tcf": null
+  },
+  {
+    "name": "wien.gv.at",
+    "status": "suche",
+    "cmp": null,
+    "ereignisse": [
+      "Seite geladen"
+    ],
+    "tcf": null
+  },
+  {
+    "name": "bmf.gv.at",
+    "status": "suche",
+    "cmp": null,
+    "ereignisse": [
+      "Seite geladen"
+    ],
+    "tcf": null
+  },
+  {
+    "name": "sozialversicherung.at",
+    "status": "unbekannt",
+    "cmp": null,
+    "ereignisse": [
+      "Seite geladen",
+      "Banner-Text erkannt, aber keine Regel – nichts geklickt"
+    ],
+    "tcf": null
+  },
+  {
+    "name": "sparkasse.at",
+    "status": "unbekannt",
+    "cmp": null,
+    "ereignisse": [
+      "Seite geladen",
+      "Banner-Text erkannt, aber keine Regel – nichts geklickt"
+    ],
+    "tcf": null
+  },
+  {
+    "name": "raiffeisen.at",
+    "status": "abgelehnt",
+    "cmp": "Onetrust",
+    "ereignisse": [
+      "Seite geladen",
+      "Banner gefunden (Onetrust)",
+      "abgelehnt (Onetrust, 1 Klick)"
+    ],
+    "tcf": null
+  },
+  {
+    "name": "bawag.at",
+    "status": "abgelehnt",
+    "cmp": "cookiefirst.com",
+    "ereignisse": [
+      "Seite geladen",
+      "Banner-Text erkannt, aber keine Regel – nichts geklickt",
+      "Banner gefunden (cookiefirst.com)",
+      "abgelehnt (cookiefirst.com, 1 Klick)"
+    ],
+    "tcf": null
+  },
+  {
+    "name": "bankaustria.at",
+    "status": "unbekannt",
+    "cmp": null,
+    "ereignisse": [
+      "Seite geladen",
+      "Banner-Text erkannt, aber keine Regel – nichts geklickt"
+    ],
+    "tcf": null
+  },
+  {
+    "name": "durchblicker.at",
+    "status": "unbekannt",
+    "cmp": null,
+    "ereignisse": [
+      "Seite geladen",
+      "Banner-Text erkannt, aber keine Regel – nichts geklickt"
+    ],
+    "tcf": null
+  },
+  {
+    "name": "chefkoch.de",
+    "status": "abgelehnt",
+    "cmp": "consentmanager.net",
+    "ereignisse": [
+      "Seite geladen",
+      "Banner gefunden (consentmanager.net)",
+      "abgelehnt (consentmanager.net, 0 Klicks)"
+    ],
+    "tcf": {
+      "status": "cmpuishown",
+      "zwecke": [],
+      "bi": [],
+      "partner": 0
+    }
+  },
+  {
+    "name": "ichkoche.at",
+    "status": "suche",
+    "cmp": null,
+    "ereignisse": [
+      "Seite geladen"
+    ],
+    "tcf": null
+  },
+  {
+    "name": "wetter.com",
+    "status": "pur-zugestimmt",
+    "cmp": "contentpass",
+    "ereignisse": [
+      "Seite geladen",
+      "Banner-Text erkannt, aber keine Regel – nichts geklickt",
+      "Zustimmen oder bezahlen: zugestimmt („Akzeptieren und weiter“, contentpass)",
+      "Seite neu geladen"
+    ],
+    "tcf": {
+      "status": "tcloaded",
+      "zwecke": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "bi": [],
+      "partner": 311
+    }
+  },
+  {
+    "name": "gutefrage.net",
+    "status": "suche",
+    "cmp": null,
+    "ereignisse": [
+      "Seite geladen"
+    ],
+    "tcf": null
+  },
+  {
+    "name": "youtube.com",
+    "status": "suche",
+    "cmp": null,
+    "ereignisse": [
+      "Seite geladen"
+    ],
+    "tcf": null
+  },
+  {
+    "name": "google.at",
+    "status": "suche",
+    "cmp": null,
+    "ereignisse": [
+      "Seite geladen"
+    ],
+    "tcf": null
+  },
+  {
+    "name": "reddit.com",
+    "status": "suche",
+    "cmp": null,
+    "ereignisse": [
+      "Seite geladen"
+    ],
+    "tcf": null
+  }
+]

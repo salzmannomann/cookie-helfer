@@ -1,0 +1,12 @@
+<!doctype html><meta charset="utf-8"><title>consentmanager Pur</title><script src="gemeinsam.js"></script>
+<h1>Rezepte</h1>
+<div id="cmpbox" style="position:fixed;inset:20px;background:#fff;border:1px solid #888;padding:16px;z-index:10">
+  <p>Mit Werbung und Cookies nutzen – oder PUR abonnieren für 1,99 € / Monat.</p>
+  <a href="#" class="cmpboxbtn cmpboxbtnyes">Allen Zwecken zustimmen</a>
+  <a href="#" class="ck-btn-outline" id="abo">Zum Abonnement</a>
+  <a href="#" class="cmpboxbtn cmpboxbtncustom">Einstellungen</a>
+</div>
+<script>
+merken(document.querySelector('.cmpboxbtnyes'), 'cmp-ja', '#cmpbox');
+merken(document.getElementById('abo'), 'cmp-abo');
+</script>

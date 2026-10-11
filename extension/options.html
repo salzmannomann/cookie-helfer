@@ -1,33 +1,181 @@
 <!doctype html>
 <html lang="de">
-<head><meta charset="utf-8"><title>Cookie-Helfer – Vorgaben</title><link rel="stylesheet" href="style.css">
-<style>body { max-width: 680px; margin: 24px auto; padding: 0 16px; }</style></head>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cookie-Helfer – Vorgaben</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .layout { display: grid; grid-template-columns: 220px minmax(0, 1fr); min-height: 100vh; }
+    nav { position: sticky; top: 0; align-self: start; height: 100vh; padding: 24px 14px; border-right: 1px solid var(--line); background: var(--card); display: flex; flex-direction: column; gap: 4px; }
+    nav .brand { display: flex; align-items: center; gap: 10px; font-size: 19px; font-weight: 700; margin: 0 8px 18px; }
+    nav .brand img { border-radius: 22%; }
+    nav a { display: block; padding: 8px 12px; border-radius: 8px; color: var(--fg); text-decoration: none; font-size: 14.5px; }
+    nav a:hover { background: var(--bg); }
+    nav a[aria-current="page"] { background: var(--accent); color: #fff; }
+    nav .foot { margin-top: auto; padding: 0 8px; font-size: 12px; color: var(--muted); line-height: 1.5; }
+    main { padding: 28px 32px 60px; max-width: 820px; }
+    .page { display: none; }
+    .page.active { display: block; }
+    .page > h1 { font-size: 22px; margin: 0 0 4px; }
+    .page > .lead { color: var(--muted); margin: 0 0 18px; }
+    section { background: var(--card); border-radius: 12px; padding: 16px 18px; margin: 0 0 14px; }
+    section h2 { margin: 0 0 6px; }
+    .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+
+    /* Vorgaben-Liste */
+    .regeln { list-style: none; margin: 8px 0 0; padding: 0; }
+    .regeln li { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 9px 0; border-top: 1px solid var(--line); margin: 0; }
+    .regeln li:first-child { border-top: 0; }
+    .regeln small { display: block; color: var(--muted); font-size: 12px; }
+    .pill { flex: none; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; background: var(--bg); border: 1px solid var(--line); }
+    .pill.ja { color: var(--ok); border-color: color-mix(in srgb, var(--ok) 40%, transparent); }
+    .pill.nein { color: var(--err); border-color: color-mix(in srgb, var(--err) 40%, transparent); }
+    .pill.immer { color: var(--muted); }
+
+    .radio-card { display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; margin: 8px 0; background: var(--bg); cursor: pointer; }
+    .radio-card:has(input:checked) { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
+    .radio-card input { margin-top: 3px; accent-color: var(--accent); }
+    .radio-card b, .radio-card .hint { display: block; }
+
+    .nie { margin: 6px 0 0; padding-left: 20px; }
+
+    /* Listen: Ausnahmen, Protokoll */
+    .liste { list-style: none; margin: 8px 0 0; padding: 0; font-size: 13px; }
+    .liste li { display: flex; gap: 10px; align-items: baseline; padding: 6px 0; border-top: 1px solid var(--line); margin: 0; }
+    .liste li:first-child { border-top: 0; }
+    .liste .name { font-weight: 600; flex: none; min-width: 150px; }
+    .liste .txt { flex: 1; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .liste .zeit { flex: none; color: var(--muted); font-size: 12px; }
+    .liste button { flex: none; padding: 1px 8px; font-size: 12px; }
+    .lbl { flex: none; width: 92px; font-weight: 600; font-size: 12.5px; }
+    .lbl.ok { color: var(--ok); } .lbl.pur { color: var(--warn); } .lbl.fehler { color: var(--err); } .lbl.leise { color: var(--muted); }
+    .leer { color: var(--muted); font-size: 13px; padding: 6px 0; }
+
+    #gespeichert { position: fixed; right: 20px; bottom: 18px; padding: 8px 14px; border-radius: 8px; background: var(--fg); color: var(--bg); font-size: 13px; opacity: 0; transform: translateY(6px); transition: opacity .2s, transform .2s; pointer-events: none; }
+    #gespeichert.zeigen { opacity: 1; transform: none; }
+
+    @media (max-width: 760px) {
+      .layout { grid-template-columns: 1fr; }
+      nav { position: static; height: auto; flex-direction: row; flex-wrap: wrap; padding: 12px; border-right: 0; border-bottom: 1px solid var(--line); }
+      nav .brand { width: 100%; margin-bottom: 6px; }
+      nav .foot { display: none; }
+      main { padding: 18px 16px 60px; }
+      .liste .name { min-width: 0; }
+    }
+  </style>
+</head>
 <body>
-  <h1>Cookie-Helfer – Vorgaben</h1>
-  <label><input type="checkbox" id="aktiv"> Cookie-Helfer eingeschaltet</label>
+<div class="layout">
+  <nav aria-label="Bereiche">
+    <div class="brand"><img src="icons/icon.svg" alt="" width="30" height="30">Cookie-Helfer</div>
+    <a href="#vorgaben" data-page="vorgaben">Vorgaben</a>
+    <a href="#seiten" data-page="seiten">Seiten</a>
+    <a href="#protokoll" data-page="protokoll">Protokoll</a>
+    <a href="#info" data-page="info">Über</a>
+    <div class="foot">Alles läuft lokal auf diesem Rechner, nichts wird an einen Server geschickt. Änderungen werden sofort gespeichert.</div>
+  </nav>
 
-  <h2>Was erlaubt wird</h2>
-  <table>
-    <tr><td>Unbedingt notwendige Cookies</td><td>immer erlaubt</td></tr>
-    <tr><td>Funktionale Cookies (Sprache, Region)</td><td>werden beim Ablehnen meist mitabgelehnt (feinere Auswahl in einer späteren Version)</td></tr>
-    <tr><td>Statistik / Reichweitenmessung</td><td>nein</td></tr>
-    <tr><td>Personalisierte Werbung, Profile, Partner</td><td>nein</td></tr>
-    <tr><td>„Berechtigtes Interesse“</td><td>aus – wird nach dem Klick über TCF geprüft, bei Abweichung Hinweis</td></tr>
-    <tr><td>Unbekanntes Banner</td><td>nichts klicken, nur Hinweis</td></tr>
-    <tr>
-      <td>„Zustimmen oder bezahlen“ (Pur-Abo, contentpass)</td>
-      <td><select id="pur">
-        <option value="zustimmen">zustimmen (nie bezahlen)</option>
-        <option value="nichts">nichts tun, ich entscheide selbst</option>
-      </select></td>
-    </tr>
-  </table>
-  <p class="leise">Es wird nie etwas gekauft, kein Abo abgeschlossen, nicht angemeldet und kein Formular ausgefüllt.
-  Nichts wird an einen Server geschickt.</p>
+  <main>
+    <!-- ───────────── Vorgaben ───────────── -->
+    <div class="page" id="page-vorgaben">
+      <h1>Vorgaben</h1>
+      <p class="lead">Wie Cookie-Banner beantwortet werden.</p>
 
-  <h2>Ausgeschaltet auf diesen Seiten</h2>
-  <ul id="ausnahmen"></ul>
-  <p class="leise" id="gespeichert"></p>
-  <script type="module" src="options.js"></script>
+      <section>
+        <label class="switch"><span><b>Cookie-Helfer eingeschaltet</b><br><span class="hint">Aus: Banner bleiben überall unangetastet.</span></span><input type="checkbox" id="aktiv"></label>
+      </section>
+
+      <section>
+        <h2>Was erlaubt wird</h2>
+        <p class="hint">Bei bekannten Bannern wird „Ablehnen“ bzw. „Nur Notwendige“ gewählt. Danach prüft die TCF-Kontrolle, ob die Seite das auch so gespeichert hat.</p>
+        <ul class="regeln">
+          <li><span>Unbedingt notwendige Cookies<small>Anmeldung, Warenkorb, die Entscheidung selbst</small></span><span class="pill immer">immer</span></li>
+          <li><span>Funktionale Cookies<small>Sprache, Region – werden beim Ablehnen meist mitabgelehnt</small></span><span class="pill ja">erlaubt</span></li>
+          <li><span>Statistik / Reichweitenmessung</span><span class="pill nein">nein</span></li>
+          <li><span>Personalisierte Werbung, Profile, Partner</span><span class="pill nein">nein</span></li>
+          <li><span>„Berechtigtes Interesse“<small>wird nach dem Klick geprüft, bei Abweichung Hinweis im Popup</small></span><span class="pill nein">aus</span></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>„Zustimmen oder bezahlen“</h2>
+        <p class="hint">Seiten wie derStandard, Spiegel oder heise bieten nur „Zustimmen“ oder ein Pur-Abo bzw. contentpass an – ein „Ablehnen“ gibt es dort nicht.</p>
+        <label class="radio-card"><input type="radio" name="pur" value="zustimmen"><span><b>Zustimmen</b><span class="hint">Der Zustimmen-Knopf wird geklickt. Nie bezahlen, nie ein Abo-Knopf.</span></span></label>
+        <label class="radio-card"><input type="radio" name="pur" value="nichts"><span><b>Nichts tun, ich entscheide selbst</b><span class="hint">Das Banner bleibt stehen, das Popup zeigt einen Hinweis.</span></span></label>
+      </section>
+
+      <section>
+        <h2>Unbekannte Banner</h2>
+        <p class="hint" style="margin:0">Kennt der Cookie-Helfer ein Banner nicht, wird nichts geklickt. Das Symbol zeigt „?“ – schick mir einen Screenshot, dann kommt eine Regel dazu.</p>
+      </section>
+
+      <section>
+        <h2>Nie</h2>
+        <ul class="nie hint">
+          <li>etwas kaufen oder ein Abo abschließen</li>
+          <li>anmelden oder ein Formular mit Daten ausfüllen</li>
+          <li>Knöpfe außerhalb des Banners klicken</li>
+          <li>Daten an einen Server schicken</li>
+        </ul>
+      </section>
+    </div>
+
+    <!-- ───────────── Seiten ───────────── -->
+    <div class="page" id="page-seiten">
+      <h1>Seiten</h1>
+      <p class="lead">Wo der Cookie-Helfer ausgeschaltet ist.</p>
+      <section>
+        <h2>Ausgeschaltet auf</h2>
+        <p class="hint">Hilfreich, wenn eine Seite nach dem Klick nicht richtig funktioniert. Gilt auch für Unterseiten (z. B. „derstandard.at“ für „apps.derstandard.at“). Am schnellsten über das Popup der Seite.</p>
+        <ul class="liste" id="ausnahmen"></ul>
+        <form class="row" id="neueAusnahme" style="margin-top:10px">
+          <input type="text" id="ausnahmeSeite" placeholder="z. B. derstandard.at" style="flex:1;min-width:200px">
+          <button type="submit">Hinzufügen</button>
+        </form>
+      </section>
+    </div>
+
+    <!-- ───────────── Protokoll ───────────── -->
+    <div class="page" id="page-protokoll">
+      <h1>Protokoll</h1>
+      <p class="lead">Was zuletzt auf welcher Seite passiert ist (je Seite die letzten 20 Besuche, nur auf diesem Rechner gespeichert).</p>
+      <section>
+        <div class="row" style="justify-content:space-between">
+          <h2 style="margin:0">Zuletzt</h2>
+          <button id="protokollLoeschen">Protokoll löschen</button>
+        </div>
+        <ul class="liste" id="protokoll"></ul>
+      </section>
+    </div>
+
+    <!-- ───────────── Über ───────────── -->
+    <div class="page" id="page-info">
+      <h1>Über</h1>
+      <p class="lead">Cookie-Helfer <span id="version"></span></p>
+      <section>
+        <h2>So funktioniert es</h2>
+        <ul class="nie hint">
+          <li>Feste Regeln für bekannte Banner-Anbieter aus <a href="https://github.com/duckduckgo/autoconsent" target="_blank" rel="noopener">autoconsent</a> von DuckDuckGo (Mozilla Public License 2.0), dazu eigene Regeln (z. B. Piwik PRO).</li>
+          <li>„Zustimmen oder bezahlen“ für Sourcepoint, consentmanager und contentpass nach deiner Vorgabe.</li>
+          <li>TCF-Kontrolle: Nach dem Klick wird über die Schnittstelle der Seite gelesen, was wirklich erlaubt wurde.</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Symbol am Erweiterungsknopf</h2>
+        <ul class="liste">
+          <li><span class="lbl ok">✓</span><span class="txt">abgelehnt</span></li>
+          <li><span class="lbl pur">Z</span><span class="txt">zugestimmt (Zustimmen oder bezahlen)</span></li>
+          <li><span class="lbl pur">€</span><span class="txt">Zustimmen oder bezahlen – deine Entscheidung</span></li>
+          <li><span class="lbl pur">!</span><span class="txt">abgelehnt, laut TCF aber nicht alles</span></li>
+          <li><span class="lbl fehler">!</span><span class="txt">nicht erledigt</span></li>
+          <li><span class="lbl leise">?</span><span class="txt">unbekanntes Banner, nichts geklickt</span></li>
+        </ul>
+      </section>
+    </div>
+  </main>
+</div>
+<div id="gespeichert" role="status">Gespeichert</div>
+<script type="module" src="options.js"></script>
 </body>
 </html>

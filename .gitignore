@@ -1,3 +1,5 @@
 node_modules/
 messung/ergebnisse/bilder/
 dist/
+messung/ergebnisse/lauf.log
+messung/ergebnisse/teil.json

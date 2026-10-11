@@ -24,3 +24,11 @@ CHROME_PATH="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" npm r
 
 - [`@duckduckgo/autoconsent`](https://github.com/duckduckgo/autoconsent) (MPL-2.0) – derzeit nur als Entwicklungsabhängigkeit für die Messung.
   Beim Einbau in die Erweiterung kommt es mit LICENSE-Datei nach `extension/vendor/autoconsent/`.
+
+## Grenzen der ersten Messung (11.10.2026)
+
+- Gemessen aus einem Rechenzentrum in den **USA**, nicht aus Österreich. Seiten, die Banner nur in der EU zeigen
+  (amazon, ebay, google, youtube, booking, reddit …), erscheinen deshalb als „kein Banner“. Die DSGVO-Banner der
+  meisten AT/DE-Medien kamen trotzdem.
+- Zwei Läufe weichen bei einzelnen Seiten voneinander ab (chefkoch, gutefrage, golem): Banner kommen verzögert oder
+  in Varianten. Für belastbare Zahlen: am eigenen Rechner wiederholen (siehe oben).

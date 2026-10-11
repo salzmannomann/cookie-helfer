@@ -1,0 +1,3036 @@
+{
+  "meta": {
+    "datum": "2026-10-11T17:53:37.576Z",
+    "autoconsent": "16.50.0",
+    "regeln": 886,
+    "standort": "Council Bluffs, US"
+  },
+  "ergebnisse": [
+    {
+      "url": "https://orf.at/",
+      "gruppe": "Nachrichten AT",
+      "name": "orf.at",
+      "erkannt": [
+        "didomi"
+      ],
+      "popup": [
+        "didomi"
+      ],
+      "optOut": true,
+      "selbsttest": true,
+      "fertig": {
+        "cmp": "didomi",
+        "kosmetisch": false,
+        "klicks": 1,
+        "dauerMs": 7
+      },
+      "heuristik": [],
+      "fehler": [],
+      "pur": null,
+      "bannertext": "",
+      "knoepfe": [],
+      "tcfVorher": {
+        "cmpId": 7,
+        "gdprApplies": true,
+        "eventStatus": "useractioncomplete",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 0,
+        "publisherZwecke": []
+      },
+      "tcfNachher": {
+        "cmpId": 7,
+        "gdprApplies": true,
+        "eventStatus": "useractioncomplete",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 0,
+        "publisherZwecke": []
+      },
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": false,
+      "endUrl": "https://orf.at/",
+      "cookies": 3,
+      "ergebnis": "abgelehnt (autoconsent)"
+    },
+    {
+      "url": "https://www.derstandard.at/",
+      "gruppe": "Nachrichten AT",
+      "name": "derstandard.at",
+      "erkannt": [
+        "Sourcepoint-frame",
+        "sourcepoint-top"
+      ],
+      "popup": [
+        "sourcepoint-top"
+      ],
+      "optOut": true,
+      "selbsttest": null,
+      "fertig": {
+        "cmp": "sourcepoint-top",
+        "kosmetisch": false,
+        "klicks": 0,
+        "dauerMs": 137
+      },
+      "heuristik": [],
+      "fehler": [],
+      "pur": {
+        "treffer": "Mit Werbung weiter",
+        "frame": "spcmp.r53.derstandard.at"
+      },
+      "bannertext": "Willkommen bei DER STANDARD\n\nMit Werbung weiterlesen\n\nNutzen Sie derStandard.at mit Ihrer Zustimmung zur Verwendung von Cookies für Webanalyse und personalisierte Werbemaßnahmen. Details finden Sie in der Datenschutzerklärung.\n\nEinverstanden\n\nDie Zustimmung ist jederzeit widerrufbar.\n\nderStandard.at PUR\n\nDas Abo für derStandard.at ganz ohne Werbung und Daten-Tracking auf allen Endgeräten. Jederzeit monatlich kündbar.\n\nJetzt Abonnieren\n\nSie haben ein werbefreies Abo?\n\nHier anmelden.\n\nDer STANDARD mit Werbung: Wir nutzen aus wirtschaftlichen Gründen die Möglichkeit, unsere Webseite Dritten als digitalen Werbeplatz zur Verfügung zu stellen. Wenn Dritte Ihre Daten via Cookies auf unserer Webseite zu Werbezwecken verarbeiten, liegt die Verantwortung für die datenschutzrechtliche Konformität bei den jeweiligen Dritten. Im Privacy Manager haben die 142 auf unserer Website werbenden Dritten die Möglichkeit, Sie über diese Verarbeitungstätigkeiten zu informieren, und somit eine informierte Zustimmung einzuholen. Die Verarbeitungen zu digitalen Werbezwecken erfolgen dabei zu den im Privacy Manager aufgezählten Zwecken. Über Verarbeitungen, die in der Verantwortung des STANDARD liegen, können Sie sich in unserer Datenschutzerklärung näher informieren. Es gelten unsere Allgemeinen Geschäftsbedingungen in der aktuellen Fassung.\n\nOptionen verwalten",
+      "knoepfe": [
+        "Einverstanden",
+        "Jetzt Abonnieren",
+        "Optionen verwalten"
+      ],
+      "tcfVorher": {
+        "cmpId": 6,
+        "gdprApplies": true,
+        "eventStatus": "cmpuishown",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [
+          2
+        ],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 1,
+        "publisherZwecke": []
+      },
+      "tcfNachher": {
+        "cmpId": 6,
+        "gdprApplies": true,
+        "eventStatus": "cmpuishown",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [
+          2
+        ],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 1,
+        "publisherZwecke": []
+      },
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": true,
+      "endUrl": "https://www.derstandard.at/consent/tcf/",
+      "cookies": 6,
+      "ergebnis": "Zustimmen oder bezahlen (offen)"
+    },
+    {
+      "url": "https://www.krone.at/",
+      "gruppe": "Nachrichten AT",
+      "name": "krone.at",
+      "erkannt": [
+        "didomi"
+      ],
+      "popup": [
+        "didomi"
+      ],
+      "optOut": true,
+      "selbsttest": true,
+      "fertig": {
+        "cmp": "didomi",
+        "kosmetisch": false,
+        "klicks": 1,
+        "dauerMs": 4
+      },
+      "heuristik": [
+        "/wir.{0,100}und.{0,100}unsere.{0,100}partner/gi",
+        "/cookies.{0,100}und.{0,100}andere/gi"
+      ],
+      "fehler": [],
+      "pur": null,
+      "bannertext": "",
+      "knoepfe": [],
+      "tcfVorher": {
+        "cmpId": 7,
+        "gdprApplies": true,
+        "eventStatus": "useractioncomplete",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 0,
+        "publisherZwecke": []
+      },
+      "tcfNachher": {
+        "cmpId": 7,
+        "gdprApplies": true,
+        "eventStatus": "useractioncomplete",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 0,
+        "publisherZwecke": []
+      },
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": false,
+      "endUrl": "https://www.krone.at/",
+      "cookies": 11,
+      "ergebnis": "abgelehnt (autoconsent)"
+    },
+    {
+      "url": "https://kurier.at/",
+      "gruppe": "Nachrichten AT",
+      "name": "kurier.at",
+      "erkannt": [
+        "didomi"
+      ],
+      "popup": [
+        "didomi"
+      ],
+      "optOut": true,
+      "selbsttest": true,
+      "fertig": {
+        "cmp": "didomi",
+        "kosmetisch": false,
+        "klicks": 1,
+        "dauerMs": 9
+      },
+      "heuristik": [
+        "/cookies.{0,100}und.{0,100}andere/gi"
+      ],
+      "fehler": [],
+      "pur": null,
+      "bannertext": "ePaper\nNewsletter\nMediathek\nPodcast\nHoroskop\nGewinnspiele\nMitteilungen\nRESSORTS\nPolitik\nPolitik Untermenü\nInland\nAusland\nWeltchronik\nÖsterreich\nÖsterreich Untermenü\nWien\nNiederösterreich\nBurgenland\nOberösterreich\nSteiermark\nKärnten\nSalzburg\nTirol\nVorarlberg\nGericht\nSport\nSport Untermenü\nFußball\nTabellen\nMotorsport\nTennis\nWintersport\nWirtschaft\nWirtschaft Untermenü\nImmobilien\nKarriere\nStars\nStars Untermenü\nRoyals\nAustropromis\nTrend-Hub\nFreizeit\nFreizeit Untermenü\nLifestyle\nKulinarik\nLiebe\nReise\nZeitgeist\nGesundheit\nGesundheit Untermenü\nWissen\nMental Health\nKultur\nKultur Untermenü\nMedien\nStreaming\nMeinung\nMeinung Untermenü\nLeitartikel\nAktuelle Kommentare\nOhrwaschl\nWochenkolumnen\nMobilität\nMobilität Untermenü\nIm Test\nE-Mobilität\nFahrräder\nMotorräder\nTrend-Hub\nFokus\nKlima\nAnalysen\nInterviews\nReportagen\nTrendwelt (Anzeige)\nWohnwelt (Anzeige)\nKURIER club\nPammesberger\nSpiele\nKURIER club\nTV-Programm\nKinoprogramm\nEventsuche\nPartnersuche\nTitelseitenarchiv\nKURIER PRODUKTE\nfreizeit\nfuturezone\nprofil.at\nKURIER TV\nWAS JETZT SCHULE\ndibeo.at\njobs.kurier.at\nBazar\nSPIELE\nSolitaer\nSudoku\nSudoku sehr schwer\nMahjong\nBubbles\neXchange\nSchach\nINFO UND KONTAKT\nKontakt\nAnzeigen\nWerbetarife\nANB\nDatenschutz\nImpressum\nBarrierefreiheitserklärung\nAbo Verwaltung\nKURIER Info",
+      "knoepfe": [
+        "Niederösterreich",
+        "Burgenland",
+        "Wien",
+        "Oberösterreich",
+        "Steiermark",
+        "Kärnten",
+        "Salzburg",
+        "Tirol",
+        "Vorarlberg"
+      ],
+      "tcfVorher": {
+        "cmpId": 7,
+        "gdprApplies": true,
+        "eventStatus": "useractioncomplete",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 0,
+        "publisherZwecke": []
+      },
+      "tcfNachher": {
+        "cmpId": 7,
+        "gdprApplies": true,
+        "eventStatus": "useractioncomplete",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 0,
+        "publisherZwecke": []
+      },
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": true
+      },
+      "bannerNochDa": false,
+      "endUrl": "https://kurier.at/",
+      "cookies": 31,
+      "ergebnis": "abgelehnt (autoconsent)"
+    },
+    {
+      "url": "https://www.heute.at/",
+      "gruppe": "Nachrichten AT",
+      "name": "heute.at",
+      "erkannt": [
+        "sourcepoint-top",
+        "Sourcepoint-frame"
+      ],
+      "popup": [
+        "sourcepoint-top"
+      ],
+      "optOut": true,
+      "selbsttest": null,
+      "fertig": {
+        "cmp": "sourcepoint-top",
+        "kosmetisch": false,
+        "klicks": 0,
+        "dauerMs": 23
+      },
+      "heuristik": [],
+      "fehler": [],
+      "pur": {
+        "treffer": "PUR ABO",
+        "frame": "cdn.privacy-mgmt.com"
+      },
+      "bannertext": "Herzlich willkommen\n\nWir haben für euch den Augenblick im Überblick! Um dir ein besseres Leseerlebnis bieten zu können, verwenden wir Cookies. Du kannst deine Einstellungen hier mit nur einem Klick treffen und auf Heute.at weitersurfen.\n\nCookies erlauben\n\nMit Klick auf \"Jetzt zustimmen und kostenlos weiter\" stimmst du allen einwilligungspflichtigen Cookies (Speichern, Zugriff, personalisierte Werbung, Analyse, Standortdaten, Geräteeigenschaften) zu. Damit können wir deine Erfahrungen auf der Website verbessern, das Userverhalten analysieren, Inhalte von sozialen Plattformen bereitstellen und dir für dich interessante Werbung bereitstellen.\n\nJetzt zustimmen und kostenlos weiter\n\nIm Detail erklärt:\n\nSpeichern von oder Zugriff auf Informationen auf einem Endgerät\nPersonalisierte Werbung und Inhalte, Messung von Werbeleistung und der Performance von Inhalten, Zielgruppenforschung sowie Entwicklung und Verbesserung von Angeboten\nAnalyse Cookies\nVerwendung genauer Standortdaten\nEndgeräteeigenschaften zur Identifikation aktiv abfragen\n\nEine Zustimmung kann jederzeit, z.B. über die Cookie-Einstellungen im Footer, widerrufen werden. Weitere Informationen zur Verarbeitung personenbezogener Daten und Cookies findest du in den Cookie-Einstellungen und in der Datenschutzerklärung.\n\nMit Heute PUR kannst du eine trackingfreie Alternative wählen\n\nDu möchtest nicht, dass wir deine personenbezogenen Daten zur Verbesserung unserer Website und interessenbasierter Werbung verwenden? Dann genieße ",
+      "knoepfe": [
+        "Jetzt zustimmen und kostenlos weiter",
+        "Speichern von oder Zugriff auf Informationen auf einem Endgerät",
+        "Analyse Cookies",
+        "Verwendung genauer Standortdaten",
+        "Endgeräteeigenschaften zur Identifikation aktiv abfragen",
+        "Heute PUR kostenpflichtig abonnieren"
+      ],
+      "tcfVorher": {
+        "cmpId": 6,
+        "gdprApplies": true,
+        "eventStatus": "cmpuishown",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [
+          2,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 23,
+        "publisherZwecke": []
+      },
+      "tcfNachher": {
+        "cmpId": 6,
+        "gdprApplies": true,
+        "eventStatus": "cmpuishown",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [
+          2,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 23,
+        "publisherZwecke": []
+      },
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": true,
+      "endUrl": "https://www.heute.at/",
+      "cookies": 3,
+      "ergebnis": "Zustimmen oder bezahlen (offen)"
+    },
+    {
+      "url": "https://www.diepresse.com/",
+      "gruppe": "Nachrichten AT",
+      "name": "diepresse.com",
+      "erkannt": [
+        "didomi"
+      ],
+      "popup": [
+        "didomi"
+      ],
+      "optOut": true,
+      "selbsttest": true,
+      "fertig": {
+        "cmp": "didomi",
+        "kosmetisch": false,
+        "klicks": 0,
+        "dauerMs": 160
+      },
+      "heuristik": [
+        "/zugriff.{0,100}auf.{0,100}informationen.{0,100}auf/gi",
+        "/inhalte.{0,100}messung.{0,100}von.{0,100}werbeleistung.{0,100}und/gi",
+        "/verwendet.{0,100}cookies/gi",
+        "/und.{0,100}ähnliche.{0,100}technologien/gi"
+      ],
+      "fehler": [],
+      "pur": null,
+      "bannertext": "Suche\nWien\n14°C\nzur Startseite\nAbo\nIm Benutzerkonto anmelden\nMenü anzeigen\nPOLITIK & GESELLSCHAFT\nWIRTSCHAFT & ERFOLG\nKULTUR & LEBEN\nRätsel\nePaper\nPlayer\nNewsletter\nEvents",
+      "knoepfe": [],
+      "tcfVorher": {
+        "cmpId": 7,
+        "gdprApplies": true,
+        "eventStatus": "useractioncomplete",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 3,
+        "publisherZwecke": []
+      },
+      "tcfNachher": {
+        "cmpId": 7,
+        "gdprApplies": true,
+        "eventStatus": "useractioncomplete",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 3,
+        "publisherZwecke": []
+      },
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": false,
+      "endUrl": "https://www.diepresse.com/",
+      "cookies": 20,
+      "ergebnis": "abgelehnt (autoconsent)"
+    },
+    {
+      "url": "https://www.kleinezeitung.at/",
+      "gruppe": "Nachrichten AT",
+      "name": "kleinezeitung.at",
+      "erkannt": [
+        "didomi"
+      ],
+      "popup": [
+        "didomi"
+      ],
+      "optOut": true,
+      "selbsttest": true,
+      "fertig": {
+        "cmp": "didomi",
+        "kosmetisch": false,
+        "klicks": 1,
+        "dauerMs": 9
+      },
+      "heuristik": [
+        "/zugriff.{0,100}auf.{0,100}informationen.{0,100}auf/gi",
+        "/inhalte.{0,100}messung.{0,100}von.{0,100}werbeleistung.{0,100}und/gi",
+        "/verwendet.{0,100}cookies/gi",
+        "/sie.{0,100}können.{0,100}ihre.{0,100}auswahl/gi",
+        "/und.{0,100}ähnliche.{0,100}technologien/gi",
+        "/(?:nur|nicht).{0,100}(?:zusätzliche|essenzielle|funktionale|notwendige|erforderliche).{0,100}(?:cookies|akzeptieren|erlauben|ablehnen)/gi"
+      ],
+      "fehler": [],
+      "pur": {
+        "treffer": "Pur für 4,99€ / Monat",
+        "frame": "Hauptseite"
+      },
+      "bannertext": "Wir respektieren Ihre Privatsphäre\n\nMit Klick auf „Alle akzeptieren“ willigen Sie ein, dass Cookies und ähnliche Technologien (zusammen Cookies) zu den unten angeführten Zwecken (i) von uns gemäß unserer Datenschutzinformation, (ii) im Rahmen der COPE-Plattform (siehe Informationen unten und hier) zum Teil gemeinsam mit der Content Perfomance Group GmbH (COPE) und den beteiligten Betreibern von digitalen Informationsangeboten (Publisher) wie im Wesentlichen hier beschrieben (Art 26 DSGVO) sowie (iii) von weiteren Drittanbietern gemäß deren Privacy Policies, zusammen 160 Anbieter (Partner) wie hier im Einzelnen dargestellt, verwendet werden dürfen. Mithilfe der Cookies können Informationen auf Ihrem Endgerät gespeichert oder kann auf gespeicherte Informationen auf Ihrem Endgerät zugegriffen werden. Das betrifft auch personenbezogene Daten (z.B. Geräte-IDs, IP-Adressen).\n\nUnter „Einstellungen“ können Sie sich sämtliche Zwecke, für die wir und/oder die Drittanbieter Cookies verwenden, im Detail anzeigen lassen sowie einzeln für jeden der Zwecke und über den Link „Anbieter“ auch einzeln für jeden Anbieter entscheiden, ob Sie Cookies zulassen möchten. „Strikt erforderliche Cookies“ sind aber unbedingt erforderlich für die Funktion unserer Online-Angebote; diese bedürfen daher keiner Einwilligung und können nicht abgelehnt werden. Wenn Sie den Bereich „Werbung“ oder diesem Bereich zugeordnete Zwecke ablehnen , können Sie unser Angebot nur nutzen, indem Sie Pur (s. dazu unten) absch",
+      "knoepfe": [
+        "ALLE AKZEPTIEREN",
+        "PUR KAUFEN",
+        "EINSTELLUNGEN",
+        "Finde mich",
+        "MENÜ",
+        "ANMELDEN"
+      ],
+      "tcfVorher": {
+        "cmpId": 7,
+        "gdprApplies": true,
+        "eventStatus": "useractioncomplete",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 1,
+        "publisherZwecke": []
+      },
+      "tcfNachher": {
+        "cmpId": 7,
+        "gdprApplies": true,
+        "eventStatus": "useractioncomplete",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 1,
+        "publisherZwecke": []
+      },
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": false,
+      "endUrl": "https://www.kleinezeitung.at/abo/pur",
+      "cookies": 15,
+      "ergebnis": "abgelehnt (autoconsent)"
+    },
+    {
+      "url": "https://www.oe24.at/",
+      "gruppe": "Nachrichten AT",
+      "name": "oe24.at",
+      "erkannt": [],
+      "popup": [],
+      "optOut": null,
+      "selbsttest": null,
+      "fertig": null,
+      "heuristik": [],
+      "fehler": [],
+      "pur": null,
+      "bannertext": "TV\nRADIO\nWETTER\nE-PAPER\nIMMO\nLOGIN\nTICKER\nSPORT\nSTARS\nMAGAZINE\nSONDERTHEMEN:\nGlücksmomente\n20 Jahre\nSchulstart\nWohnen & Immo\nMeine Energie\nXXXLutz\nÖsterreich-Tour\nBauen & Wohnen\nDating-Trends\nOnlinecars\nUnsere Tiere\nMörwald kocht\nStark in den Tag\nBest of Vienna",
+      "knoepfe": [],
+      "tcfVorher": null,
+      "tcfNachher": {
+        "cmpId": 6,
+        "gdprApplies": false,
+        "eventStatus": "tcloaded",
+        "cmpStatus": "loaded",
+        "hatString": false,
+        "zwecke": [],
+        "berechtigtesInteresse": [],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 0,
+        "publisherZwecke": []
+      },
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": false,
+      "endUrl": "https://www.oe24.at/",
+      "cookies": 3,
+      "ergebnis": "kein Banner"
+    },
+    {
+      "url": "https://www.sn.at/",
+      "gruppe": "Nachrichten AT",
+      "name": "sn.at",
+      "erkannt": [
+        "Onetrust"
+      ],
+      "popup": [
+        "Onetrust"
+      ],
+      "optOut": true,
+      "selbsttest": false,
+      "fertig": {
+        "cmp": "Onetrust",
+        "kosmetisch": false,
+        "klicks": 3,
+        "dauerMs": 2938
+      },
+      "heuristik": [
+        "/wir.{0,100}und.{0,100}unsere.{0,100}partner/gi",
+        "/zugriff.{0,100}auf.{0,100}informationen.{0,100}auf/gi",
+        "/alles?.{0,100}ablehnen/gi"
+      ],
+      "fehler": [],
+      "pur": {
+        "treffer": "Weiter mit Werbung",
+        "frame": "Hauptseite"
+      },
+      "bannertext": "Abo\nKarriere\nImmobilien\nE-Paper\nSN-Card\nSeitennavigation\n---\nWir und unsere 263-Partner speichern und greifen auf personenbezogene Daten wie Browserdaten oder eindeutige Kennungen auf Ihrem Gerät zu. Durch Auswahl von Akzeptieren aktivieren Sie Tracking-Technologien für die unter „Wir und unsere Partner verarbeiten Daten, um Ihnen Dienste bereitzustellen“ aufgeführten Zwecke. Durch Auswahl von Alle ablehnen oder Widerruf Ihrer Einwilligung werden diese deaktiviert. Wenn Tracker deaktiviert sind, sind manche Inhalte und Anzeigen möglicherweise nicht mehr so relevant für Sie. Sie können dieses Menü jederzeit wieder aufrufen, um Ihre Einstellungen zu ändern oder Ihre Einwilligung zu widerrufen, indem Sie auf den Link Voreinstellungen verwalten am unteren Rand der Webseite klicken. Ihre Einstellungen gelten innerhalb unseres Website. Weitere Informationen finden Sie in unserer Datenschutzerklärung.\nWeiter mit Werbung\n\nBesuchen Sie SN.at wie gewohnt mit Werbung und Tracking. Details finden Sie in der Liste unserer Partner\n\nAKZEPTIEREN\n\nWiderruf via Einwilligungspräferenzen.\n\nFokus auf Inhalte\n\nLesen Sie alle Inhalte werbereduziert, privat & blitzschnell. Um 7,20 € / Monat.\n\nJETZT ABONNIEREN\n\nBereits Abonnent:in? Hier anmelden\n\nImpressum\nKontakt\nDatenschutz\nAGB Abo\nFAQ\nDie Verarbeitungszwecke sind:\n\nVerwendung genauer Standortdaten. Endgeräteeigenschaften zur Identifikation aktiv abfragen. Speichern von oder Zugriff auf Informationen auf einem Endgerät. Verwendung reduzierter Daten",
+      "knoepfe": [
+        "AKZEPTIEREN"
+      ],
+      "tcfVorher": {
+        "cmpId": 28,
+        "gdprApplies": true,
+        "eventStatus": "cmpuishown",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [
+          2,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 106,
+        "publisherZwecke": []
+      },
+      "tcfNachher": {
+        "cmpId": 28,
+        "gdprApplies": true,
+        "eventStatus": "useractioncomplete",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [
+          2,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 244,
+        "partnerBerechtigtesInteresse": 106,
+        "publisherZwecke": []
+      },
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": false,
+      "endUrl": "https://www.sn.at/",
+      "cookies": 20,
+      "ergebnis": "abgelehnt (autoconsent)"
+    },
+    {
+      "url": "https://www.nachrichten.at/",
+      "gruppe": "Nachrichten AT",
+      "name": "nachrichten.at",
+      "erkannt": [
+        "Onetrust"
+      ],
+      "popup": [
+        "Onetrust"
+      ],
+      "optOut": true,
+      "selbsttest": false,
+      "fertig": {
+        "cmp": "Onetrust",
+        "kosmetisch": false,
+        "klicks": 3,
+        "dauerMs": 3117
+      },
+      "heuristik": [
+        "/wir.{0,100}und.{0,100}unsere.{0,100}partner/gi",
+        "/zugriff.{0,100}auf.{0,100}informationen.{0,100}auf/gi",
+        "/inhalte.{0,100}messung.{0,100}von.{0,100}werbeleistung.{0,100}und/gi"
+      ],
+      "fehler": [],
+      "pur": {
+        "treffer": "PUR-Abo",
+        "frame": "Hauptseite"
+      },
+      "bannertext": "Herzlich willkommen auf nachrichten.at\nWir und unsere 205-Partner speichern und greifen auf personenbezogene Daten wie Browserdaten oder eindeutige Kennungen auf Ihrem Gerät zu. Durch Auswahl von Akzeptieren & Schließen aktivieren Sie Tracking-Technologien für die unter „Wir und unsere Partner verarbeiten Daten, um Ihnen Dienste bereitzustellen“ aufgeführten Zwecke. Wenn Tracker deaktiviert sind, sind manche Inhalte und Anzeigen möglicherweise nicht mehr so relevant für Sie. Sie können dieses Menü jederzeit wieder aufrufen, um Ihre Einstellungen zu ändern oder Ihre Einwilligung zu widerrufen, indem Sie auf den Link Voreinstellungen verwalten am unteren Rand der Webseite klicken. Ihre Einstellungen gelten innerhalb unseres Website. Weitere Informationen finden Sie in unserer Datenschutzerklärung.\nDatenschutz Information zu Cookies\nSie können unsere Inhalte kostenfrei nutzen, indem Sie in den Einstellungen Ihre Einwilligung zur „Speichern von oder Zugriff auf Informationen auf einem Endgerät“ und „Personalisierten Werbung und Inhalte Messung von Werbeleistung“ erteilen. Ihre Zustimmung ist jederzeit widerrufbar. Alternativ steht Ihnen unser PUR-Abo zur Verfügung.\nKooperationspartner und werbende Unternehmen (Lieferanten)\n\nVerwendung genauer Standortdaten. Endgeräteeigenschaften zur Identifikation aktiv abfragen. Speichern von oder Zugriff auf Informationen auf einem Endgerät. Personalisierte Werbung und Inhalte, Messung von Werbeleistung und der Performance von Inhalten, Zielgr",
+      "knoepfe": [
+        "EINSTELLUNGEN VERWALTEN",
+        "AKZEPTIEREN & SCHLIESSEN"
+      ],
+      "tcfVorher": {
+        "cmpId": 28,
+        "gdprApplies": true,
+        "eventStatus": "cmpuishown",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 0,
+        "publisherZwecke": []
+      },
+      "tcfNachher": {
+        "cmpId": 28,
+        "gdprApplies": true,
+        "eventStatus": "useractioncomplete",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 0,
+        "publisherZwecke": []
+      },
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": false,
+      "endUrl": "https://www.nachrichten.at/",
+      "cookies": 10,
+      "ergebnis": "abgelehnt (autoconsent)"
+    },
+    {
+      "url": "https://www.tt.com/",
+      "gruppe": "Nachrichten AT",
+      "name": "tt.com",
+      "erkannt": [
+        "Onetrust"
+      ],
+      "popup": [
+        "Onetrust"
+      ],
+      "optOut": true,
+      "selbsttest": true,
+      "fertig": {
+        "cmp": "Onetrust",
+        "kosmetisch": false,
+        "klicks": 3,
+        "dauerMs": 3202
+      },
+      "heuristik": [
+        "/wir.{0,100}und.{0,100}unsere.{0,100}partner/gi",
+        "/zugriff.{0,100}auf.{0,100}informationen.{0,100}auf/gi",
+        "/inhalte.{0,100}messung.{0,100}von.{0,100}werbeleistung.{0,100}und/gi",
+        "/verwendet.{0,100}cookies/gi"
+      ],
+      "fehler": [],
+      "pur": null,
+      "bannertext": "Verantwortungsvoller Umgang mit Ihren Daten\nDie Tiroler Tageszeitung verwendet Cookies, um die Funktionsfähigkeit der Website sicherzustellen sowie die Zugriffe zu analysieren und das Angebot zu optimieren.\nWir und unsere 444-Partner speichern und greifen auf personenbezogene Daten wie Browserdaten oder eindeutige Kennungen auf Ihrem Gerät zu. Durch Auswahl von OK aktivieren Sie Tracking-Technologien für die unter „Wir und unsere Partner verarbeiten Daten, um Ihnen Dienste bereitzustellen“ aufgeführten Zwecke. Wenn Tracker deaktiviert sind, sind manche Inhalte und Anzeigen möglicherweise nicht mehr so relevant für Sie. Sie können dieses Menü jederzeit wieder aufrufen, um Ihre Einstellungen zu ändern oder Ihre Einwilligung zu widerrufen, indem Sie auf den Link Cookie-Einstellungen am unteren Rand der Webseite klicken. Ihre Einstellungen gelten innerhalb unseres Website. Weitere Informationen finden Sie in unserer Datenschutzerklärung.Weitere Informationen\nFolgende Informationen werden von uns und unseren Partnern verarbeitet:\n\nVerwendung genauer Standortdaten. Endgeräteeigenschaften zur Identifikation aktiv abfragen. Speichern von oder Zugriff auf Informationen auf einem Endgerät. Personalisierte Werbung und Inhalte, Messung von Werbeleistung und der Performance von Inhalten, Zielgruppenforschung sowie Entwicklung und Verbesserung von Angeboten.\nListe der Partner (Lieferanten)\n\nOK\nWeitere Einstellungen\nVerwendete Funktionen und Informationen\n---\nVerantwortungsvoller Umgang mit",
+      "knoepfe": [
+        "OK",
+        "Weitere Einstellungen",
+        "Ablehnen",
+        "Meine Auswahl bestätigen"
+      ],
+      "tcfVorher": {
+        "cmpId": 28,
+        "gdprApplies": true,
+        "eventStatus": "cmpuishown",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [
+          2,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 177,
+        "publisherZwecke": []
+      },
+      "tcfNachher": {
+        "cmpId": 28,
+        "gdprApplies": true,
+        "eventStatus": "useractioncomplete",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [
+          2,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 407,
+        "partnerBerechtigtesInteresse": 177,
+        "publisherZwecke": []
+      },
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": false,
+      "endUrl": "https://www.tt.com/",
+      "cookies": 20,
+      "ergebnis": "abgelehnt (autoconsent)"
+    },
+    {
+      "url": "https://www.profil.at/",
+      "gruppe": "Nachrichten AT",
+      "name": "profil.at",
+      "erkannt": [
+        "didomi"
+      ],
+      "popup": [
+        "didomi"
+      ],
+      "optOut": true,
+      "selbsttest": true,
+      "fertig": {
+        "cmp": "didomi",
+        "kosmetisch": false,
+        "klicks": 1,
+        "dauerMs": 5
+      },
+      "heuristik": [
+        "/cookies.{0,100}und.{0,100}andere/gi"
+      ],
+      "fehler": [],
+      "pur": null,
+      "bannertext": "Push\nAnmelden\nAbonnieren\nPodcasts\nNewsletter\nEvents\nMenü\nSuche Abschicken\nePaper\nEvents\nAbo\nNewsletter\nPodcasts\nPush-Nachrichten\nThemen\nSPÖ-Chaostage\nWKO: Die Ruck-Leaks\nDer ORF\nSigna\nUkraine-Krieg\nRessorts\nMeinung\nInvestigativ\nÖsterreich\nWirtschaft\nAusland\nGesellschaft\nWissenschaft\nKultur\nfaktiv\nPodcasts\nZur Frage der Nation\nDer Politikpodcast\nDie Schlacht um Europa\nDer Europapodcast\nNo Bullshit!\nDer Wissenschaftspodcast\nNicht zu fassen\nDer Investigativpodcast\nBusiness-Klasse\nDer junge Wirtschaftspodcast\nExtra\nNachhaltigkeit\nFinanzen\nDigitale Welt\nGesundheit\nReise\nLebensstil\nStandort & Innovation\nKontakt\nRedaktion\nWerben mit profil\nAbo-Service\nInfo\nImpressum\nANB\nDatenschutz\nCookie-Einstellungen\nMeinung\nInvestigativ\nÖsterreich\nWirtschaft\nAusland\nGesellschaft\nWissenschaft\nKultur\nfaktiv\nePaper\nNr. 41 / 2026\n---\nSuche Abschicken\nePaper\nEvents\nAbo\nNewsletter\nPodcasts\nPush-Nachrichten\nThemen\nSPÖ-Chaostage\nWKO: Die Ruck-Leaks\nDer ORF\nSigna\nUkraine-Krieg\nRessorts\nMeinung\nInvestigativ\nÖsterreich\nWirtschaft\nAusland\nGesellschaft\nWissenschaft\nKultur\nfaktiv\nPodcasts\nZur Frage der Nation\nDer Politikpodcast\nDie Schlacht um Europa\nDer Europapodcast\nNo Bullshit!\nDer Wissenschaftspodcast\nNicht zu fassen\nDer Investigativpodcast\nBusiness-Klasse\nDer junge Wirtschaftspodcast\nExtra\nNachhaltigkeit\nFinanzen\nDigitale Welt\nGesundheit\nReise\nLebensstil\nStandort & Innovation\nKontakt\nRedaktion\nWerben mit profil\nAbo-Service\nInfo\nImpressum\nANB\nDatenschutz\nCookie-Einstellungen",
+      "knoepfe": [
+        "Menü"
+      ],
+      "tcfVorher": {
+        "cmpId": 7,
+        "gdprApplies": true,
+        "eventStatus": "useractioncomplete",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 0,
+        "publisherZwecke": []
+      },
+      "tcfNachher": {
+        "cmpId": 7,
+        "gdprApplies": true,
+        "eventStatus": "useractioncomplete",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 0,
+        "publisherZwecke": []
+      },
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": false,
+      "endUrl": "https://www.profil.at/",
+      "cookies": 26,
+      "ergebnis": "abgelehnt (autoconsent)"
+    },
+    {
+      "url": "https://www.falter.at/",
+      "gruppe": "Nachrichten AT",
+      "name": "falter.at",
+      "erkannt": [
+        "didomi"
+      ],
+      "popup": [
+        "didomi"
+      ],
+      "optOut": true,
+      "selbsttest": true,
+      "fertig": {
+        "cmp": "didomi",
+        "kosmetisch": false,
+        "klicks": 1,
+        "dauerMs": 3
+      },
+      "heuristik": [
+        "/wir.{0,100}und.{0,100}unsere.{0,100}partner/gi",
+        "/zugriff.{0,100}auf.{0,100}informationen.{0,100}auf/gi",
+        "/inhalte.{0,100}messung.{0,100}von.{0,100}werbeleistung.{0,100}und/gi",
+        "/verwendet.{0,100}cookies/gi"
+      ],
+      "fehler": [],
+      "pur": null,
+      "bannertext": "",
+      "knoepfe": [],
+      "tcfVorher": {
+        "cmpId": 7,
+        "gdprApplies": true,
+        "eventStatus": "useractioncomplete",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 0,
+        "publisherZwecke": []
+      },
+      "tcfNachher": {
+        "cmpId": 7,
+        "gdprApplies": true,
+        "eventStatus": "useractioncomplete",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 0,
+        "publisherZwecke": []
+      },
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": false,
+      "endUrl": "https://www.falter.at/",
+      "cookies": 8,
+      "ergebnis": "abgelehnt (autoconsent)"
+    },
+    {
+      "url": "https://www.vienna.at/",
+      "gruppe": "Nachrichten AT",
+      "name": "vienna.at",
+      "erkannt": [
+        "consentmanager.net"
+      ],
+      "popup": [
+        "consentmanager.net"
+      ],
+      "optOut": true,
+      "selbsttest": true,
+      "fertig": {
+        "cmp": "consentmanager.net",
+        "kosmetisch": false,
+        "klicks": 0,
+        "dauerMs": 559
+      },
+      "heuristik": [],
+      "fehler": [],
+      "pur": null,
+      "bannertext": "",
+      "knoepfe": [],
+      "tcfVorher": {
+        "cmpId": 31,
+        "gdprApplies": true,
+        "eventStatus": "loading",
+        "cmpStatus": "loading",
+        "hatString": false,
+        "zwecke": [],
+        "berechtigtesInteresse": [],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 0,
+        "publisherZwecke": []
+      },
+      "tcfNachher": null,
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": true
+      },
+      "bannerNochDa": true,
+      "endUrl": "https://www.vienna.at/",
+      "cookies": 18,
+      "ergebnis": "Klick ok, Seite aber noch gesperrt"
+    },
+    {
+      "url": "https://www.puls24.at/",
+      "gruppe": "Nachrichten AT",
+      "name": "puls24.at",
+      "erkannt": [],
+      "popup": [],
+      "optOut": null,
+      "selbsttest": null,
+      "fertig": null,
+      "heuristik": [],
+      "fehler": [],
+      "pur": null,
+      "bannertext": "Einfach erklärt\nEntertainment\nPanorama\nPolitik\nVideos",
+      "knoepfe": [],
+      "tcfVorher": null,
+      "tcfNachher": {
+        "cmpId": 318,
+        "gdprApplies": true,
+        "eventStatus": "cmpuishown",
+        "cmpStatus": "loaded",
+        "hatString": false,
+        "zwecke": [],
+        "berechtigtesInteresse": [],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 0,
+        "publisherZwecke": []
+      },
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": false,
+      "endUrl": "https://news.joyn.at/",
+      "cookies": 1,
+      "ergebnis": "kein Banner"
+    },
+    {
+      "url": "https://www.spiegel.de/",
+      "gruppe": "Nachrichten DE",
+      "name": "spiegel.de",
+      "erkannt": [
+        "sourcepoint-top",
+        "Sourcepoint-frame"
+      ],
+      "popup": [
+        "sourcepoint-top"
+      ],
+      "optOut": true,
+      "selbsttest": null,
+      "fertig": {
+        "cmp": "sourcepoint-top",
+        "kosmetisch": false,
+        "klicks": 0,
+        "dauerMs": 92
+      },
+      "heuristik": [],
+      "fehler": [],
+      "pur": {
+        "treffer": "Werbefrei lesen",
+        "frame": "sp-spiegel-de.spiegel.de"
+      },
+      "bannertext": "Herzlich willkommen!\n\nMit Werbung und Tracking\n\nSpeicherung und Verarbeitung von Daten für personalisierte Werbung mit Profilbildung in Kooperation mit Drittanbietern.\n\nEinwilligen und weiter\n\nWerbefrei lesen\n\nKeine Weitergabe Ihrer Daten an Werbetreibende. Nutzen Sie uns kostenpflichtig ganz ohne Werbetracking und praktisch werbefrei.\n\nJetzt abonnieren\n\nDetails zu Werbe- und Analyse-Trackern, zum Widerruf sowie zum Umgang mit Ihren Daten auch im »Werbefrei lesen«-Abo finden Sie in unserer Datenschutzerklärung oder im Privacy Center.\n\n\n\n\n»Werbefrei lesen« bereits gebucht? Hier anmelden.\n\n\n\n\nDie Übersicht zu Ihren Abonnements und Benutzerdaten finden Sie im Benutzerkonto.\n\nEinstellungen\n\nTracking: Zur Verbesserung und Finanzierung unseres Webangebots arbeiten wir mit bis zu 185 Drittanbietern zusammen. Diese Drittanbieter und wir erheben und verarbeiten personenbezogene Daten auf unseren Plattformen. Mit auf Ihrem Gerät gespeicherten Cookies, persönlichen Identifikatoren wie bspw. Geräte-Kennungen oder IP-Adressen sowie basierend auf Ihrem individuellen Nutzungsverhalten können wir und diese Drittanbieter ...\n\n... Informationen auf einem Gerät speichern und/oder abrufen: Für die Ihnen angezeigten Verarbeitungszwecke können Cookies, Geräte-Kennungen oder andere Informationen auf Ihrem Gerät gespeichert oder abgerufen werden (§ 25 Abs. 1 S. 1 und 2 Nr. 2 TDDDG). \n... Personalisierte Anzeigen und Inhalte, Anzeigen- und Inhaltsmessungen, Erkenntnisse über Zielgruppen und Produkten",
+      "knoepfe": [
+        "Einwilligen und weiter",
+        "Jetzt abonnieren",
+        "Einstellungen"
+      ],
+      "tcfVorher": {
+        "cmpId": 6,
+        "gdprApplies": true,
+        "eventStatus": "cmpuishown",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [
+          7,
+          9,
+          10
+        ],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 3,
+        "publisherZwecke": []
+      },
+      "tcfNachher": {
+        "cmpId": 6,
+        "gdprApplies": true,
+        "eventStatus": "cmpuishown",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [
+          7,
+          9,
+          10
+        ],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 3,
+        "publisherZwecke": []
+      },
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": true,
+      "endUrl": "https://www.spiegel.de/",
+      "cookies": 6,
+      "ergebnis": "Zustimmen oder bezahlen (offen)"
+    },
+    {
+      "url": "https://www.zeit.de/index",
+      "gruppe": "Nachrichten DE",
+      "name": "zeit.de",
+      "erkannt": [],
+      "popup": [],
+      "optOut": null,
+      "selbsttest": null,
+      "fertig": null,
+      "heuristik": [],
+      "fehler": [],
+      "pur": null,
+      "bannertext": "",
+      "knoepfe": [],
+      "tcfVorher": null,
+      "tcfNachher": null,
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": false,
+      "endUrl": "https://www.zeit.de/index",
+      "cookies": 2,
+      "ergebnis": "kein Banner"
+    },
+    {
+      "url": "https://www.faz.net/aktuell/",
+      "gruppe": "Nachrichten DE",
+      "name": "faz.net",
+      "erkannt": [
+        "Sourcepoint-frame",
+        "sourcepoint-top"
+      ],
+      "popup": [
+        "Sourcepoint-frame",
+        "sourcepoint-top"
+      ],
+      "optOut": true,
+      "selbsttest": null,
+      "fertig": {
+        "cmp": "sourcepoint-top",
+        "kosmetisch": false,
+        "klicks": 0,
+        "dauerMs": 82
+      },
+      "heuristik": [
+        "/wir.{0,100}und.{0,100}unsere.{0,100}partner/gi",
+        "/zugriff.{0,100}auf.{0,100}informationen.{0,100}auf/gi",
+        "/inhalte.{0,100}messung.{0,100}von.{0,100}werbeleistung.{0,100}und/gi",
+        "/verwendet.{0,100}cookies/gi"
+      ],
+      "fehler": [],
+      "pur": {
+        "treffer": "Pur-Abo",
+        "frame": "consent.faz.net"
+      },
+      "bannertext": "Wie möchten Sie FAZ.NET nutzen?\nMit Tracking und Cookies nutzen \n\nNutzen Sie FAZ.NET mit personalisierter (auch politischer) Werbung, Werbetracking, Nutzungsanalyse und externen Multimedia-Inhalten. Als FAZ+ Premium Abonnent nutzen Sie FAZ.NET ohne klassische Werbung jedoch mit Tracking zu eigenen Zwecken und mit externen Multimedia-Inhalten. Details zu Cookies und Verarbeitungszwecken sowie zu Ihrer jederzeitigen Widerrufsmöglichkeit finden Sie unten im Cookie-Manager sowie in unserer Datenschutzerklärung.* Für diese Nutzung gelten unsere Bereitstellungsbedingungen.\n\nEinverstanden\n\nErfahren Sie mehr in den FAQs. Zugriff auf gekennzeichnete Artikel nur mit entsprechendem Bezahlabo.\n\nOhne Werbung mit Pur-Abo\n\nLesen Sie ohne Werbetracking, ohne Werbebanner und ohne Videowerbung.\n\n\n\n\nZusätzlich erhalten Sie mit FAZ+ Zugriff auf mehr als 1.000 zahlungspflichtige Artikel im Monat, die mit einem F+ Logo gekennzeichnet sind.\n\nKostenfrei testen\n\nF.A.Z. Pur-Abonnent? Hier anmelden\n\n* Für die Nutzung mit Werbung und Cookies: Wir, die Frankfurter Allgemeine Zeitung GmbH, und unsere 205 Partner, verarbeiten Daten (Informationen wie Cookies, Geräte-Kennungen, IPAdresse) für unten näher beschriebene Zwecke. Es werden Informationen auf Ihrem Gerät gespeichert und abgerufen. Durch das Klicken des „Einverstanden“-Buttons stimmen Sie dieser Verarbeitung zu. Darüber hinaus willigen Sie gemäß Art. 49 Abs. 1 DSGVO ein, dass die Partner die Daten gegebenenfalls auch in Drittländern verarbeiten, in",
+      "knoepfe": [
+        "Einverstanden",
+        "Speichern von oder Zugriff auf Informationen auf einem Endgerät",
+        "Einbindung von externen Multimedia-Inhalten",
+        "Politische Werbung",
+        "Messung Erweiterte Conversions"
+      ],
+      "tcfVorher": {
+        "cmpId": 6,
+        "gdprApplies": true,
+        "eventStatus": "cmpuishown",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [
+          10
+        ],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 1,
+        "publisherZwecke": []
+      },
+      "tcfNachher": {
+        "cmpId": 6,
+        "gdprApplies": true,
+        "eventStatus": "cmpuishown",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [
+          10
+        ],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 1,
+        "publisherZwecke": []
+      },
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": true,
+      "endUrl": "https://www.faz.net/aktuell/",
+      "cookies": 6,
+      "ergebnis": "Zustimmen oder bezahlen (offen)"
+    },
+    {
+      "url": "https://www.sueddeutsche.de/",
+      "gruppe": "Nachrichten DE",
+      "name": "sueddeutsche.de",
+      "erkannt": [
+        "sourcepoint-top",
+        "Sourcepoint-frame"
+      ],
+      "popup": [
+        "sourcepoint-top"
+      ],
+      "optOut": true,
+      "selbsttest": null,
+      "fertig": {
+        "cmp": "sourcepoint-top",
+        "kosmetisch": false,
+        "klicks": 0,
+        "dauerMs": 121
+      },
+      "heuristik": [
+        "/wir.{0,100}und.{0,100}unsere.{0,100}partner/gi"
+      ],
+      "fehler": [],
+      "pur": {
+        "treffer": "Weiter mit Werbung",
+        "frame": "consent-cdn.sueddeutsche.de"
+      },
+      "bannertext": "Sie haben die Wahl.\nWeiter mit Werbung\n\nWir stellen Ihnen frei verfügbare digitale SZ-Angebote zur Verfügung. Sie stellen uns und unseren bis zu 142 Partnern Daten bereit für\n\nPersonalisierte (auch politische) Werbung\nNutzungsanalyse\nSZ-Personalisierung und Marketing\n\nMit Klick auf den Button akzeptieren Sie diese Vertragsbedingungen. Details in den Datenschutzhinweisen, Cookie-Policy, zu Dritten hier. Widerrufsbelehrung.\n\nIch bin einverstanden\n\nVerarbeitungszwecke\n\nInformationen auf Gerät speichern/abrufen\nWerbeanzeigen/Inhalte auswählen, Anzeigen-/Inhaltsprofile erstellen und verwenden, Performance von Anzeigen/ Inhalten messen, Zielgruppen durch Statistiken oder Kombinationen von Daten aus verschiedenen Quellen analysieren, Angebote verbessern.\nConversion Tracking mit gehashten E-Mail-Adressen\n\nWeiter mit SZ Plus-Abo\n\nDas unbegrenzte Erlebnis auf SZ.de und SZ-Magazin.de mit Zugang zu allen Inhalten.\n\nDeutlich weniger Werbung\n\nSie bestimmen, wie wir tracken\n\nIn den ersten vier Wochen für 0,99 €, danach 14,99 € (Basis-Abo) monatlich.\n\nJetzt testen\n\nBereits Abonnent der digitalen SZ?\n\nLogin\n\nImpressum",
+      "knoepfe": [
+        "Personalisierte (auch politische) Werbung",
+        "Nutzungsanalyse",
+        "SZ-Personalisierung und Marketing",
+        "Ich bin einverstanden",
+        "Jetzt testen"
+      ],
+      "tcfVorher": {
+        "cmpId": 6,
+        "gdprApplies": true,
+        "eventStatus": "cmpuishown",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 0,
+        "publisherZwecke": []
+      },
+      "tcfNachher": {
+        "cmpId": 6,
+        "gdprApplies": true,
+        "eventStatus": "cmpuishown",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 0,
+        "publisherZwecke": []
+      },
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": true,
+      "endUrl": "https://www.sueddeutsche.de/",
+      "cookies": 12,
+      "ergebnis": "Zustimmen oder bezahlen (offen)"
+    },
+    {
+      "url": "https://www.welt.de/",
+      "gruppe": "Nachrichten DE",
+      "name": "welt.de",
+      "erkannt": [
+        "sourcepoint-top",
+        "Sourcepoint-frame"
+      ],
+      "popup": [
+        "sourcepoint-top"
+      ],
+      "optOut": true,
+      "selbsttest": null,
+      "fertig": {
+        "cmp": "sourcepoint-top",
+        "kosmetisch": false,
+        "klicks": 0,
+        "dauerMs": 59
+      },
+      "heuristik": [],
+      "fehler": [],
+      "pur": {
+        "treffer": "Pur-Abo",
+        "frame": "consent.up.welt.de"
+      },
+      "bannertext": "Datenschutz und Nutzungserlebnis auf WELT.de\nMit Tracking und Cookies nutzen\n\nNutzen Sie WELT.de mit Tracking, Cookies und ähnlichen Technologien (wie Utiq und netID) und damit einschließlich personalisierter Werbung. Details zu Datenverarbeitungen, eingesetzten Drittanbietern und Tracking-Technologien wie Cookies sowie zur Übermittlung in Drittländer finden Sie unten sowie in unserer Datenschutzerklärung. \n\nALLE AKZEPTIEREN\nEINSTELLUNGEN\n\nIhre Einwilligung ist jederzeit unter \"Widerruf Tracking und Cookies\" am Seitenende widerrufbar.\n\nOhne Tracking und Cookies* nutzen\n\nNutzen Sie WELT.de ohne Tracking und Cookies und damit ohne personalisierte Werbung für 3,99 EUR/Monat (rabattiert für WELTplus-Abonnenten 1,99 EUR/Monat). Informationen zur Datenverarbeitung im WELT Pur-Abo finden Sie in unserer Datenschutzerklärung und in den FAQ. \n\nJETZT WELT PUR ABONNIEREN\n\nSie haben bereits ein WELT Pur-Abo? Jetzt anmelden\n\nMit Tracking und Cookies nutzen: Wenn Sie sich dafür entscheiden, unser Angebot kostenfrei, dafür mit Tracking und Cookies zu nutzen, verarbeiten wir und bis zu 310 von uns eingesetzte Drittanbieter personenbezogene Daten zu den nachstehenden Verarbeitungszwecken. Dabei werden auch Nutzungsprofile (u.a. auf Basis von Cookie-IDs) erstellt, mit Daten von anderen Webseiten angereichert und auch außerhalb des EWR verarbeitet.  \n\nIndem Sie auf \"Alle akzeptieren\" klicken, willigen Sie in die Verarbeitungszwecke und die Übermittlung an die Drittanbieter ein. Dies umfasst auch",
+      "knoepfe": [
+        "ALLE AKZEPTIEREN",
+        "EINSTELLUNGEN",
+        "JETZT WELT PUR ABONNIEREN",
+        "Speichern von oder Zugriff auf Informationen auf einem Endgerät",
+        "Verwendung und Weitergabe von Nutzerkennungen zu Werbezwecken",
+        "Eigene Produkt- und Vertriebsentwicklung",
+        "Nutzung der netID-Technologie für netID Nutzer",
+        "Verwendung von Werbekennungen auf Basis Ihrer E-Mail-Adresse",
+        "Verwendung und Weitergabe von Chatbotdaten zur Werbeausspielung",
+        "Politische Werbung mit Targeting",
+        "Drittanbieterinhalte aus sozialen Netzwerken in redaktionellen Artikeln",
+        "A/B Testing für Produktentwicklung"
+      ],
+      "tcfVorher": {
+        "cmpId": 345,
+        "gdprApplies": true,
+        "eventStatus": "cmpuishown",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 0,
+        "publisherZwecke": []
+      },
+      "tcfNachher": {
+        "cmpId": 345,
+        "gdprApplies": true,
+        "eventStatus": "cmpuishown",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 0,
+        "publisherZwecke": []
+      },
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": true,
+      "endUrl": "https://www.welt.de/",
+      "cookies": 12,
+      "ergebnis": "Zustimmen oder bezahlen (offen)"
+    },
+    {
+      "url": "https://www.bild.de/",
+      "gruppe": "Nachrichten DE",
+      "name": "bild.de",
+      "erkannt": [
+        "sourcepoint-top",
+        "Sourcepoint-frame"
+      ],
+      "popup": [
+        "sourcepoint-top"
+      ],
+      "optOut": true,
+      "selbsttest": null,
+      "fertig": {
+        "cmp": "sourcepoint-top",
+        "kosmetisch": false,
+        "klicks": 0,
+        "dauerMs": 127
+      },
+      "heuristik": [
+        "/sie.{0,100}können.{0,100}ihre.{0,100}auswahl/gi",
+        "/und.{0,100}ähnliche.{0,100}technologien/gi",
+        "/(?:cookies|einwilligung).{0,100}ablehnen/gi"
+      ],
+      "fehler": [],
+      "pur": {
+        "treffer": "Pur-Abo",
+        "frame": "cmp2.bild.de"
+      },
+      "bannertext": "Datenschutz und Nutzungserlebnis auf BILD.de\nMit Tracking und Cookies nutzen\n\nNutzen Sie BILD.de mit Tracking, Cookies und ähnlichen Technologien (wie Utiq und netID) und damit einschließlich personalisierter Werbung. Details zu Datenverarbeitungen, eingesetzten Drittanbietern und Tracking-Technologien wie Cookies sowie zur Übermittlung in Drittländer finden Sie unten sowie in unserer Datenschutzerklärung. \n\nAlle akzeptieren\nEinstellungen\n\nIhre Einwilligung ist jederzeit unter \"Widerruf Tracking und Cookies\" am Seitenende widerrufbar.\n\nOhne Tracking und Cookies* nutzen\n\nNutzen Sie BILD.de ohne Tracking und Cookies und damit ohne personalisierte Werbung für 3,99 EUR/Monat (rabattiert für BILDplus-Abonnenten 2,99 EUR/Monat). Informationen zur Datenverarbeitung im BILD Pur-Abo finden Sie in unserer Datenschutzerklärung und in den FAQ. \n\nJetzt BILD PUR abonnieren\n\nSie haben bereits ein BILD Pur-Abo? Jetzt anmelden\n\nMit Tracking und Cookies nutzen: Wenn Sie sich dafür entscheiden, unser Angebot kostenfrei, dafür mit Tracking und Cookies zu nutzen, verarbeiten wir und bis zu 311 von uns eingesetzte Drittanbieter personenbezogene Daten zu den nachstehenden Verarbeitungszwecken. Dabei werden auch Nutzungsprofile (u.a. auf Basis von Cookie-IDs) erstellt, mit Daten von anderen Webseiten angereichert und auch außerhalb des EWR verarbeitet.  \n\nIndem Sie auf \"Alle akzeptieren\" klicken, willigen Sie in die Verarbeitungszwecke und die Übermittlung an die Drittanbieter ein. Dies umfasst auch",
+      "knoepfe": [
+        "Alle akzeptieren",
+        "Einstellungen",
+        "Jetzt BILD PUR abonnieren",
+        "Speichern von oder Zugriff auf Informationen auf einem Endgerät",
+        "Verwendung und Weitergabe von Nutzerkennungen zu Werbezwecken",
+        "Eigene Produkt- und Vertriebsentwicklung",
+        "Nutzung der netID-Technologie für netID Nutzer",
+        "Verwendung von Werbekennungen auf Basis Ihrer E-Mail-Adresse",
+        "Verwendung und Weitergabe von Chatbotdaten zur Werbeausspielung",
+        "Politische Werbung mit Targeting",
+        "Personalisierte Inhaltsempfehlungen",
+        "Drittanbieterinhalte aus sozialen Netzwerken in redaktionellen Artikeln",
+        "A/B Testing für Produktentwicklung"
+      ],
+      "tcfVorher": {
+        "cmpId": 345,
+        "gdprApplies": true,
+        "eventStatus": "cmpuishown",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 0,
+        "publisherZwecke": []
+      },
+      "tcfNachher": {
+        "cmpId": 345,
+        "gdprApplies": true,
+        "eventStatus": "cmpuishown",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 0,
+        "publisherZwecke": []
+      },
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": true,
+      "endUrl": "https://www.bild.de/",
+      "cookies": 12,
+      "ergebnis": "Zustimmen oder bezahlen (offen)"
+    },
+    {
+      "url": "https://www.heise.de/",
+      "gruppe": "Nachrichten DE",
+      "name": "heise.de",
+      "erkannt": [
+        "Sourcepoint-frame",
+        "sourcepoint-top"
+      ],
+      "popup": [
+        "Sourcepoint-frame",
+        "sourcepoint-top"
+      ],
+      "optOut": true,
+      "selbsttest": null,
+      "fertig": {
+        "cmp": "Sourcepoint-frame",
+        "kosmetisch": false,
+        "klicks": 4,
+        "dauerMs": 1311
+      },
+      "heuristik": [
+        "/wir.{0,100}und.{0,100}unsere.{0,100}partner/gi",
+        "/zugriff.{0,100}auf.{0,100}informationen.{0,100}auf/gi",
+        "/inhalte.{0,100}messung.{0,100}von.{0,100}werbeleistung.{0,100}und/gi",
+        "/cookies.{0,100}und.{0,100}andere/gi",
+        "/cookies.{0,100}wir.{0,100}verwenden/gi"
+      ],
+      "fehler": [],
+      "pur": {
+        "treffer": "Pur-Abo",
+        "frame": "cmp.heise.de"
+      },
+      "bannertext": "Herzlich willkommen auf heise online\n\nWir und unsere bis zu 193 Partner setzen Cookies und Tracking-Technologien ein. Einige Cookies und Datenverarbeitungen sind technisch notwendig, andere helfen unser Angebot zu verbessern und wirtschaftlich zu betreiben.\n\nDie Verarbeitungszwecke sind: Speichern von oder Zugriff auf Informationen auf einem Endgerät; personalisierte Werbung und Inhalte, Messung von Werbeleistung und der Performance von Inhalten, Zielgruppenforschung sowie Entwicklung und Verbesserung von Angeboten; externe Inhalte anzeigen (z.B. YouTube Videos, Podcasts, Twitter, Quiz), Empfehlungen von eigenen Produkten und Inhalten, A/B-Testing, Push-Benachrichtigungen/Kommunikation, technisch erforderliche Cookies (Sicherheit, Anmeldung, Forum).\n\nDurch das Klicken des „Zustimmen“-Buttons stimmen Sie der Verarbeitung der auf Ihrem Gerät bzw. Ihrer Endeinrichtung gespeicherten Daten wie z.B. persönlichen Identifikatoren oder IP-Adressen für diese Verarbeitungszwecke gem. § 25 Abs. 1 TDDDG sowie Art. 6 Abs. 1 lit. a DSGVO zu. Darüber hinaus willigen Sie gem. Art. 49 Abs. 1 DSGVO ein, dass auch Anbieter in den USA Ihre Daten verarbeiten. In diesem Fall ist es möglich, dass die übermittelten Daten durch lokale Behörden verarbeitet werden.\n\nUnter Einstellungen können Sie einzelnen Datenverarbeitungen zustimmen oder diese ablehnen. Über den Link \"Cookies & Tracking\" am Ende jeder Seite können Sie Ihre Einwilligung jederzeit bearbeiten oder widerrufen. Weiterführende Details find",
+      "knoepfe": [
+        "Zustimmen",
+        "Einstellungen"
+      ],
+      "tcfVorher": {
+        "cmpId": 6,
+        "gdprApplies": true,
+        "eventStatus": "cmpuishown",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 0,
+        "publisherZwecke": []
+      },
+      "tcfNachher": {
+        "cmpId": 6,
+        "gdprApplies": true,
+        "eventStatus": "cmpuishown",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 0,
+        "publisherZwecke": []
+      },
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": true,
+      "endUrl": "https://www.heise.de/",
+      "cookies": 8,
+      "ergebnis": "Zustimmen oder bezahlen (offen)"
+    },
+    {
+      "url": "https://www.golem.de/",
+      "gruppe": "Nachrichten DE",
+      "name": "golem.de",
+      "erkannt": [
+        "Sourcepoint-frame",
+        "sourcepoint-top"
+      ],
+      "popup": [
+        "Sourcepoint-frame",
+        "sourcepoint-top"
+      ],
+      "optOut": true,
+      "selbsttest": null,
+      "fertig": {
+        "cmp": "sourcepoint-top",
+        "kosmetisch": false,
+        "klicks": 0,
+        "dauerMs": 34
+      },
+      "heuristik": [
+        "/(?:nur|nicht).{0,100}(?:zusätzliche|essenzielle|funktionale|notwendige|erforderliche).{0,100}(?:cookies|akzeptieren|erlauben|ablehnen)/gi"
+      ],
+      "fehler": [],
+      "pur": null,
+      "bannertext": "Zustimmen und weiter",
+      "knoepfe": [
+        "Zustimmen und weiter"
+      ],
+      "tcfVorher": {
+        "cmpId": 6,
+        "gdprApplies": true,
+        "eventStatus": "cmpuishown",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 0,
+        "publisherZwecke": []
+      },
+      "tcfNachher": {
+        "cmpId": 6,
+        "gdprApplies": true,
+        "eventStatus": "cmpuishown",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 0,
+        "publisherZwecke": []
+      },
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": true,
+      "endUrl": "https://www.golem.de/sonstiges/zustimmung/auswahl.html?from=https%3A%2F%2Fwww.golem.de%2F",
+      "cookies": 7,
+      "ergebnis": "Klick ok, Seite aber noch gesperrt"
+    },
+    {
+      "url": "https://www.t-online.de/",
+      "gruppe": "Nachrichten DE",
+      "name": "t-online.de",
+      "erkannt": [
+        "sourcepoint-top",
+        "Sourcepoint-frame"
+      ],
+      "popup": [
+        "sourcepoint-top"
+      ],
+      "optOut": true,
+      "selbsttest": null,
+      "fertig": {
+        "cmp": "sourcepoint-top",
+        "kosmetisch": false,
+        "klicks": 0,
+        "dauerMs": 93
+      },
+      "heuristik": [],
+      "fehler": [],
+      "pur": {
+        "treffer": "PUR-Abo",
+        "frame": "consent.t-online.de"
+      },
+      "bannertext": "Wie wollen Sie t-online nutzen?\n\nKostenfrei mit Werbung\n\nNutzen Sie t-online wie gewohnt mit der üblichen Werbung und Tracking. Details finden Sie in den Datenschutzhinweisen und dem Datenschutz-Manager.\n\nZUSTIMMEN\n\nMit Ihrem Klick erteilen Sie eine Einwilligung gemäß § 25 Abs. 1 TDDDG i.V.m. Art. 6 Abs. 1 lit. a) DSGVO, die Sie in unserem Datenschutz-Manager jederzeit individuell anpassen können.\n\n...oder mit t-online PUR-Abo\n\nNutzen Sie t-online nahezu werbefrei und ohne Werbetracking für 2,99€/ Monat, monatlich kündbar. Details finden Sie in den Datenschutzhinweisen (PUR).\n\nJETZT SICHERN\n\nBereits PUR-Abonnent? Hier einloggen\n\nMehr Informationen zum PUR-Abo auf t-online finden Sie in den häufig gestellten Fragen (FAQs).\n\nFür die Nutzung mit Werbung:\n\nWir und unsere 230 Partner erheben und verarbeiten personenbezogene Daten (wie z.B. IP-Adressen, Cookies oder Geräte-Kennungen), um unser Webangebot zu verbessern und zu finanzieren. Die Verarbeitung kann auch außerhalb der EU/EWR erfolgen, wo unter Umständen kein vergleichbares Datenschutzniveau herrscht, z.B. in den USA. Weitere Informationen zu den Orten der Verarbeitung finden Sie hier. Die Verarbeitung erfolgt dabei zu den folgenden Zwecken:\n\nPersonalisierte Anzeigen und Inhalte, Werbetracking, Prüfung Utiq-Technologie und Zugriff auf Ihr Endgerät\nEinbindung externer Inhalte\nPush-Benachrichtigungen / Kommunikation\n\nIm Datenschutz-Manager finden Sie eine detaillierte Übersicht, welche Partner zu welchen Zwecken Daten verarb",
+      "knoepfe": [
+        "ZUSTIMMEN",
+        "JETZT SICHERN",
+        "Einbindung externer Inhalte",
+        "Push-Benachrichtigungen / Kommunikation"
+      ],
+      "tcfVorher": {
+        "cmpId": 6,
+        "gdprApplies": true,
+        "eventStatus": "cmpuishown",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 0,
+        "publisherZwecke": []
+      },
+      "tcfNachher": {
+        "cmpId": 6,
+        "gdprApplies": true,
+        "eventStatus": "cmpuishown",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 0,
+        "publisherZwecke": []
+      },
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": true,
+      "endUrl": "https://www.t-online.de/",
+      "cookies": 3,
+      "ergebnis": "Zustimmen oder bezahlen (offen)"
+    },
+    {
+      "url": "https://www.n-tv.de/",
+      "gruppe": "Nachrichten DE",
+      "name": "n-tv.de",
+      "erkannt": [
+        "sourcepoint-top",
+        "Sourcepoint-frame"
+      ],
+      "popup": [
+        "sourcepoint-top"
+      ],
+      "optOut": true,
+      "selbsttest": null,
+      "fertig": {
+        "cmp": "sourcepoint-top",
+        "kosmetisch": false,
+        "klicks": 0,
+        "dauerMs": 85
+      },
+      "heuristik": [],
+      "fehler": [],
+      "pur": {
+        "treffer": "PUR Abonnement",
+        "frame": "sourcepoint.n-tv.de"
+      },
+      "bannertext": "ntv im Web mit Werbetracking nutzen\n\nNutzen Sie unser Angebot wie gewohnt mit Speicherung und Verarbeitung von Daten für personalisierte Werbung mit Profilbildung. Mehr Informationen, auch zum jederzeit möglichen Widerruf, finden Sie hier. Ohne Zustimmung zu bestimmten Zwecken oder dem Abschluss eines Pur Abos können Sie unsere Website nicht nutzen.\n\nEinwilligen und weiter\nntv ohne Werbung und Werbetracking nutzen\n2,99€ / Monat\n\nMit dem ntv PUR Abonnement nutzen Sie unser Angebot ohne Banner- und Videowerbung sowie ohne Werbe-Tracking.\n\nJetzt abonnieren\n\nSie haben bereits ein Abo?\n\nAnmelden\nDatenschutz und Nutzungserlebnis auf ntv\n\nWir und unsere 193 Partner verarbeiten und übermitteln personenbezogene Daten (z.B. Identifier und Browserdaten) für die nachfolgend beschriebenen Zwecke. Hierzu werden Cookies und andere Technologien zur Speicherung und zum Zugriff auf Ihrem Gerät eingesetzt. Wir tun dies, um unser Angebot zu verbessern und zu finanzieren. In diesem Zusammenhang können Daten außerhalb des EWR verarbeitet werden und auch Nutzungsprofile gebildet und mit Daten von anderen Angeboten angereichert werden.\n\nSpeichern von oder Zugriff auf Informationen auf einem Endgerät\nPersonalisierte Werbung und Inhalte, Messung von Werbeleistung und der Performance von Inhalten, Zielgruppenforschung sowie Entwicklung und Verbesserung von Angeboten\nFremdinhalte anzeigen (Soziale Netzwerke und Chat-Systeme)\nAngebotsübergreifende Verarbeitung von Daten durch Bertelsmann-Unternehmen für ",
+      "knoepfe": [
+        "Einwilligen und weiter",
+        "Jetzt abonnieren",
+        "Anmelden",
+        "Speichern von oder Zugriff auf Informationen auf einem Endgerät",
+        "Fremdinhalte anzeigen (Soziale Netzwerke und Chat-Systeme)",
+        "Verwendung und Weitergabe von Identifiern",
+        "Analytics Storage",
+        "Einstellungen"
+      ],
+      "tcfVorher": {
+        "cmpId": 6,
+        "gdprApplies": true,
+        "eventStatus": "cmpuishown",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [
+          7,
+          8,
+          9,
+          10
+        ],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 7,
+        "publisherZwecke": []
+      },
+      "tcfNachher": {
+        "cmpId": 6,
+        "gdprApplies": true,
+        "eventStatus": "cmpuishown",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [
+          7,
+          8,
+          9,
+          10
+        ],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 7,
+        "publisherZwecke": []
+      },
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": true,
+      "endUrl": "https://www.n-tv.de/",
+      "cookies": 4,
+      "ergebnis": "Zustimmen oder bezahlen (offen)"
+    },
+    {
+      "url": "https://www.stern.de/",
+      "gruppe": "Nachrichten DE",
+      "name": "stern.de",
+      "erkannt": [
+        "sourcepoint-top",
+        "Sourcepoint-frame"
+      ],
+      "popup": [
+        "sourcepoint-top"
+      ],
+      "optOut": true,
+      "selbsttest": null,
+      "fertig": {
+        "cmp": "sourcepoint-top",
+        "kosmetisch": false,
+        "klicks": 0,
+        "dauerMs": 163
+      },
+      "heuristik": [
+        "/wir.{0,100}und.{0,100}unsere.{0,100}partner/gi",
+        "/wir.{0,100}nutzen.{0,100}cookies/gi"
+      ],
+      "fehler": [],
+      "pur": {
+        "treffer": "PUR-Abo",
+        "frame": "baseendpoint.stern.de"
+      },
+      "bannertext": "Willkommen auf STERN.de\n\nDie Sicherheit ihrer Daten ist uns wichtig! Um unsere Webseite kostendeckend betreiben zu können, verarbeiten wir und unsere 196 Partner personenbezogene Daten von Ihnen, um die angezeigten Werbeinhalte zu personalisieren. Diese Personalisierung basiert u.a. auf individuellen Nutzungsprofilen, die von unseren Partnern erstellt und mit Daten von anderen Websites, die Sie besuchen und bei denen Sie eine entsprechende Zustimmung gegeben haben, angereichert werden. Wir und unsere Partner nutzen auch Technologien wie Cookies oder persönliche Identifikationsmerkmale wie Gerätekennungen oder IP-Adressen, um die Reichweite unserer Inhalte zu analysieren und um das Benutzererlebnis zu verbessern. Damit stellen wir sicher, dass STERN.de auch weiterhin Journalismus zu relevanten gesellschaftlichen Themen liefern kann.\n\n\n\n\nIhre Einwilligung umfasst:\n\nInformationen auf einem Gerät speichern und/oder abrufen (gem. § 25 Abs. 1 TTDSG)\nPersonalisierte Anzeigen und Inhalte, Anzeigen- und Inhaltsmessungen, Erkenntnisse über Zielgruppen und Produktentwicklungen ausspielen\ndie eigene Produkt- und Vertriebsentwicklung durch Analyse von Nutzungsverhalten und die angebotsübergreifende Verarbeitung von Daten durch Bertelsmann-Unternehmen für Analyse, Produktentwicklung, Messung, Werbung und Risikomanagement\n\nAlternativ zur Einwilligung in das geschilderte Werbetracking können Sie ein kostenpflichtiges PUR-Abo abschließen und auf diese Weise zu redaktionell unabhängigem Journa",
+      "knoepfe": [
+        "ZUSTIMMEN UND WEITER",
+        "ZUM PUR-ABO",
+        "EINSTELLUNGEN"
+      ],
+      "tcfVorher": {
+        "cmpId": 6,
+        "gdprApplies": true,
+        "eventStatus": "cmpuishown",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [
+          7,
+          9,
+          10,
+          11
+        ],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 5,
+        "publisherZwecke": []
+      },
+      "tcfNachher": {
+        "cmpId": 6,
+        "gdprApplies": true,
+        "eventStatus": "cmpuishown",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [
+          7,
+          9,
+          10,
+          11
+        ],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 5,
+        "publisherZwecke": []
+      },
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": true,
+      "endUrl": "https://www.stern.de/",
+      "cookies": 5,
+      "ergebnis": "Zustimmen oder bezahlen (offen)"
+    },
+    {
+      "url": "https://www.focus.de/",
+      "gruppe": "Nachrichten DE",
+      "name": "focus.de",
+      "erkannt": [
+        "sourcepoint-top",
+        "Sourcepoint-frame"
+      ],
+      "popup": [
+        "sourcepoint-top"
+      ],
+      "optOut": true,
+      "selbsttest": null,
+      "fertig": {
+        "cmp": "sourcepoint-top",
+        "kosmetisch": false,
+        "klicks": 0,
+        "dauerMs": 105
+      },
+      "heuristik": [
+        "/wir.{0,100}und.{0,100}unsere.{0,100}partner/gi",
+        "/zugriff.{0,100}auf.{0,100}informationen.{0,100}auf/gi",
+        "/inhalte.{0,100}messung.{0,100}von.{0,100}werbeleistung.{0,100}und/gi",
+        "/wir.{0,100}nutzen.{0,100}cookies/gi",
+        "/und.{0,100}ähnliche.{0,100}technologien/gi",
+        "/(?:cookies|einwilligung).{0,100}ablehnen/gi"
+      ],
+      "fehler": [],
+      "pur": {
+        "treffer": "Contentpass",
+        "frame": "cmp.focus.de"
+      },
+      "bannertext": "focus.de weiter werbefinanziert lesen\n\nMit Klick auf „Akzeptieren“ besuchen Sie FOCUS.de mit Werbung, Cookies und ähnlichen Technologien (wie Utiq) sowie Tracking. Detaillierte Informationen zum Umfang Ihrer Zustimmung sowie zu den 242 eingesetzten Drittanbietern finden Sie innerhalb der Datenschutzeinstellungen sowie innerhalb der Datenschutzhinweise. Sie können Ihre Einwilligung jederzeit über den Link Datenschutzeinstellungen am Ende unserer Webseite („Footer“) widerrufen.\n\nAKZEPTIEREN\n\nIhre Datenverarbeitung basiert auf Grundlage Ihrer Einwilligung gem. Art. 6 Abs. 1 Satz 1 lit. a DSGVO bzw. § 25 Abs. 1 TDDDG.\n\nWerbefrei mit Contentpass?\n\nBesuchen Sie FOCUS.de und über 600 andere Websites völlig frei von Werbebannern, Videowerbung und personalisiertem Tracking für 3,99 € / Monat. Mit Abschluss der Registrierung Ihres contentpass-Accounts kommt ein Nutzungsvertrag auf Grundlage der Vertragsbedingungen des Anbieters zustande. Weitergehende Informationen hierzu können Sie den FAQ des Anbieters entnehmen.\n\nWERBEFREI FÜR 3,99€ / MONAT\n\nSchon registriert? Mit Contentpass einloggen\n\nFür die Nutzung mit Werbung und Tracking: Wir und unsere 242 Partner nutzen Cookies, um unsere Webseite für Sie optimal zu gestalten und fort­laufend zu verbessern, sowie zur Ausspielung von News, Artikeln und Anzeigen. Durch Klicken des „Akzeptieren“-Buttons stimmen Sie dieser Verarbeitung der auf Ihrem Gerät gespeicherten Daten wie z.B. persönlichen Identifikatoren oder IP-Adressen für diese Verarb",
+      "knoepfe": [
+        "AKZEPTIEREN",
+        "WERBEFREI FÜR 3,99€ / MONAT",
+        "Speichern von oder Zugriff auf Informationen auf einem Endgerät"
+      ],
+      "tcfVorher": {
+        "cmpId": 35,
+        "gdprApplies": true,
+        "eventStatus": "cmpuishown",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 0,
+        "publisherZwecke": []
+      },
+      "tcfNachher": {
+        "cmpId": 35,
+        "gdprApplies": true,
+        "eventStatus": "cmpuishown",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 0,
+        "publisherZwecke": []
+      },
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": true,
+      "endUrl": "https://www.focus.de/",
+      "cookies": 6,
+      "ergebnis": "Zustimmen oder bezahlen (offen)"
+    },
+    {
+      "url": "https://www.chip.de/",
+      "gruppe": "Nachrichten DE",
+      "name": "chip.de",
+      "erkannt": [
+        "sourcepoint-top",
+        "Sourcepoint-frame"
+      ],
+      "popup": [
+        "sourcepoint-top"
+      ],
+      "optOut": true,
+      "selbsttest": null,
+      "fertig": {
+        "cmp": "sourcepoint-top",
+        "kosmetisch": false,
+        "klicks": 0,
+        "dauerMs": 39
+      },
+      "heuristik": [],
+      "fehler": [],
+      "pur": {
+        "treffer": "Contentpass",
+        "frame": "cmp.chip.de"
+      },
+      "bannertext": "chip.de weiter werbefinanziert lesen\n\nMit Klick auf „Akzeptieren“ besuchen Sie CHIP.de mit Werbung, Cookies und ähnlichen Technologien (wie Utiq) sowie Tracking. Detaillierte Informationen zum Umfang Ihrer Zustimmung sowie zu den 207 eingesetzten Drittanbietern finden Sie innerhalb der Datenschutzeinstellungen sowie innerhalb der Datenschutzhinweise. Sie können Ihre Einwilligung jederzeit über den Link Datenschutzeinstellungen am Ende unserer Webseite („Footer“) widerrufen.\n\nAKZEPTIEREN\n\nIhre Datenverarbeitung basiert auf Grundlage Ihrer Einwilligung gem. Art. 6 Abs. 1 Satz 1 lit. a DSGVO bzw. § 25 Abs. 1 TDDDG.\n\nWerbefrei mit Contentpass?\n\nBesuchen Sie CHIP.de und über 600 andere Websites völlig frei von Werbebannern, Videowerbung und personalisiertem Tracking für 3,99 € / Monat. Mit Abschluss der Registrierung Ihres contentpass-Accounts kommt ein Nutzungsvertrag auf Grundlage der Vertragsbedingungen des Anbieters zustande. Weitergehende Informationen hierzu können Sie den FAQ des Anbieters entnehmen.\n\nWERBEFREI FÜR 3,99€ / MONAT\n\nSchon registriert? Mit Contentpass einloggen\n\nFür die Nutzung mit Werbung und Tracking: Wir und unsere 207 Partner nutzen Cookies, um unsere Webseite für Sie optimal zu gestalten und fort­laufend zu verbessern, sowie zur Ausspielung von News, Artikeln und Anzeigen. Durch Klicken des „Akzeptieren“-Buttons stimmen Sie dieser Verarbeitung der auf Ihrem Gerät gespeicherten Daten wie z.B. persönlichen Identifikatoren oder IP-Adressen für diese Verarbeit",
+      "knoepfe": [
+        "AKZEPTIEREN",
+        "WERBEFREI FÜR 3,99€ / MONAT",
+        "Speichern von oder Zugriff auf Informationen auf einem Endgerät"
+      ],
+      "tcfVorher": {
+        "cmpId": 35,
+        "gdprApplies": true,
+        "eventStatus": "cmpuishown",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 0,
+        "publisherZwecke": []
+      },
+      "tcfNachher": {
+        "cmpId": 35,
+        "gdprApplies": true,
+        "eventStatus": "cmpuishown",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 0,
+        "publisherZwecke": []
+      },
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": true,
+      "endUrl": "https://www.chip.de/",
+      "cookies": 6,
+      "ergebnis": "Zustimmen oder bezahlen (offen)"
+    },
+    {
+      "url": "https://www.tagesschau.de/",
+      "gruppe": "Nachrichten DE",
+      "name": "tagesschau.de",
+      "erkannt": [],
+      "popup": [],
+      "heuristik": [],
+      "knoepfe": [],
+      "bannertext": "",
+      "fehler": [
+        "Zeitüberschreitung (90 s)"
+      ],
+      "ergebnis": "Seite nicht geladen"
+    },
+    {
+      "url": "https://www.willhaben.at/iad",
+      "gruppe": "Einkaufen",
+      "name": "willhaben.at",
+      "erkannt": [
+        "didomi"
+      ],
+      "popup": [
+        "didomi"
+      ],
+      "optOut": true,
+      "selbsttest": true,
+      "fertig": {
+        "cmp": "didomi",
+        "kosmetisch": false,
+        "klicks": 1,
+        "dauerMs": 3
+      },
+      "heuristik": [
+        "/wir.{0,100}und.{0,100}unsere.{0,100}partner/gi",
+        "/zugriff.{0,100}auf.{0,100}informationen.{0,100}auf/gi"
+      ],
+      "fehler": [],
+      "pur": null,
+      "bannertext": "",
+      "knoepfe": [],
+      "tcfVorher": null,
+      "tcfNachher": {
+        "cmpId": 7,
+        "gdprApplies": true,
+        "eventStatus": "tcloaded",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [
+          2,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 149,
+        "publisherZwecke": []
+      },
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": false,
+      "endUrl": "https://www.willhaben.at/iad",
+      "cookies": 13,
+      "ergebnis": "abgelehnt (autoconsent)"
+    },
+    {
+      "url": "https://geizhals.at/",
+      "gruppe": "Einkaufen",
+      "name": "geizhals.at",
+      "erkannt": [
+        "Onetrust"
+      ],
+      "popup": [
+        "Onetrust"
+      ],
+      "optOut": true,
+      "selbsttest": true,
+      "fertig": {
+        "cmp": "Onetrust",
+        "kosmetisch": false,
+        "klicks": 1,
+        "dauerMs": 504
+      },
+      "heuristik": [
+        "/wir.{0,100}und.{0,100}unsere.{0,100}partner/gi",
+        "/zugriff.{0,100}auf.{0,100}informationen.{0,100}auf/gi",
+        "/inhalte.{0,100}messung.{0,100}von.{0,100}werbeleistung.{0,100}und/gi",
+        "/alles?.{0,100}ablehnen/gi"
+      ],
+      "fehler": [],
+      "pur": null,
+      "bannertext": "Ihre Privatsphäre ist uns wichtig\nWir und unsere 1034-Partner speichern und greifen auf personenbezogene Daten wie Browserdaten oder eindeutige Kennungen auf Ihrem Gerät zu. Durch Auswahl von Akzeptieren aktivieren Sie Tracking-Technologien für die unter „Wir und unsere Partner verarbeiten Daten, um Ihnen Dienste bereitzustellen“ aufgeführten Zwecke. Durch Auswahl von Alle ablehnen oder Widerruf Ihrer Einwilligung werden diese deaktiviert. Wenn Tracker deaktiviert sind, sind manche Inhalte und Anzeigen möglicherweise nicht mehr so relevant für Sie. Sie können dieses Menü jederzeit wieder aufrufen, um Ihre Einstellungen zu ändern oder Ihre Einwilligung zu widerrufen, indem Sie auf den Link Cookie-Einstellungen am unteren Rand der Webseite klicken. Ihre Einstellungen gelten innerhalb unseres Website. Weitere Informationen finden Sie in unserer Datenschutzerklärung.\nSofern Ihre getroffenen Einstellungen auch Anbieter umfassen, die Daten in Drittstaaten ohne Vorliegen eines Angemessenheitsbeschlusses gem Art 45 DSGVO und ohne geeignete Garantien gem Art 46 DSGVO übermitteln, so gilt Ihre Einwilligung auch hierfür (Art 49 Abs 1 lit a DSGVO). Dies gilt insbesondere für Datenübermittlungen in die USA. Es besteht insbesondere das Risiko, dass Ihre Daten durch Behörden zu Kontroll- und zu Überwachungszwecken verarbeitet werden können, möglicherweise auch ohne Rechtsbehelfsmöglichkeiten. Dies können Sie abstellen, in dem Sie bei dem jeweiligen Anbieter in der Liste keine Einwilligung a",
+      "knoepfe": [
+        "Konfigurieren",
+        "Alle ablehnen",
+        "Akzeptieren"
+      ],
+      "tcfVorher": {
+        "cmpId": 28,
+        "gdprApplies": true,
+        "eventStatus": "cmpuishown",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [
+          2,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 391,
+        "publisherZwecke": []
+      },
+      "tcfNachher": {
+        "cmpId": 28,
+        "gdprApplies": true,
+        "eventStatus": "useractioncomplete",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 22,
+        "publisherZwecke": []
+      },
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": false,
+      "endUrl": "https://geizhals.at/",
+      "cookies": 8,
+      "ergebnis": "abgelehnt (autoconsent)"
+    },
+    {
+      "url": "https://www.amazon.de/",
+      "gruppe": "Einkaufen",
+      "name": "amazon.de",
+      "erkannt": [],
+      "popup": [],
+      "optOut": null,
+      "selbsttest": null,
+      "fertig": null,
+      "heuristik": [],
+      "fehler": [],
+      "pur": null,
+      "bannertext": "",
+      "knoepfe": [],
+      "tcfVorher": null,
+      "tcfNachher": null,
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": false,
+      "endUrl": "https://www.amazon.de/",
+      "cookies": 2,
+      "ergebnis": "kein Banner"
+    },
+    {
+      "url": "https://www.ebay.at/",
+      "gruppe": "Einkaufen",
+      "name": "ebay.at",
+      "erkannt": [],
+      "popup": [],
+      "optOut": null,
+      "selbsttest": null,
+      "fertig": null,
+      "heuristik": [],
+      "fehler": [],
+      "pur": null,
+      "bannertext": "",
+      "knoepfe": [],
+      "tcfVorher": null,
+      "tcfNachher": null,
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": false,
+      "endUrl": "https://www.ebay.at/",
+      "cookies": 3,
+      "ergebnis": "kein Banner"
+    },
+    {
+      "url": "https://www.mediamarkt.at/",
+      "gruppe": "Einkaufen",
+      "name": "mediamarkt.at",
+      "erkannt": [
+        "mediamarkt.de"
+      ],
+      "popup": [
+        "mediamarkt.de"
+      ],
+      "optOut": false,
+      "selbsttest": null,
+      "fertig": null,
+      "heuristik": [
+        "/wir.{0,100}verwenden.{0,100}cookies/gi"
+      ],
+      "fehler": [],
+      "pur": null,
+      "bannertext": "Wir müssen Ihnen kurz auf den Keks gehen\n\nWir lieben Cookies – ob schokoladig, nussig, fruchtig oder digital. Letztere helfen uns unsere Website und Ihr Einkaufserlebnis zu verbessern. Die (technisch) notwendigen und funktionalen Cookies sind für die Funktion der Website unerlässlich und können nicht abgelehnt werden. Darüber hinaus verwenden wir Cookies zur Optimierung unserer Website („Komfort“) und zur Anzeige personalisierter Werbung („Marketing“). Dazu benötigen wir Ihre Einwilligung. Klicken Sie auf „Alle zulassen“, um der Datenverarbeitung zuzustimmen.\n\nDie Einwilligung erfolgt auch nach Art. 49 Abs. 1 lit. a DSGVO. Ihre Daten können daher zeitlich begrenzt auch außerhalb des EWR genutzt werden, zum Beispiel in den USA. Sollte das der Fall sein, kann das hohe europäische Datenschutzniveau nicht vollkommen garantiert werden und ein Risiko einer Datenverarbeitung durch US-Behörden zu Kontroll- und Überwachungszwecken besteht, ohne dass wirksame Rechtsbehelfe vorhanden oder sämtliche Betroffenenrechte durchsetzbar sind. Ihre Einwilligung können Sie jederzeit widerrufen. \n\nDatenschutz | Impressum | Cookieübersicht\n\nNotwendig\nNotwendig\nKomfort\nMarketing\nSpeichern\nAlles zulassen",
+      "knoepfe": [
+        "Notwendig",
+        "Komfort",
+        "Marketing",
+        "Speichern",
+        "Alles zulassen"
+      ],
+      "tcfVorher": null,
+      "tcfNachher": null,
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": true
+      },
+      "bannerNochDa": false,
+      "endUrl": "https://www.mediamarkt.at/",
+      "cookies": 9,
+      "ergebnis": "Ablehnen fehlgeschlagen"
+    },
+    {
+      "url": "https://www.idealo.de/",
+      "gruppe": "Einkaufen",
+      "name": "idealo.de",
+      "erkannt": [
+        "usercentrics-api"
+      ],
+      "popup": [
+        "usercentrics-api"
+      ],
+      "optOut": true,
+      "selbsttest": true,
+      "fertig": {
+        "cmp": "usercentrics-api",
+        "kosmetisch": false,
+        "klicks": 1,
+        "dauerMs": 4
+      },
+      "heuristik": [],
+      "fehler": [],
+      "pur": null,
+      "bannertext": "",
+      "knoepfe": [],
+      "tcfVorher": null,
+      "tcfNachher": null,
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": false,
+      "endUrl": "https://www.idealo.de/",
+      "cookies": 8,
+      "ergebnis": "abgelehnt (autoconsent)"
+    },
+    {
+      "url": "https://www.zalando.at/",
+      "gruppe": "Einkaufen",
+      "name": "zalando.at",
+      "erkannt": [
+        "usercentrics-api"
+      ],
+      "popup": [
+        "usercentrics-api"
+      ],
+      "optOut": true,
+      "selbsttest": true,
+      "fertig": {
+        "cmp": "usercentrics-api",
+        "kosmetisch": false,
+        "klicks": 1,
+        "dauerMs": 4
+      },
+      "heuristik": [],
+      "fehler": [],
+      "pur": null,
+      "bannertext": "",
+      "knoepfe": [],
+      "tcfVorher": null,
+      "tcfNachher": null,
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": false,
+      "endUrl": "https://www.zalando.at/",
+      "cookies": 12,
+      "ergebnis": "abgelehnt (autoconsent)"
+    },
+    {
+      "url": "https://www.ikea.com/at/de/",
+      "gruppe": "Einkaufen",
+      "name": "ikea.com",
+      "erkannt": [
+        "Onetrust"
+      ],
+      "popup": [
+        "Onetrust"
+      ],
+      "optOut": true,
+      "selbsttest": true,
+      "fertig": {
+        "cmp": "Onetrust",
+        "kosmetisch": false,
+        "klicks": 1,
+        "dauerMs": 595
+      },
+      "heuristik": [
+        "/wir.{0,100}verwenden.{0,100}cookies/gi",
+        "/(?:nur|nicht).{0,100}(?:zusätzliche|essenzielle|funktionale|notwendige|erforderliche).{0,100}(?:cookies|akzeptieren|erlauben|ablehnen)/gi",
+        "/weiger.{0,100}(?:cookies|alles)/gi"
+      ],
+      "fehler": [],
+      "pur": null,
+      "bannertext": "Hej bei den Cookie-Einstellungen!\n\nWir, die IKEA Möbelvertrieb OHG, verwenden auf unserer Website verschiedene Cookies: Notwendige Cookies sind unbedingt erforderlich, damit die Website technisch funktioniert, optionale Cookies verwenden wir nur mit deiner Zustimmung, die du erteilen kannst, indem du auf \"Annehmen\" klickst. Bei Erteilung der Zustimmung findet eine Datenverarbeitung auch außerhalb des EWR statt und es werden von manchen Anbietern individuelle Nutzungsprofile angelegt. Das bedeutet, dass diese Anbieter deine Informationen mit Daten zusammenführen, die du diesen Anbietern bereitgestellt hast oder die sie im Rahmen ihrer anderen Dienste gesammelt haben. Deine Zustimmung kannst du verweigern, indem du auf \"Ablehnen\" klickst. Auf der Website werden dann nur notwendige Cookies verwendet.\n\nOptionale Cookies werden verwendet: um Informationen zur Nutzung der Webseite zu sammeln, z.B. um Inhalt und Funktionalität zu verbessern (Performance Cookies); um getätigte Angaben (z.B. Sprachauswahl) zu speichern und so verbesserte und persönlichere Funktionen anbieten zu können (Funktionale Cookies); und, um zielgruppenorientierte Werbung zu erstellen (Marketing Cookies).\n\nIn den \"Cookie-Einstellungen\" erfährst du mehr über unsere Cookies sowie deren Anbieter und kannst deine Zustimmung nur für bestimmte Kategorien optionaler Cookies erteilen oder deine Zustimmung jederzeit mit Wirkung für die Zukunft widerrufen. In der Datenschutzerklärung und in unserer Cookie-Richtlinie find",
+      "knoepfe": [
+        "Cookie-Einstellungen",
+        "Annehmen",
+        "Ablehnen"
+      ],
+      "tcfVorher": null,
+      "tcfNachher": null,
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": false,
+      "endUrl": "https://www.ikea.com/at/de/",
+      "cookies": 8,
+      "ergebnis": "abgelehnt (autoconsent)"
+    },
+    {
+      "url": "https://www.billa.at/",
+      "gruppe": "Einkaufen",
+      "name": "billa.at",
+      "erkannt": [
+        "usercentrics-api"
+      ],
+      "popup": [
+        "usercentrics-api"
+      ],
+      "optOut": true,
+      "selbsttest": true,
+      "fertig": {
+        "cmp": "usercentrics-api",
+        "kosmetisch": false,
+        "klicks": 1,
+        "dauerMs": 8
+      },
+      "heuristik": [],
+      "fehler": [],
+      "pur": null,
+      "bannertext": "Suche nach Inhalten und Produkte\nSORTIMENT & EIGENMARKEN\nexpand_more\nAKTIONEN\nexpand_more\nMÄRKTE\nexpand_more\nNACHHALTIGKEIT\nexpand_more\nFRISCH GEKOCHT\nexpand_more\nONLINE SHOP",
+      "knoepfe": [
+        "ONLINE SHOP"
+      ],
+      "tcfVorher": null,
+      "tcfNachher": null,
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": false,
+      "endUrl": "https://www.billa.at/",
+      "cookies": 2,
+      "ergebnis": "abgelehnt (autoconsent)"
+    },
+    {
+      "url": "https://www.spar.at/",
+      "gruppe": "Einkaufen",
+      "name": "spar.at",
+      "erkannt": [
+        "consentmanager.net"
+      ],
+      "popup": [
+        "consentmanager.net"
+      ],
+      "optOut": true,
+      "selbsttest": true,
+      "fertig": {
+        "cmp": "consentmanager.net",
+        "kosmetisch": false,
+        "klicks": 0,
+        "dauerMs": 538
+      },
+      "heuristik": [],
+      "fehler": [],
+      "pur": null,
+      "bannertext": "Cookie-Einstellungen \n\nWir (SPAR Österreichische Warenhandels-AG) setzen auf Basis unserer berechtigten Interessen „funktionsnotwendige Cookies“ ein, welche die Funktionalität und Sicherheit der Webseite gewährleisten. Zudem verwenden wir – sofern Sie uns durch Anhaken der nachstehenden Checkbox(en) Ihre Einwilligung erteilen – nicht-funktionsnotwendige Cookies, um unsere Services zu verbessern und die Ihnen angezeigten Webseiteninhalte zu personalisieren.\n\nEinige der Cookies wie etwa jene von Google werden von Dienstleistern in den USA angeboten, sodass es bei Verwendung der Cookies zu Übertragung der Daten in die USA kommt. Insoweit diese Services nach dem EU-US Data Privacy Framework (DPF) zertifiziert sind, besteht auch in den USA ein dem europäischen Recht entsprechender Datenschutz. Ist ein Service in den USA hingegen nicht DPF-zertifiziert, gewährleistet das US-Recht kein angemessenes Datenschutzniveau; insbesondere können in diesem Fall US-Behörden zu Kontroll- und Überwachungszwecken auf personenbezogene Daten zugreifen, ohne dass die Betroffenen darüber informiert werden und dagegen rechtlich vorgehen können. Durch die Einwilligung zur Cookie-Setzung erklären Sie sich daher auch mit einem Datentransfer an Empfänger in den USA außerhalb des DPF bzw. in sonstigen Drittstaaten ohne angemessenes Datenschutzniveau einverstanden.\n\nSie können Ihre Einwilligung jederzeit hier widerrufen oder nutzen Sie \"Optionen\" zur individuellen Anpassung. Die Rechtmäßigkeit der bis zum Z",
+      "knoepfe": [
+        "ALLES ABLEHNEN",
+        "OPTIONEN",
+        "ALLE AKZEPTIEREN"
+      ],
+      "tcfVorher": null,
+      "tcfNachher": null,
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": false,
+      "endUrl": "https://www.spar.at/",
+      "cookies": 11,
+      "ergebnis": "abgelehnt (autoconsent)"
+    },
+    {
+      "url": "https://www.hofer.at/de/",
+      "gruppe": "Einkaufen",
+      "name": "hofer.at",
+      "erkannt": [
+        "Onetrust"
+      ],
+      "popup": [
+        "Onetrust"
+      ],
+      "optOut": true,
+      "selbsttest": false,
+      "fertig": {
+        "cmp": "Onetrust",
+        "kosmetisch": false,
+        "klicks": 1,
+        "dauerMs": 507
+      },
+      "heuristik": [
+        "/und.{0,100}ähnliche.{0,100}technologien/gi"
+      ],
+      "fehler": [],
+      "pur": null,
+      "bannertext": "Zum Inhalt springen\nAktuelle Filiale\n1140, Wien 14., Penzing\nFilialauswahl\nBestätige, dass der aktuelle Standort korrekt ist, um das Sortiment deiner Filiale anzuzeigen.\nHilfe & Kontakt\n\n(öffnet in einem neuen Tab)\n\nKarriere\n\n(öffnet in einem neuen Tab)\n\nSuche\nHOFER Filialen\nNewsletter\nRezeptwelt\nMeine Liste\nMenü\nRezeptwelt\nNewsletter\nHOFER Filialen\nAngebote\nFlugblatt\nProdukte\nWeihnachten\nONLINESHOP\n\n(öffnet in einem neuen Tab)\n\nHOFER REISEN, HoT, FOTOS, GRÜNSTROM\nNachhaltigkeit\n---\nHeute im Angebot: Cookies\n\nWir setzen Cookies und ähnliche Technologien ein, um unsere Website bestmöglich an Ihre Bedürfnisse anpassen zu können. \n\nDiese Technologien ermöglichen beispielsweise die Verwendung bestimmter Features und das Teilen auf sozialen Netzwerken. Bei entsprechender Einwilligung können personenbezogene Daten zur Personalisierung von Werbeanzeigen auch an Google übermittelt werden. Bei Nutzung dieser Technologien kann es zu einer Datenübermittlung an Anbieter in Drittstaaten, wie insbesondere die USA kommen. Da die USA laut Europäischem Gerichtshof kein angemessenes Datenschutzniveau aufweist, bestehen aufgrund der Übermittlung Risiken (Zugriff auf Daten durch US-Behörden, fehlende Rechtsbehelfe). Ihr Einwilligung umfasst gemäß Art. 49 Abs. 1 lit. a DSGVO diese Übermittlung in Drittstaaten\n\nNähere Informationen zum Datenschutz und den Widerrufsmöglichkeiten\nEinstellungen\nNur Notwendige\nAlle bestätigen\n---\nEinstellungen\nNur Notwendige\nAlle bestätigen",
+      "knoepfe": [
+        "Angebote",
+        "Flugblatt",
+        "Produkte",
+        "Weihnachten",
+        "HOFER REISEN, HoT, FOTOS, GRÜNSTROM",
+        "Einstellungen",
+        "Nur Notwendige",
+        "Alle bestätigen"
+      ],
+      "tcfVorher": null,
+      "tcfNachher": null,
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": false,
+      "endUrl": "https://www.hofer.at/",
+      "cookies": 8,
+      "ergebnis": "abgelehnt (autoconsent)"
+    },
+    {
+      "url": "https://www.otto.de/",
+      "gruppe": "Einkaufen",
+      "name": "otto.de",
+      "erkannt": [
+        "Onetrust"
+      ],
+      "popup": [
+        "Onetrust"
+      ],
+      "optOut": true,
+      "selbsttest": true,
+      "fertig": {
+        "cmp": "Onetrust",
+        "kosmetisch": false,
+        "klicks": 1,
+        "dauerMs": 652
+      },
+      "heuristik": [
+        "/cookies.{0,100}und.{0,100}andere/gi",
+        "/(?:cookies|einwilligung).{0,100}ablehnen/gi"
+      ],
+      "fehler": [],
+      "pur": null,
+      "bannertext": "Cookies und andere Technologien erlauben?\nOTTO und 21 Partner brauchen deine Einwilligung (Klick auf „OK”) bei vereinzelten Datennutzungen, um Informationen auf deinem Gerät zu speichern und/oder abzurufen (IP-Adresse, Nutzer-ID, Browser-Informationen, Geräte-Kennungen). Die Datennutzung erfolgt zum Zweck der Identifikation auf Drittseiten (auch unter Nutzung pseudonymisierter E-Mail-Adressen), für personalisierte Anzeigen und Inhalte, Anzeigen- und Inhaltsmessungen sowie um Erkenntnisse über Zielgruppen und Produktentwicklungen zu gewinnen. Mehr Infos zur Einwilligung (inkl. Widerrufsmöglichkeit) und zu Einstellungsmöglichkeiten gibt’s jederzeit hier. Mit Klick auf den Button \"Einwilligung ablehnen\" kannst du deine Einwilligung jederzeit ablehnen.\nOTTO arbeitet mit Partnern zusammen, die von deinem Endgerät abgerufene Daten (Trackingdaten) oder die von uns übermittelten pseudonymisierten Daten zur Aussteuerung unserer Werbung sowie auch zu eigenen Zwecken (z.B. Profilbildungen) / zu Zwecken Dritter verarbeiten. Vor diesem Hintergrund erfordert nicht nur die Erhebung der Trackingdaten bzw. die Übermittlung deiner pseudonymisierten Daten, sondern auch deren Weiterverarbeitung durch diese Anbieter einer Einwilligung. Die Trackingdaten werden erst dann erhoben bzw. deine pseudonymisierten Daten erst dann übermittelt, wenn du auf den in dem Banner auf otto.de / App wiedergebenden Button „OK” anklickst. Bei den Partnern handelt es sich um die folgenden Unternehmen: Meta Platforms ",
+      "knoepfe": [
+        "OK",
+        "Einwilligung ablehnen",
+        "Mehr Informationen"
+      ],
+      "tcfVorher": {
+        "cmpId": 28,
+        "gdprApplies": true,
+        "eventStatus": "cmpuishown",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 0,
+        "publisherZwecke": []
+      },
+      "tcfNachher": {
+        "cmpId": 28,
+        "gdprApplies": true,
+        "eventStatus": "useractioncomplete",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 0,
+        "publisherZwecke": []
+      },
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": false,
+      "endUrl": "https://www.otto.de/",
+      "cookies": 10,
+      "ergebnis": "abgelehnt (autoconsent)"
+    },
+    {
+      "url": "https://www.oebb.at/",
+      "gruppe": "Reisen",
+      "name": "oebb.at",
+      "erkannt": [],
+      "popup": [],
+      "optOut": null,
+      "selbsttest": null,
+      "fertig": null,
+      "heuristik": [
+        "/verwendet.{0,100}cookies/gi",
+        "/und.{0,100}ähnliche.{0,100}technologien/gi",
+        "/cookies.{0,100}wir.{0,100}verwenden/gi",
+        "/(?:cookies|einwilligung).{0,100}ablehnen/gi"
+      ],
+      "fehler": [],
+      "pur": null,
+      "bannertext": "Ihre Privatsphäre ist uns wichtig\n\nDie ÖBB-Personenverkehr AG verwendet Cookies und ähnliche Technologien, die für den Betrieb und die Funktionalität der Website erforderlich sind. Durch Schließen des Banners über das „X“ werden ausschließlich diese technisch notwendigen Cookies verwendet. Zusätzliche Cookies kommen nur mit ausdrücklicher Einwilligung zum Einsatz. Wir verwenden diese, um Ihr Erlebnis auf der Website zu verbessern und Ihnen maßgeschneiderte Angebote anbieten zu können.\n\nDurch das Anklicken von „Alle Cookies akzeptieren“ erlauben Sie die Speicherung von Cookies auf Ihrem Gerät. Dies dient dazu, die Navigation auf der Website zu optimieren, die Nutzung besser zu analysieren und unsere Marketingmaßnahmen gezielt zu unterstützen.\n\nIhre Auswahl kann jederzeit unter „Meine Cookie-Auswahl“ widerrufen oder angepasst werden. Weitere Informationen über die Verwendung Ihrer Daten finden Sie in unseren Cookie-Richtlinien.\n\nAlle Cookies akzeptieren\nMeine Cookie-Auswahl\nNicht technische Cookies ablehnen\n---\nZum Inhalt springen (Alt + 0)\nZum Menü springen (Alt + 1)\nUntermenü von \"Tickets & Ermäßigungen\"\nTickets & Ermäßigungen\nUntermenü von \"Fahrplan\"\nFahrplan\nUntermenü von \"Reiseplanung & Services\"\nReiseplanung & Services\nUntermenü von \"Regionale Angebote\"\nRegionale Angebote\nSprachmenü ein- oder ausblenden\nDE\nKontrast\nFAQ\n \nSuche\n \nÖBB Vorzugspunkte\n \nTicket buchen",
+      "knoepfe": [
+        "Alle Cookies akzeptieren",
+        "Meine Cookie-Auswahl",
+        "Nicht technische Cookies ablehnen",
+        "Kontrast"
+      ],
+      "tcfVorher": null,
+      "tcfNachher": null,
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": true,
+      "endUrl": "https://www.oebb.at/",
+      "cookies": 3,
+      "ergebnis": "unbekanntes Banner"
+    },
+    {
+      "url": "https://www.bahn.de/",
+      "gruppe": "Reisen",
+      "name": "bahn.de",
+      "erkannt": [
+        "bahn-de"
+      ],
+      "popup": [
+        "bahn-de"
+      ],
+      "optOut": true,
+      "selbsttest": true,
+      "fertig": {
+        "cmp": "bahn-de",
+        "kosmetisch": false,
+        "klicks": 1,
+        "dauerMs": 13
+      },
+      "heuristik": [],
+      "fehler": [],
+      "pur": null,
+      "bannertext": "",
+      "knoepfe": [],
+      "tcfVorher": null,
+      "tcfNachher": null,
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": false,
+      "endUrl": "https://www.bahn.de/",
+      "cookies": 27,
+      "ergebnis": "abgelehnt (autoconsent)"
+    },
+    {
+      "url": "https://www.booking.com/",
+      "gruppe": "Reisen",
+      "name": "booking.com",
+      "erkannt": [],
+      "popup": [],
+      "optOut": null,
+      "selbsttest": null,
+      "fertig": null,
+      "heuristik": [],
+      "fehler": [],
+      "pur": null,
+      "bannertext": "Anmelden, Geld sparen\n\nMelden Sie sich an und sparen Sie 10% oder mehr mit einer kostenlosen Booking.com-Mitgliedschaft\n\nAnmelden oder registrieren",
+      "knoepfe": [],
+      "tcfVorher": null,
+      "tcfNachher": null,
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": true
+      },
+      "bannerNochDa": false,
+      "endUrl": "https://www.booking.com/index.de.html?aid=304142&label=gen173nr-10CAEoggI46AdIM1gEaJUCiAEBmAEzuAEHyAEM2AED6AEB-AEBiAIBqAIBuALKma_WBsACAdICJGJiNzBmODgxLWEzODItNDcxZi05ODIwLTFlYjI4ODdhYWIyNNgCAeACAQ&chal_t=1791741129218&force_referer=",
+      "cookies": 48,
+      "ergebnis": "kein Banner"
+    },
+    {
+      "url": "https://www.oesterreich.gv.at/",
+      "gruppe": "Behörden",
+      "name": "oesterreich.gv.at",
+      "erkannt": [],
+      "popup": [],
+      "optOut": null,
+      "selbsttest": null,
+      "fertig": null,
+      "heuristik": [],
+      "fehler": [],
+      "pur": null,
+      "bannertext": "",
+      "knoepfe": [],
+      "tcfVorher": null,
+      "tcfNachher": null,
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": false,
+      "endUrl": "https://www.oesterreich.gv.at/de",
+      "cookies": 0,
+      "ergebnis": "kein Banner"
+    },
+    {
+      "url": "https://www.wien.gv.at/",
+      "gruppe": "Behörden",
+      "name": "wien.gv.at",
+      "erkannt": [],
+      "popup": [],
+      "optOut": null,
+      "selbsttest": null,
+      "fertig": null,
+      "heuristik": [],
+      "fehler": [],
+      "pur": null,
+      "bannertext": "Datenschutzrechtliche Bestimmungen: Wir setzen Cookies ein, um Ihren Interessen entsprechende Informationen der Stadt Wien bei Drittanbietern anzuzeigen. Der Widerruf Ihrer Einwilligung und die Änderung Ihrer Auswahl ist jederzeit unter Datenschutz: Information und Einstellungen möglich.\n\nNur Notwendige\nAlle akzeptieren",
+      "knoepfe": [
+        "Nur Notwendige",
+        "Alle akzeptieren"
+      ],
+      "tcfVorher": null,
+      "tcfNachher": null,
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": true,
+      "endUrl": "https://www.wien.gv.at/",
+      "cookies": 3,
+      "ergebnis": "unbekanntes Banner"
+    },
+    {
+      "url": "https://www.bmf.gv.at/",
+      "gruppe": "Behörden",
+      "name": "bmf.gv.at",
+      "erkannt": [],
+      "popup": [],
+      "optOut": null,
+      "selbsttest": null,
+      "fertig": null,
+      "heuristik": [],
+      "fehler": [],
+      "pur": null,
+      "bannertext": "Jobs & Karriere\nServices\nThemen\nMinisterium\nPresse\nRechtsnews\nSuche einblenden\nGebärdensprache\nAusgewählte Sprache:\nDE \nStartseite",
+      "knoepfe": [
+        "Services",
+        "Themen",
+        "Ministerium",
+        "Presse",
+        "Rechtsnews"
+      ],
+      "tcfVorher": null,
+      "tcfNachher": null,
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": false,
+      "endUrl": "https://www.bmf.gv.at/",
+      "cookies": 0,
+      "ergebnis": "kein Banner"
+    },
+    {
+      "url": "https://www.sozialversicherung.at/",
+      "gruppe": "Behörden",
+      "name": "sozialversicherung.at",
+      "erkannt": [],
+      "popup": [],
+      "optOut": null,
+      "selbsttest": null,
+      "fertig": null,
+      "heuristik": [
+        "/verwendet.{0,100}cookies/gi"
+      ],
+      "fehler": [],
+      "pur": null,
+      "bannertext": "Cookie-Einstellungen\n\nDiese Webseite verwendet Cookies für ein optimales Website-Erlebnis und für die anonyme Analyse des Online-Verhaltens der Besucherinnen und Besucher. Diese Analyse soll helfen, das Informationsangebot besser zu gestalten.\n\nMehr Informationen finden Sie hier: Cookie-Erklärung / Datenschutz-Erklärung / Impressum  \n\nDie Einstellung können Sie jederzeit auf der Seite \"Cookie-Erklärung\" ändern.\n\nAlle Cookies akzeptieren\nNur essentielle Cookies akzeptieren\nIndividuelle Einstellung einblenden",
+      "knoepfe": [
+        "Alle Cookies akzeptieren",
+        "Nur essentielle Cookies akzeptieren"
+      ],
+      "tcfVorher": null,
+      "tcfNachher": null,
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": true,
+      "endUrl": "https://www.sozialversicherung.at/cdscontent/?contentid=10007.821628&portal=svportal",
+      "cookies": 6,
+      "ergebnis": "unbekanntes Banner"
+    },
+    {
+      "url": "https://www.sparkasse.at/erstebank/privatkunden",
+      "gruppe": "Banken",
+      "name": "sparkasse.at",
+      "erkannt": [],
+      "popup": [],
+      "optOut": null,
+      "selbsttest": null,
+      "fertig": null,
+      "heuristik": [
+        "/(?:cookies|einwilligung).{0,100}ablehnen/gi"
+      ],
+      "fehler": [],
+      "pur": null,
+      "bannertext": "Filiale   suchen\nTermin vereinbaren\nHilfe im Notfall\nCookies einstellen\n---\nIhre Einstellung zu Cookies \n\nWenn Sie über 16 Jahre sind, klicken Sie auf „Ich bin einverstanden“, um allen Verarbeitungszwecken zuzustimmen. Hier finden sie nähere Informationen zu unseren wesentlichen Cookies (für die Funktion der Internetseite unerlässlich), sowie optionalen Werbe- (personalisierte Werbung, Surfverhalten) und Statistik-Cookies (Nutzerverhalten, Serviceverbesserung). Einzelne Kategorien können Sie auch ablehnen. Ihre Cookie Einstellungen können Sie jederzeit ändern.\n\nEinige unserer Partnerdienste befinden sich in den USA. Nach Rechtssprechung des Europäischen Gerichtshofs existiert derzeit in den USA kein angemessener Datenschutz. Es besteht das Risiko, dass Ihre Daten durch US-Behörden kontrolliert und überwacht werden. Dagegen können Sie keine wirksamen Rechtsmittel vorbringen. \n\nGemeinsame Verantwortlichkeiten gemäß Datenschutz-Grundverordnung:\n\n- Ihre Einwilligung und die einzelnen Einstellungen gelten gemeinsam für den Webauftritt der Erste Bank und Sparkassen auf sparkasse.at.\n\n- Mit Adform A/S besteht eine gemeinsame Verantwortlichkeit hinsichtlich Erhebung und Übermittlung personenbezogener Daten über das Adform Cookie.\n\nWeiterführende Informationen zum Datenschutz, auch zur gemeinsamen Verantwortlichkeit, finden Sie hier.\n\nIch bin einverstanden\nAblehnen",
+      "knoepfe": [
+        "Termin vereinbaren",
+        "Cookies einstellen",
+        "Cookie Einstellungen können Sie jederzeit ändern",
+        "Ich bin einverstanden",
+        "Ablehnen"
+      ],
+      "tcfVorher": null,
+      "tcfNachher": null,
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": true,
+      "endUrl": "https://www.sparkasse.at/erstebank/privatkunden",
+      "cookies": 7,
+      "ergebnis": "unbekanntes Banner"
+    },
+    {
+      "url": "https://www.raiffeisen.at/",
+      "gruppe": "Banken",
+      "name": "raiffeisen.at",
+      "erkannt": [
+        "Onetrust"
+      ],
+      "popup": [
+        "Onetrust"
+      ],
+      "optOut": true,
+      "selbsttest": true,
+      "fertig": {
+        "cmp": "Onetrust",
+        "kosmetisch": false,
+        "klicks": 1,
+        "dauerMs": 503
+      },
+      "heuristik": [],
+      "fehler": [],
+      "pur": null,
+      "bannertext": "Mein ELBA Login \nKontaktformular\nHilfe im Notfall\n---\nIhre Privatsphäre ist uns wichtig\nMit Ihrer „Zustimmung\" werden Personalisierungs-Cookies gesetzt, die es uns ermöglichen, unsere Website laufend zu verbessern und personalisierte Werbeanzeigen zu erstellen. Ohne Ihre Zustimmung setzen wir nur Cookies, welche für die Funktion der Internetseite unerlässlich sind. Unter „Individuelle Einstellungen“ finden Sie Informationen zu funktionalen, anonymen und personalisierten Verarbeitungen sowie die Möglichkeit personalisierte Verarbeitungen zuzulassen oder zu widerrufen. Sie finden die Datenschutzerklärung unserer Webseite unter der Rubrik \"Datenschutz\".\nIndividuelle Einstellungen\nAblehnen Zustimmen",
+      "knoepfe": [
+        "Individuelle Einstellungen",
+        "Ablehnen",
+        "Zustimmen"
+      ],
+      "tcfVorher": null,
+      "tcfNachher": null,
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": false,
+      "endUrl": "https://www.raiffeisen.at/de/privatkunden.html",
+      "cookies": 6,
+      "ergebnis": "abgelehnt (autoconsent)"
+    },
+    {
+      "url": "https://www.bawag.at/",
+      "gruppe": "Banken",
+      "name": "bawag.at",
+      "erkannt": [
+        "cookiefirst.com"
+      ],
+      "popup": [
+        "cookiefirst.com"
+      ],
+      "optOut": true,
+      "selbsttest": true,
+      "fertig": {
+        "cmp": "cookiefirst.com",
+        "kosmetisch": false,
+        "klicks": 1,
+        "dauerMs": 8
+      },
+      "heuristik": [
+        "/(?:nur|nicht).{0,100}(?:zusätzliche|essenzielle|funktionale|notwendige|erforderliche).{0,100}(?:cookies|akzeptieren|erlauben|ablehnen)/gi"
+      ],
+      "fehler": [],
+      "pur": null,
+      "bannertext": "Weiter zum Inhalt\nWeiter zur Fußzeile\nPrivatkunden\nFilialfinder\nKarriere\nFamilie\nHilfe\nMarkets\nChat\nLOGIN\nKonto & Karten\nFinanzieren\nInvestieren\nSparen\neBanking & App\n---\nWie können wir Ihren Besuch auf unserer Webseite noch angenehmer für Sie gestalten?\n\num die Funktionalität der Webseite zu gewährleisten und Online-Betrug zu Ihrer Sicherheit zu vermeiden.\num zu erfassen, welche Inhalte genutzt werden und unser Webseiten-Angebot dadurch zu verbessern\num Ihnen mehr Komfort, personalisierten Service und personalisierte Werbung zu bieten\n\nSie können Ihre Cookies individuell auswählen - oder, mit einem Klick auf „Alle Cookies akzeptieren“ der Speicherung aller Cookies auf Ihrem Gerät zustimmen. Damit stimmen Sie auch der Nutzung von „Google Enhanced Conversions“ zu: Während der Webseite Nutzung werden E-Mail Adressen erfasst, diese werden verschlüsselt gespeichert und an Google Ireland Limited geschickt. Google vergleicht die Informationen mit den Google Konten der Nutzer. Dies dient dazu die Interaktion der Nutzer mit unseren Anzeigen besser nachvollziehen zu können. Wenn sie „Alle Cookies akzeptieren“ auswählen so stimmen Sie auch der Speicherung Ihres Namen und Email- Adresse binnen Google Enhanced Conversions zu.\n\nUnter \"Cookie-Einstellungen\" am unteren Ende der Webseite können Sie die Einstellungen jederzeit ändern. Alle Details finden Sie in den Cookie Hinweisen.\n\nAlle Cookies akzeptieren\nLoading...\nNur technisch notwendige Cookies\nCookie-Einstellungen",
+      "knoepfe": [
+        "Privatkunden",
+        "Cookie-Einstellungen",
+        "Alle Cookies akzeptieren"
+      ],
+      "tcfVorher": null,
+      "tcfNachher": null,
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": false,
+      "endUrl": "https://www.bawag.at/bawag/privatkunden",
+      "cookies": 5,
+      "ergebnis": "abgelehnt (autoconsent)"
+    },
+    {
+      "url": "https://www.bankaustria.at/",
+      "gruppe": "Banken",
+      "name": "bankaustria.at",
+      "erkannt": [],
+      "popup": [],
+      "optOut": null,
+      "selbsttest": null,
+      "fertig": null,
+      "heuristik": [
+        "/accept all/gi",
+        "/we (?:use|serve)(?: \\w+)? cookies/gi",
+        "/use of cookies/gi"
+      ],
+      "fehler": [],
+      "pur": null,
+      "bannertext": "We use cookies to improve our services and to gain statistical insight into how they are used. Some cookies are mandatory due to operating conditions and necessary for the website to function properly. No personal data is collected or stored at any point. You can decide for yourself which cookies you want to allow (except for those that are mandatory due to operating conditions). By clicking \"Accept All\" you opt in to our use of cookies. By clicking \"cookie settings\" you can activate and deactivate the various cookies. For more information please consult our cookie policy\n\nDeutsche Version       Privacy Policy\n\nACCEPT ALL\nREFUSE ALL\nCookie Settings\nInhalt\n \nChatbot\nHILFE & KONTAKT\nFILIALEN\nSUCHE\nKund:in werden\nLOGIN\nPrivatkunden\nKONTO & KREDITKARTE\nGirokonto Vergleich\nOnline-Konto\nGoGreen-Konto\nRelax-Konto\nKarenzkonto\nStudentenkonto\nJugendkonto\nKinderkonto\nLehrlingskonto\nAuslandskonto\nKontowechsel-Service\nKreditkarten\nMastercard\nDebitkarte\nKarte sperren\nMastercard Identity Check\nCashBack\nGeoControl\nZahlungsverkehr\nEvent Tickets\nAPPS & ONLINE SERVICES\n24You Internetbanking\nMobileBanking App\nMobileBanking App Aktivierung\nGoogle Pay\nApple Pay\nSmartBanking\nHomebanking\nMultibanking\nSicherheit Online\ne-Identifikation\nGerätewechsel\nKREDIT & FINANZIERUNG\nImmobilienfinanzierung\nOnline Kredit\nAutokredit\nWohnKredit\nKredit umschulden\nKüche finanzieren\nMyHome\nKreditrechner\nInklusionsKredit\nMyHome Community\nOnline-Immobilienbewertung\nKFZ-Leasing\nVERSICHERN & VORSORGEN\nLebensversicherung\nKr",
+      "knoepfe": [
+        "ACCEPT ALL",
+        "REFUSE ALL",
+        "Cookie Settings",
+        "Privatkunden",
+        "KONTO & KREDITKARTE",
+        "APPS & ONLINE SERVICES",
+        "KREDIT & FINANZIERUNG",
+        "VERSICHERN & VORSORGEN",
+        "SPAREN & ANLEGEN",
+        "Rechtliche Informationen",
+        "CHAT-SUPPORT",
+        "HILFE & KONTAKT"
+      ],
+      "tcfVorher": null,
+      "tcfNachher": null,
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": true
+      },
+      "bannerNochDa": true,
+      "endUrl": "https://www.bankaustria.at/",
+      "cookies": 9,
+      "ergebnis": "unbekanntes Banner"
+    },
+    {
+      "url": "https://www.durchblicker.at/",
+      "gruppe": "Sonstiges",
+      "name": "durchblicker.at",
+      "erkannt": [],
+      "popup": [],
+      "optOut": null,
+      "selbsttest": null,
+      "fertig": null,
+      "heuristik": [
+        "/verwendung.{0,100}von.{0,100}cookies/gi",
+        "/(?:cookies|einwilligung).{0,100}ablehnen/gi"
+      ],
+      "fehler": [],
+      "pur": null,
+      "bannertext": "durchblicker.at – Startseite\n\n01 / 30 60 900\n\nMo - Do 8:00 - 17:00 Uhr\n\nFr 8:00 - 16:00 Uhr\n\nVersicherung\n\nVersicherungsvergleiche\n\nAuto\nMotorrad\nHaushalt\nEigenheim\nReise\nRechtsschutz\nLeben\nUnfall\nPrivathaftpflicht\nHunde\nKatzen\nE-Bike\nFahrrad\nKranken\n\nService\n\nNeuigkeiten\nVersicherungsratgeber\nAnbieter im Überblick\nZulassungsstellen finden\nVersicherungsberatung\nSchadensmeldung\nStrom & Gas\n\nEnergievergleiche\n\nStrom\nGas\n\nService\n\nNeuigkeiten\nEnergieratgeber\nAnbieter im Überblick\nKredit & Konto\n\nKredit\n\nOnline-Kredit\nAutokredit\nKredit umschulden\nKreditkarte\n\nImmofinanzierung\n\nImmobilienkredit\nWohnkredit\nBaufinanzierung\nUmschuldung\n\nGiro & Sparen\n\nGirokonto\nSparzinsen\nBausparen\n\nService\n\nNeuigkeiten\nFinanzratgeber\nAnbieter im Überblick\nKreditrechner\nKreditvergleich\nHandy & Internet\n\nMobilfunk\n\nHandy + Tarif\nHandytarife\nWertkarte\nMobiles Internet\n\nInternet & TV\n\nInternet\nBusiness-Internet\nFernsehen\nKombi-Pakete\n\nService\n\nNeuigkeiten\nRatgeber\nAnbieter im Überblick\nTarife im Überblick\nHandys im Überblick\nSpeedtest\n---\nVersicherungsvergleiche\n\nAuto\nMotorrad\nHaushalt\nEigenheim\nReise\nRechtsschutz\nLeben\nUnfall\nPrivathaftpflicht\nHunde\nKatzen\nE-Bike\nFahrrad\nKranken\n\nService\n\nNeuigkeiten\nVersicherungsratgeber\nAnbieter im Überblick\nZulassungsstellen finden\nVersicherungsberatung\nSchadensmeldung\n---\nEnergievergleiche\n\nStrom\nGas\n\nService\n\nNeuigkeiten\nEnergieratgeber\nAnbieter im Überblick\n---\nKredit\n\nOnline-Kredit\nAutokredit\nKredit umschulden\nKreditkarte\n\nImmofinanzierung\n\nImmobilienkredit\nWohn",
+      "knoepfe": [
+        "Versicherung",
+        "Strom & Gas",
+        "Kredit & Konto",
+        "Handy & Internet",
+        "Versicherungsvergleiche",
+        "Energievergleiche",
+        "Kredit",
+        "Immofinanzierung",
+        "Giro & Sparen",
+        "Mobilfunk",
+        "Internet & TV",
+        "Service",
+        "Alle akzeptieren"
+      ],
+      "tcfVorher": null,
+      "tcfNachher": null,
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": true,
+      "endUrl": "https://durchblicker.at/",
+      "cookies": 0,
+      "ergebnis": "evtl. Banner (nur Heuristik)"
+    },
+    {
+      "url": "https://www.chefkoch.de/",
+      "gruppe": "Sonstiges",
+      "name": "chefkoch.de",
+      "erkannt": [
+        "consentmanager.net"
+      ],
+      "popup": [
+        "consentmanager.net"
+      ],
+      "optOut": true,
+      "selbsttest": true,
+      "fertig": {
+        "cmp": "consentmanager.net",
+        "kosmetisch": false,
+        "klicks": 0,
+        "dauerMs": 549
+      },
+      "heuristik": [],
+      "fehler": [],
+      "pur": null,
+      "bannertext": "",
+      "knoepfe": [],
+      "tcfVorher": {
+        "cmpId": 31,
+        "gdprApplies": true,
+        "eventStatus": "useractioncomplete",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 0,
+        "publisherZwecke": []
+      },
+      "tcfNachher": {
+        "cmpId": 31,
+        "gdprApplies": true,
+        "eventStatus": "cmpuishown",
+        "cmpStatus": "loaded",
+        "hatString": true,
+        "zwecke": [],
+        "berechtigtesInteresse": [],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 0,
+        "publisherZwecke": []
+      },
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": true
+      },
+      "bannerNochDa": true,
+      "endUrl": "https://www.chefkoch.de/",
+      "cookies": 5,
+      "ergebnis": "Klick ok, Seite aber noch gesperrt"
+    },
+    {
+      "url": "https://www.ichkoche.at/",
+      "gruppe": "Sonstiges",
+      "name": "ichkoche.at",
+      "erkannt": [],
+      "popup": [],
+      "optOut": null,
+      "selbsttest": null,
+      "fertig": null,
+      "heuristik": [],
+      "fehler": [],
+      "pur": null,
+      "bannertext": "",
+      "knoepfe": [],
+      "tcfVorher": null,
+      "tcfNachher": {
+        "fehler": "getTCData fehlgeschlagen"
+      },
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": false,
+      "endUrl": "https://www.ichkoche.at/",
+      "cookies": 10,
+      "ergebnis": "kein Banner"
+    },
+    {
+      "url": "https://www.wetter.com/",
+      "gruppe": "Sonstiges",
+      "name": "wetter.com",
+      "erkannt": [],
+      "popup": [],
+      "optOut": null,
+      "selbsttest": null,
+      "fertig": null,
+      "heuristik": [
+        "/wir.{0,100}und.{0,100}unsere.{0,100}partner/gi",
+        "/zugriff.{0,100}auf.{0,100}informationen.{0,100}auf/gi",
+        "/inhalte.{0,100}messung.{0,100}von.{0,100}werbeleistung.{0,100}und/gi",
+        "/cookies.{0,100}und.{0,100}andere/gi",
+        "/verwendung.{0,100}von.{0,100}cookies/gi",
+        "/wir.{0,100}nutzen.{0,100}cookies/gi"
+      ],
+      "fehler": [],
+      "pur": {
+        "treffer": "contentpass",
+        "frame": "Hauptseite"
+      },
+      "bannertext": "Mit Werbung weiterlesen ...\nBesuche wetter.com wie gewohnt kostenlos und stimme der Verwendung von Cookies und anderen Technologien für Webanalysen und personalisierte Werbung (Tracking) zu.\nAkzeptieren und weiter\n\nDeine Einstellungen kannst du jederzeit in unseren Datenschutzhinweisen widerrufen.\n\nMehr Informationen zu Werbung und Tracking findest du in unseren Datenschutzhinweisen und in den Privatsphäre Einstellungen.\n\n... oder mit contentpass\nNutze wetter.com und viele weitere Websites ganz ohne Werbebanner, personalisiertes Tracking und Werbespots für nur 3,99€ / Monat.\nWerbefrei für 3,99€ / Monat\n\nBereits contentpass-Mitglied?\n Hier einloggen\n\nWir nutzen ausschließlich Cookies und andere Technologien, die zur Bereitstellung unseres Angebotes unbedingt erforderlich sind. Details zum Abo findest du hier und in unseren Datenschutzhinweisen (contentpass-Abo).\n\nWir und unsere bis zu 340 Partner verarbeiten personenbezogene Daten (wie z.B. IP- und Browserinformationen) für folgende Zwecke:\nSpeichern von oder Zugriff auf Informationen auf einem Endgerät\nPersonalisierte Werbung und Inhalte, Messung von Werbeleistung und der Performance von Inhalten, Zielgruppenforschung sowie Entwicklung und Verbesserung von Angeboten\nVerwendung genauer Standortdaten\nGeräte anhand von aktiv angeforderten Informationen identifizieren\n \nImpressum | Datenschutz | Nutzungsbedingungen",
+      "knoepfe": [
+        "Akzeptieren und weiter",
+        "Werbefrei für 3,99€ / Monat"
+      ],
+      "tcfVorher": null,
+      "tcfNachher": {
+        "cmpId": 329,
+        "gdprApplies": true,
+        "eventStatus": "cmpuishown",
+        "cmpStatus": "loaded",
+        "hatString": false,
+        "zwecke": [],
+        "berechtigtesInteresse": [],
+        "besondereMerkmale": [],
+        "partnerZustimmung": 0,
+        "partnerBerechtigtesInteresse": 0,
+        "publisherZwecke": []
+      },
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": true
+      },
+      "bannerNochDa": true,
+      "endUrl": "https://www.wetter.com/",
+      "cookies": 1,
+      "ergebnis": "Zustimmen oder bezahlen (offen)"
+    },
+    {
+      "url": "https://www.gutefrage.net/",
+      "gruppe": "Sonstiges",
+      "name": "gutefrage.net",
+      "erkannt": [],
+      "popup": [],
+      "optOut": null,
+      "selbsttest": null,
+      "fertig": null,
+      "heuristik": [],
+      "fehler": [],
+      "pur": null,
+      "bannertext": "",
+      "knoepfe": [],
+      "tcfVorher": null,
+      "tcfNachher": null,
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": false,
+      "endUrl": "https://www.gutefrage.net/",
+      "cookies": 1,
+      "ergebnis": "kein Banner"
+    },
+    {
+      "url": "https://www.youtube.com/",
+      "gruppe": "Sonstiges",
+      "name": "youtube.com",
+      "erkannt": [],
+      "popup": [],
+      "optOut": null,
+      "selbsttest": null,
+      "fertig": null,
+      "heuristik": [],
+      "fehler": [],
+      "pur": null,
+      "bannertext": "",
+      "knoepfe": [],
+      "tcfVorher": null,
+      "tcfNachher": null,
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": false,
+      "endUrl": "https://www.youtube.com/",
+      "cookies": 7,
+      "ergebnis": "kein Banner"
+    },
+    {
+      "url": "https://www.google.at/",
+      "gruppe": "Sonstiges",
+      "name": "google.at",
+      "erkannt": [],
+      "popup": [],
+      "optOut": null,
+      "selbsttest": null,
+      "fertig": null,
+      "heuristik": [],
+      "fehler": [],
+      "pur": null,
+      "bannertext": "",
+      "knoepfe": [],
+      "tcfVorher": null,
+      "tcfNachher": null,
+      "sperre": {
+        "unscharf": false,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": false,
+      "endUrl": "https://www.google.com/",
+      "cookies": 4,
+      "ergebnis": "kein Banner"
+    },
+    {
+      "url": "https://www.reddit.com/",
+      "gruppe": "Sonstiges",
+      "name": "reddit.com",
+      "erkannt": [],
+      "popup": [],
+      "optOut": null,
+      "selbsttest": null,
+      "fertig": null,
+      "heuristik": [],
+      "fehler": [],
+      "pur": null,
+      "bannertext": "Registrieren\nAnmelden\nNutzermenü ausklappen\n---\nBELIEBTE COMMUNITYS\nr/DestinyTheGame\n3.379.516 Mitglieder\nr/anime\n14.472.327 Mitglieder\nr/destiny2\n968.749 Mitglieder\nr/FortniteBR\n5.716.965 Mitglieder\nr/dndnext\n829.995 Mitglieder\nMehr anzeigen\nHome\nBeliebt\nNachrichten\nEntdecken\nDas Beste von Reddit\nDas Beste von Reddit auf Portugiesisch\nDas Beste von Reddit auf Deutsch\nRegeln von Reddit\nDatenschutzerklärung\nNutzungsvereinbarung\nDeine Datenschutzoptionen\nBarrierefreiheit\nReddit, Inc. © 2026. Alle Rechte vorbehalten.\n---\nWerde Teil des authentischsten Orts im Internet\n\n Sign in with Apple\nWeiter mit Telefonnummer\nMit Mail fortfahren\n\nWenn du fortfährst, stimmst du unserer Nutzungsvereinbarung zu und bestätigst, dass du die Datenschutzerklärung verstehst.",
+      "knoepfe": [
+        "Mehr anzeigen",
+        "Beste"
+      ],
+      "tcfVorher": null,
+      "tcfNachher": null,
+      "sperre": {
+        "unscharf": true,
+        "scrollGesperrt": false
+      },
+      "bannerNochDa": false,
+      "endUrl": "https://www.reddit.com/?solution=1b238f49ec5b28b81b238f49ec5b28b8&js_challenge=1&jsc_token=2824be10929bdc604753c70a67a1c3315159f2496aa6ae7311e840295183d3f2&jsc_orig_r=",
+      "cookies": 14,
+      "ergebnis": "kein Banner"
+    }
+  ]
+}

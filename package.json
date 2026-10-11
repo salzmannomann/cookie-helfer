@@ -1,0 +1,24 @@
+{
+  "name": "cookie-helfer",
+  "version": "0.0.1",
+  "description": "Chrome-Erweiterung, die Cookie-Banner nach eigenen Vorgaben erledigt",
+  "scripts": {
+    "messung": "node messung/messen.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/salzmannomann/cookie-helfer.git"
+  },
+  "author": "",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/salzmannomann/cookie-helfer/issues"
+  },
+  "homepage": "https://github.com/salzmannomann/cookie-helfer#readme",
+  "devDependencies": {
+    "@duckduckgo/autoconsent": "^16.50.0",
+    "playwright-core": "^1.56.1"
+  },
+  "private": true,
+  "type": "module"
+}

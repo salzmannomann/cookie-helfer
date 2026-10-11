@@ -18,6 +18,16 @@
     details { margin: 6px 0 0; font-size: 12.5px; }
     summary { cursor: pointer; color: var(--muted); padding: 3px 0; }
     details ul { color: var(--muted); padding-left: 16px; margin-top: 2px; }
+    .seitenwahl { padding: 8px 0; }
+    .seitenwahl > span { display: block; margin-bottom: 6px; }
+    .segmente { display: flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    .segmente label { cursor: pointer; flex: 1; text-align: center; }
+    .segmente input { position: absolute; opacity: 0; pointer-events: none; }
+    .segmente span { display: block; padding: 5px 8px; font-size: 12.5px; }
+    .segmente label + label span { border-left: 1px solid var(--line); }
+    .segmente input:checked + span { background: var(--accent); color: var(--bg); }
+    .segmente input:disabled + span { opacity: .4; }
+    .segmente input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: -2px; }
     .kitext { margin: 0 0 6px; }
     .frage { margin: 6px 0; font-weight: 600; font-size: 13.5px; }
     .knoepfe { display: flex; gap: 8px; }
@@ -31,7 +41,14 @@
 <body>
   <h1 class="brand"><img src="icons/icon.svg" alt="" width="24" height="24">Cookie-Helfer</h1>
   <label class="switch">Cookie-Helfer aktiv <input type="checkbox" id="aktiv"></label>
-  <label class="switch"><span>Auf dieser Seite<br><span class="host" id="seite">–</span></span> <input type="checkbox" id="seiteAn"></label>
+  <div class="seitenwahl">
+    <span>Auf dieser Seite <span class="host" id="seite">–</span></span>
+    <div class="segmente" role="radiogroup" aria-label="Auf dieser Seite">
+      <label><input type="radio" name="modus" value="ablehnen"><span>Ablehnen</span></label>
+      <label><input type="radio" name="modus" value="zustimmen"><span>Zustimmen</span></label>
+      <label><input type="radio" name="modus" value="aus"><span>Aus</span></label>
+    </div>
+  </div>
 
   <div id="status" class="status"><b>…</b></div>
 

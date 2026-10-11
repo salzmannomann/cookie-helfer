@@ -15,6 +15,7 @@ const dateien = {
   'dist/addon-mv3/content.bundle.js': 'content.bundle.js', // Content Script von autoconsent (unverändert)
   'dist/autoconsent.esm.js': 'autoconsent.esm.js', // für den Service Worker: evalSnippets, filterCompactRules
   'rules/compact-rules.json': 'compact-rules.json',
+  'rules/rules.json': 'rules.json', // vollständige Regeln mit Zustimmen-Schritten (für „Zustimmen“ je Seite)
   LICENSE: 'LICENSE',
 };
 for (const [von, nach] of Object.entries(dateien)) fs.copyFileSync(path.join(src, von), path.join(ziel, nach));

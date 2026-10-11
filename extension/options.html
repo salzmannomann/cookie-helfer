@@ -90,10 +90,10 @@
 
       <section>
         <h2>Was erlaubt wird</h2>
-        <p class="hint">Bei bekannten Bannern wird „Ablehnen“ bzw. „Nur Notwendige“ gewählt. Danach prüft die TCF-Kontrolle, ob die Seite das auch so gespeichert hat.</p>
+        <p class="hint">Bei bekannten Bannern wählt der Cookie-Helfer „Alle ablehnen“ bzw. „Nur Notwendige“ – eine feinere Auswahl je Zweck bieten die Banner nicht einheitlich an. Danach prüft die TCF-Kontrolle, ob die Seite das auch so gespeichert hat. Für einzelne Seiten kannst du stattdessen „Zustimmen“ wählen (Popup oder Bereich „Seiten“).</p>
         <ul class="regeln">
-          <li><span>Unbedingt notwendige Cookies<small>Anmeldung, Warenkorb, die Entscheidung selbst</small></span><span class="pill immer">immer</span></li>
-          <li><span>Funktionale Cookies<small>Sprache, Region – werden beim Ablehnen meist mitabgelehnt</small></span><span class="pill ja">erlaubt</span></li>
+          <li><span>Unbedingt notwendige Cookies<small>Anmeldung, Warenkorb, die Entscheidung selbst – lassen sich nicht ablehnen</small></span><span class="pill immer">immer</span></li>
+          <li><span>Funktionale Cookies<small>Sprache, Region, eingebettete Videos – werden beim Ablehnen meist mitabgelehnt</small></span><span class="pill immer">meist nein</span></li>
           <li><span>Statistik / Reichweitenmessung</span><span class="pill nein">nein</span></li>
           <li><span>Personalisierte Werbung, Profile, Partner</span><span class="pill nein">nein</span></li>
           <li><span>„Berechtigtes Interesse“<small>wird nach dem Klick geprüft, bei Abweichung Hinweis im Popup</small></span><span class="pill nein">aus</span></li>
@@ -133,13 +133,14 @@
     <!-- ───────────── Seiten ───────────── -->
     <div class="page" id="page-seiten">
       <h1>Seiten</h1>
-      <p class="lead">Wo der Cookie-Helfer ausgeschaltet ist.</p>
+      <p class="lead">Deine Wahl für einzelne Seiten. Alle anderen werden abgelehnt.</p>
       <section>
-        <h2>Ausgeschaltet auf</h2>
-        <p class="hint">Hilfreich, wenn eine Seite nach dem Klick nicht richtig funktioniert. Gilt auch für Unterseiten (z. B. „derstandard.at“ für „apps.derstandard.at“). Am schnellsten über das Popup der Seite.</p>
+        <h2>Eigene Wahl je Seite</h2>
+        <p class="hint"><b>Zustimmen</b> – für Seiten, die du unterstützen willst oder die mit „Ablehnen“ nicht richtig funktionieren. <b>Aus</b> – der Cookie-Helfer tut dort nichts. Gilt auch für Unterseiten (z. B. „derstandard.at“ für „apps.derstandard.at“). Am schnellsten über das Popup der Seite.</p>
         <ul class="liste" id="ausnahmen"></ul>
         <form class="row" id="neueAusnahme" style="margin-top:10px">
           <input type="text" id="ausnahmeSeite" placeholder="z. B. derstandard.at" style="flex:1;min-width:200px">
+          <select id="ausnahmeModus"><option value="zustimmen">Zustimmen</option><option value="aus">Aus</option></select>
           <button type="submit">Hinzufügen</button>
         </form>
       </section>

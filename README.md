@@ -4,7 +4,7 @@ Chrome-Erweiterung, die Cookie-Banner automatisch nach eigenen Vorgaben beantwor
 nur das Nötigste erlauben. Alles läuft lokal, nichts wird an einen Server geschickt.
 Projektbeschreibung: [docs/projektbeschreibung.md](docs/projektbeschreibung.md) · Vorgaben: [docs/vorgaben.md](docs/vorgaben.md)
 
-## Stand: Version 0.5
+## Stand: Version 0.6
 
 - **Feste Regeln** (autoconsent von DuckDuckGo, 886 Banner-Typen): Banner werden abgelehnt.
 - **„Zustimmen oder bezahlen“** (Pur-Abo, contentpass): nach Vorgabe *zustimmen* – oder in den Vorgaben auf
@@ -36,7 +36,10 @@ Projektbeschreibung: [docs/projektbeschreibung.md](docs/projektbeschreibung.md) 
   Probelauf ohne KI (nur Regeln): ÖBB „Nicht technische Cookies ablehnen“, wien.gv.at „Nur Notwendige“,
   Sozialversicherung „Nur essentielle Cookies akzeptieren“, Bank Austria „REFUSE ALL“, Kleine Zeitung (Abo-Seite)
   „Verstanden“; kein Vorschlag bei Sparkasse und durchblicker.
-- **Popup**: Status der Seite, Ablauf, frühere Besuche, Schalter „auf dieser Seite ausschalten“.
+- **Popup**: Status der Seite, Ablauf, frühere Besuche und die Wahl **je Seite: Ablehnen | Zustimmen | Aus**
+  (seit 0.6). „Zustimmen“ nutzt die Zustimmen-Schritte von autoconsent (vollständige Regeln, nur für diese Seiten
+  geladen) bzw. der eigenen Regeln. Probelauf: orf (Didomi), geizhals (OneTrust), willhaben (Didomi), zalando
+  (Usercentrics) → zugestimmt.
 - Symbol am Erweiterungsknopf: ✓ abgelehnt · Z zugestimmt (Zustimmen oder bezahlen) · € offen (deine Entscheidung) · ! rot nicht erledigt · ! orange abgelehnt, aber laut TCF nicht alles · ? unbekanntes Banner.
 
 Noch nicht: berechtigtes Interesse selbst ausschalten (nach Messung).

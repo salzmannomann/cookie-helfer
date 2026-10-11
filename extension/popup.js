@@ -1,4 +1,4 @@
-import { laden, speichern, seitenName, istAus } from './lib/prefs.js';
+import { laden, speichern, seitenName, seitenModus } from './lib/prefs.js';
 import { STATUS, zeit } from './texte.js';
 import { abweichungen, ZWECKE } from './lib/tcf.js';
 
@@ -19,8 +19,11 @@ const seite = seitenName(tab?.url || '');
 async function zeigen() {
   const prefs = await laden();
   $('aktiv').checked = prefs.aktiv;
-  $('seiteAn').checked = !!seite && !istAus({ ...prefs, aktiv: true }, tab.url);
-  $('seiteAn').disabled = !seite || !prefs.aktiv;
+  const modus = seite ? seitenModus({ ...prefs, aktiv: true }, tab.url) : 'ablehnen';
+  document.querySelectorAll('input[name=modus]').forEach((r) => {
+    r.checked = r.value === modus;
+    r.disabled = !seite || !prefs.aktiv;
+  });
 
   const key = `tab:${tab.id}`;
   const s = (await chrome.storage.session.get(key))[key];
@@ -92,13 +95,16 @@ $('aktiv').addEventListener('change', async (e) => {
   await speichern(p);
   chrome.tabs.reload(tab.id);
 });
-$('seiteAn').addEventListener('change', async (e) => {
-  const p = await laden();
-  if (e.target.checked) delete p.ausnahmen[seite];
-  else p.ausnahmen[seite] = 'aus';
-  await speichern(p);
-  chrome.tabs.reload(tab.id);
-});
+document.querySelectorAll('input[name=modus]').forEach((r) =>
+  r.addEventListener('change', async () => {
+    const p = await laden();
+    // Standard „ablehnen“ braucht keinen Eintrag; Unterseite einer Seite mit anderer Wahl bekommt einen eigenen
+    delete p.ausnahmen[seite];
+    if (seitenModus(p, tab.url) !== r.value) p.ausnahmen[seite] = r.value;
+    await speichern(p);
+    chrome.tabs.reload(tab.id);
+  }),
+);
 $('kiJa').addEventListener('click', async () => {
   $('kiJa').disabled = true;
   await chrome.runtime.sendMessage({ type: 'ch:kiKlick', tabId: tab.id, merken: $('kiMerken').checked });

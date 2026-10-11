@@ -1,5 +1,5 @@
 import { laden, speichern, seitenName, gelerntLaden, gelerntSpeichern } from './lib/prefs.js';
-import { STATUS, zeit } from './texte.js';
+import { STATUS, MODI, zeit } from './texte.js';
 import { verfuegbarkeit, sitzung, fragen } from './lib/nano.js';
 import { SYSTEM, SCHEMA, eingabe, regelEinordnung, messen } from './lib/ki.js';
 
@@ -71,11 +71,14 @@ async function zeigeVorgaben() {
   $('ausnahmen').replaceChildren(
     ...(seiten.length
       ? seiten.map((s) => {
-          const knopf = el('button', { textContent: 'wieder einschalten' });
+          const wahl = el('select', {});
+          for (const [wert, name] of Object.entries(MODI)) wahl.append(el('option', { value: wert, textContent: name, selected: p.ausnahmen[s] === wert }));
+          wahl.addEventListener('change', () => aendern((q) => (q.ausnahmen[s] = wahl.value)));
+          const knopf = el('button', { textContent: 'entfernen' });
           knopf.addEventListener('click', () => aendern((q) => delete q.ausnahmen[s]));
-          return el('li', {}, el('span', { className: 'name', textContent: s }), el('span', { className: 'txt' }), knopf);
+          return el('li', {}, el('span', { className: 'name', textContent: s }), el('span', { className: 'txt' }), wahl, knopf);
         })
-      : [el('li', { className: 'leer', textContent: 'Keine – der Cookie-Helfer ist überall eingeschaltet.' })]),
+      : [el('li', { className: 'leer', textContent: 'Keine – überall wird abgelehnt.' })]),
   );
 }
 
@@ -114,7 +117,7 @@ $('neueAusnahme').addEventListener('submit', (e) => {
   const s = seitenName($('ausnahmeSeite').value);
   if (!s) return;
   $('ausnahmeSeite').value = '';
-  aendern((p) => (p.ausnahmen[s] = 'aus'));
+  aendern((p) => (p.ausnahmen[s] = $('ausnahmeModus').value));
 });
 
 // --- Protokoll ---
@@ -141,7 +144,7 @@ async function zeigeProtokoll() {
   );
 }
 const kurz = (s) =>
-  ({ abgelehnt: 'abgelehnt', ausgeblendet: 'ausgeblendet', 'pur-zugestimmt': 'zugestimmt', 'pur-offen': 'offen', abweichung: 'nicht alles', fehlgeschlagen: 'Fehler' })[s] || s;
+  ({ abgelehnt: 'abgelehnt', ausgeblendet: 'ausgeblendet', 'pur-zugestimmt': 'zugestimmt', zugestimmt: 'zugestimmt', 'pur-offen': 'offen', abweichung: 'nicht alles', fehlgeschlagen: 'Fehler' })[s] || s;
 
 $('protokollLoeschen').addEventListener('click', async () => {
   await chrome.storage.local.remove('protokoll');

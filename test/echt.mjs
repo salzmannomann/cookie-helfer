@@ -50,9 +50,14 @@ async function messe(seite) {
   const r = { name, status: null, cmp: null, ereignisse: [], tcf: null };
   try {
     if (!sw) throw new Error('Erweiterung nicht gestartet');
+    // MODUS=zustimmen: Wahl „Zustimmen“ für die Seite ausprobieren
+    if (process.env.MODUS) {
+      await new Promise((ok) => setTimeout(ok, 500));
+      await sw.evaluate((a) => chrome.storage.sync.set({ prefs: { aktiv: true, ausnahmen: a } }), { [name]: process.env.MODUS });
+    }
     const page = await ctx.newPage();
     await page.goto(seite.url, { waitUntil: 'domcontentloaded', timeout: 30000 }).catch(() => {});
-    const ende = ['abgelehnt', 'ausgeblendet', 'pur-zugestimmt', 'pur-offen', 'fehlgeschlagen'];
+    const ende = ['abgelehnt', 'ausgeblendet', 'pur-zugestimmt', 'pur-offen', 'fehlgeschlagen', 'zugestimmt'];
     for (let i = 0; i < 50; i++) {
       await page.waitForTimeout(500);
       const s = await sw

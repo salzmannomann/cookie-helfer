@@ -34,3 +34,13 @@ test('gemerkte Knöpfe: nur gültige Seiten und Texte, höchstens 5 je Seite', a
     'wien.gv.at': ['Nur Notwendige'],
   });
 });
+
+test('Wahl je Seite: ablehnen / zustimmen / aus, genaueste Angabe gewinnt', async () => {
+  const { seitenModus } = await import('../extension/lib/prefs.js');
+  const p = bereinigen({ ausnahmen: { 'derstandard.at': 'zustimmen', 'apps.derstandard.at': 'aus', 'orf.at': 'kaufen' } });
+  assert.deepEqual(p.ausnahmen, { 'derstandard.at': 'zustimmen', 'apps.derstandard.at': 'aus' });
+  assert.equal(seitenModus(p, 'https://www.derstandard.at/'), 'zustimmen');
+  assert.equal(seitenModus(p, 'https://apps.derstandard.at/x'), 'aus');
+  assert.equal(seitenModus(p, 'https://orf.at/'), 'ablehnen');
+  assert.equal(seitenModus(bereinigen({ aktiv: false }), 'https://orf.at/'), 'aus');
+});

@@ -3,7 +3,7 @@
 // „Zustimmen oder bezahlen“ nach den Vorgaben und führt Status + Protokoll je Seite.
 
 import { evalSnippets, filterCompactRules } from './vendor/autoconsent/autoconsent.esm.js';
-import { laden, istAus, seitenName, gelerntLaden, gelerntSpeichern } from './lib/prefs.js';
+import { laden, seitenModus, seitenName, gelerntLaden, gelerntSpeichern } from './lib/prefs.js';
 import { abweichungen, tcfKurz } from './lib/tcf.js';
 import { bereinigen as kiBereinigen, regelEinordnung, vorschlag as kiVorschlag, sicherFuer } from './lib/ki.js';
 
@@ -15,6 +15,22 @@ async function regeln() {
   if (!regelnCache) regelnCache = await (await fetch(chrome.runtime.getURL('vendor/autoconsent/compact-rules.json'))).json();
   return regelnCache;
 }
+// Vollständige Regeln (mit Zustimmen-Schritten) – nur für Seiten, die auf „Zustimmen“ stehen
+let volleCache = null;
+async function volleRegeln(url, hauptframe) {
+  if (!volleCache) volleCache = (await (await fetch(chrome.runtime.getURL('vendor/autoconsent/rules.json'))).json()).autoconsent;
+  return volleCache.filter((r) => {
+    const rc = { main: true, frame: false, ...(r.runContext || {}) };
+    if (hauptframe ? rc.main === false : !rc.frame) return false;
+    if (!rc.urlPattern) return true;
+    try {
+      return new RegExp(rc.urlPattern).test(url);
+    } catch {
+      return false;
+    }
+  });
+}
+
 // Eigene Regeln (autoconsent-Format) für Anbieter, die autoconsent nicht kennt, z. B. Piwik PRO
 async function eigeneRegeln() {
   if (!eigeneCache) eigeneCache = await (await fetch(chrome.runtime.getURL('regeln/eigene.json'))).json();
@@ -22,9 +38,10 @@ async function eigeneRegeln() {
 }
 
 function acConfig(prefs, url) {
+  const modus = seitenModus(prefs, url);
   return {
-    enabled: !istAus(prefs, url),
-    autoAction: 'optOut',
+    enabled: modus !== 'aus',
+    autoAction: modus === 'zustimmen' ? 'optIn' : 'optOut',
     // Bei „nichts tun“ das Sourcepoint-Banner nicht ausblenden, damit man selbst wählen kann
     disabledCmps: prefs.pur === 'nichts' ? ['sourcepoint-top'] : [],
     enablePrehide: true,
@@ -53,7 +70,7 @@ async function tabStatus(tabId) {
 }
 
 // Rangfolge: ein späteres, „schwächeres“ Ereignis überschreibt kein stärkeres
-const RANG = { suche: 0, nichts: 1, unbekannt: 2, gefunden: 3, ausgeblendet: 4, abgelehnt: 5, fehlgeschlagen: 5, abweichung: 5.5, 'pur-offen': 6, 'pur-zugestimmt': 7, aus: 8 };
+const RANG = { suche: 0, nichts: 1, unbekannt: 2, gefunden: 3, ausgeblendet: 4, abgelehnt: 5, fehlgeschlagen: 5, abweichung: 5.5, zugestimmt: 5.6, 'pur-offen': 6, 'pur-zugestimmt': 7, aus: 8 };
 
 const BADGE = {
   abgelehnt: ['✓', '#2e7d32'],
@@ -62,6 +79,7 @@ const BADGE = {
   'pur-offen': ['€', '#b26a00'],
   fehlgeschlagen: ['!', '#c62828'],
   abweichung: ['!', '#b26a00'],
+  zugestimmt: ['Z', '#616161'],
   unbekannt: ['?', '#616161'],
   aus: ['aus', '#616161'],
 };
@@ -152,7 +170,8 @@ async function autoconsentNachricht(msg, sender) {
     case 'init': {
       const prefs = await laden();
       if (hauptframe) {
-        const aus = istAus(prefs, seitenUrl);
+        const modus = seitenModus(prefs, seitenUrl);
+        const aus = modus === 'aus';
         const seite = seitenName(seitenUrl);
         const neu = await nacheinander(async () => {
           const alt = await tabStatus(tabId);
@@ -168,7 +187,8 @@ async function autoconsentNachricht(msg, sender) {
             status: aus ? 'aus' : 'suche',
             cmp: null,
             start: Date.now(),
-            ereignisse: [{ t: Date.now(), text: aus ? 'auf dieser Seite ausgeschaltet' : 'Seite geladen' }],
+            modus,
+            ereignisse: [{ t: Date.now(), text: aus ? 'auf dieser Seite ausgeschaltet' : modus === 'zustimmen' ? 'Seite geladen – deine Wahl hier: zustimmen' : 'Seite geladen' }],
           };
           await chrome.storage.session.set({ [tabKey(tabId)]: s });
           return s;
@@ -177,7 +197,10 @@ async function autoconsentNachricht(msg, sender) {
         // Banner, die autoconsent gar nicht bemerkt (kein Muster, keine Regel): später selbst nachsehen
         if (neu.status === 'suche') setTimeout(() => unbekanntesBanner(tabId, neu.start), 7000);
       }
-      const rules = { autoconsent: await eigeneRegeln(), compact: filterCompactRules(await regeln(), { url: frameUrl, mainFrame: hauptframe }) };
+      const rules =
+        seitenModus(prefs, seitenUrl) === 'zustimmen'
+          ? { autoconsent: [...(await eigeneRegeln()), ...(await volleRegeln(frameUrl, hauptframe))] }
+          : { autoconsent: await eigeneRegeln(), compact: filterCompactRules(await regeln(), { url: frameUrl, mainFrame: hauptframe }) };
       await senden(tabId, frameId, { type: 'initResp', rules, config: acConfig(prefs, seitenUrl) });
       break;
     }
@@ -203,7 +226,16 @@ async function autoconsentNachricht(msg, sender) {
         });
       }
       break;
+    case 'optInResult':
+      if (!msg.result) await aendern(tabId, (s) => setzeStatus(s, 'fehlgeschlagen', `Zustimmen fehlgeschlagen (${msg.cmp})`, { cmp: msg.cmp }));
+      break;
     case 'autoconsentDone': {
+      const t0 = await tabStatus(tabId);
+      if (t0?.modus === 'zustimmen') {
+        await aendern(tabId, (s) => setzeStatus(s, 'zugestimmt', `zugestimmt (${msg.cmp}) – deine Wahl für diese Seite`, { cmp: msg.cmp }));
+        protokollieren(t0.seite, { t: Date.now(), status: 'zugestimmt', cmp: msg.cmp });
+        break;
+      }
       // sourcepoint-top blendet nur das äußere Banner aus; abgelehnt (oder zugestimmt) wird im Iframe
       const nurAusgeblendet = msg.isCosmetic || msg.cmp === 'sourcepoint-top';
       const status = nurAusgeblendet ? 'ausgeblendet' : 'abgelehnt';
@@ -322,6 +354,7 @@ const OFFEN = ['suche', 'nichts', 'unbekannt'];
 async function unbekanntesBanner(tabId, start) {
   const s0 = await tabStatus(tabId);
   if (!s0 || !OFFEN.includes(s0.status) || s0.ki || s0.kiLaeuft || (start && s0.start !== start)) return;
+  if (s0.modus === 'zustimmen') return; // hier willst du zustimmen – keinen Ablehnen-Vorschlag machen
   await aendern(tabId, (s) => ((s.kiLaeuft = true), s));
   const banner = await chrome.tabs.sendMessage(tabId, { type: 'ch:bannerLesen' }, { frameId: 0 }).catch(() => null);
   if (!banner?.knoepfe?.length) {
@@ -437,7 +470,8 @@ async function eigeneNachricht(msg, sender) {
     }
     case 'ch:pur': {
       const prefs = await laden();
-      const aktion = istAus(prefs, seitenUrl) ? 'aus' : prefs.pur;
+      const modus = seitenModus(prefs, seitenUrl);
+      const aktion = modus === 'aus' ? 'aus' : modus === 'zustimmen' ? 'zustimmen' : prefs.pur;
       if (aktion === 'zustimmen') await aendern(tabId, (s) => ((s.purLaeuft = true), s));
       if (aktion === 'nichts') {
         await aendern(tabId, (s) => setzeStatus(s, 'pur-offen', `Zustimmen oder bezahlen (${msg.cmp}) – laut Vorgabe nichts getan`, { cmp: msg.cmp }));

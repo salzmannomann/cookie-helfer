@@ -274,6 +274,18 @@ test('Ausnahme „auf dieser Seite aus“: gar nichts geklickt', async () => {
   }
 });
 
+test('Wahl „Zustimmen“ für eine Seite: OneTrust und Piwik PRO → zugestimmt', async () => {
+  await setzePrefs({ ...STANDARD, ausnahmen: { localhost: 'zustimmen' } });
+  const r = await oeffnen('onetrust.html', ['zugestimmt'], 20000);
+  assert.deepEqual(r.geklickt, ['ot-ja']);
+  assert.equal(r.status, 'zugestimmt');
+  const p = await oeffnen('piwik.html', ['zugestimmt'], 20000);
+  assert.deepEqual(p.geklickt, ['pp-ja']);
+  const u = await oeffnen('unbekannt.html', ['nie'], 12000);
+  assert.deepEqual(u.geklickt, [], 'unbekanntes Banner: kein Ablehnen-Vorschlag, nichts geklickt');
+  await setzePrefs(STANDARD);
+});
+
 test('Protokoll je Seite wird geführt', async () => {
   const { protokoll } = await sw.evaluate(() => chrome.storage.local.get('protokoll'));
   assert.ok(protokoll.localhost?.length >= 3, 'mindestens drei Einträge für localhost');

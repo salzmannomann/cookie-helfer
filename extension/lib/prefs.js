@@ -7,12 +7,12 @@ export const STANDARD = Object.freeze({
   pur: 'zustimmen',
   // Unbekannte Banner: 'vorschlag' (ich bestätige), 'selbst' (erst nach fehlerfreier KI-Messung) oder 'aus'
   ki: 'vorschlag',
-  // Ausnahmen je Seite: { 'derstandard.at': 'aus' }
+  // Wahl je Seite (sonst ablehnen): { 'derstandard.at': 'aus', 'falter.at': 'zustimmen' }
   ausnahmen: {},
 });
 
 const PUR_WERTE = ['zustimmen', 'nichts'];
-const AUSNAHME_WERTE = ['aus'];
+const AUSNAHME_WERTE = ['aus', 'zustimmen', 'ablehnen']; // 'ablehnen' nur, um eine andere Wahl der übergeordneten Seite aufzuheben
 const KI_WERTE = ['vorschlag', 'selbst', 'aus'];
 
 export function bereinigen(roh) {
@@ -43,12 +43,21 @@ export function seitenName(urlOderHost) {
   return /^[a-z0-9.-]+$/.test(host) ? host : '';
 }
 
-export function istAus(prefs, url) {
-  if (!prefs.aktiv) return true;
+// 'ablehnen' (Standard) | 'zustimmen' | 'aus' – gilt auch für Unterdomains
+// („derstandard.at“ für „apps.derstandard.at“), die genaueste Angabe gewinnt
+export function seitenModus(prefs, url) {
+  if (!prefs.aktiv) return 'aus';
   const name = seitenName(url);
-  if (!name) return false;
-  // auch Unterdomains: Ausnahme „derstandard.at“ gilt für „apps.derstandard.at“
-  return Object.entries(prefs.ausnahmen).some(([d, w]) => w === 'aus' && (name === d || name.endsWith('.' + d)));
+  if (!name) return 'ablehnen';
+  let treffer = null;
+  for (const [d, w] of Object.entries(prefs.ausnahmen)) {
+    if ((name === d || name.endsWith('.' + d)) && (!treffer || d.length > treffer.d.length)) treffer = { d, w };
+  }
+  return treffer ? treffer.w : 'ablehnen';
+}
+
+export function istAus(prefs, url) {
+  return seitenModus(prefs, url) === 'aus';
 }
 
 // Vorgaben und gemerkte Knöpfe liegen in chrome.storage.sync und werden so über das Google-Konto

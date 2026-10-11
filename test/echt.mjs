@@ -45,10 +45,11 @@ async function messe(seite) {
     viewport: { width: 1280, height: 900 },
     args: [`--disable-extensions-except=${extension}`, `--load-extension=${extension}`, '--disable-blink-features=AutomationControlled'],
   });
-  const sw = ctx.serviceWorkers()[0] || (await ctx.waitForEvent('serviceworker'));
+  const sw = ctx.serviceWorkers()[0] || (await ctx.waitForEvent('serviceworker').catch(() => null));
   const name = new URL(seite.url).hostname.replace(/^www\./, '');
   const r = { name, status: null, cmp: null, ereignisse: [], tcf: null };
   try {
+    if (!sw) throw new Error('Erweiterung nicht gestartet');
     const page = await ctx.newPage();
     await page.goto(seite.url, { waitUntil: 'domcontentloaded', timeout: 30000 }).catch(() => {});
     const ende = ['abgelehnt', 'ausgeblendet', 'pur-zugestimmt', 'pur-offen', 'fehlgeschlagen'];

@@ -104,6 +104,13 @@ test('Sourcepoint: Ablehnen-Knopf erscheint verzögert → nicht als „nur Zust
   assert.notEqual(r.status, 'pur-zugestimmt');
 });
 
+test('Sourcepoint, Ablehnen nur mit Abo (wie faz.net): ausgeblendet, nichts zugestimmt, kein Fehler', async () => {
+  await setzePrefs(STANDARD);
+  const r = await oeffnen('sp-faz.html', ['nie'], 30000);
+  assert.ok(!r.geklickt.includes('sp_choice_type_11'), `geklickt: ${r.geklickt}`);
+  assert.equal(r.status, 'ausgeblendet', JSON.stringify(r.s.ereignisse.map((e) => e.text)));
+});
+
 test('Zustimmen-Knopf mit Abo-Text wird nicht geklickt', async () => {
   await setzePrefs(STANDARD);
   const r = await oeffnen('sp-trick.html', ['fehlgeschlagen']);

@@ -192,7 +192,15 @@ async function autoconsentNachricht(msg, sender) {
     case 'optOutResult':
       if (msg.scheduleSelfTest) await chrome.storage.session.set({ [`selbsttest:${tabId}`]: frameId });
       if (!msg.result) {
-        await aendern(tabId, (s) => setzeStatus(s, 'fehlgeschlagen', `Ablehnen fehlgeschlagen (${msg.cmp})`, { cmp: msg.cmp }));
+        await aendern(tabId, (s) => {
+          s.ablehnenFehl = true;
+          // Banner schon ausgeblendet (z. B. faz.net: Ablehnen nur mit Pur-Abo) → Seite lesbar, nichts zugestimmt
+          if (s.ausgeblendet) {
+            s.ereignisse.push({ t: Date.now(), text: `Ablehnen nicht möglich (${msg.cmp}) – Banner bleibt ausgeblendet, nichts zugestimmt` });
+            return s;
+          }
+          return setzeStatus(s, 'fehlgeschlagen', `Ablehnen fehlgeschlagen (${msg.cmp})`, { cmp: msg.cmp });
+        });
       }
       break;
     case 'autoconsentDone': {
@@ -200,7 +208,14 @@ async function autoconsentNachricht(msg, sender) {
       const nurAusgeblendet = msg.isCosmetic || msg.cmp === 'sourcepoint-top';
       const status = nurAusgeblendet ? 'ausgeblendet' : 'abgelehnt';
       const text = nurAusgeblendet ? `Banner ausgeblendet (${msg.cmp})` : `abgelehnt (${msg.cmp}, ${msg.totalClicks} Klick${msg.totalClicks === 1 ? '' : 's'})`;
-      await aendern(tabId, (s) => bewerten(setzeStatus(s, status, text, { cmp: msg.cmp })));
+      await aendern(tabId, (s) => {
+        if (nurAusgeblendet) {
+          s.ausgeblendet = true;
+          // Ablehnen ist vorher schon gescheitert: ausgeblendet statt Fehler
+          if (s.status === 'fehlgeschlagen' && s.ablehnenFehl) s.status = 'ausgeblendet';
+        }
+        return bewerten(setzeStatus(s, status, text, { cmp: msg.cmp }));
+      });
       const s = await tabStatus(tabId);
       if (s) protokollieren(s.seite, { t: Date.now(), status: s.status, cmp: msg.cmp, tcf: s.tcf ? tcfKurz(s.tcf) : undefined });
       const key = `selbsttest:${tabId}`;

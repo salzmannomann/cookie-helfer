@@ -4,7 +4,7 @@ export const STATUS = {
   nichts: ['Kein bekanntes Banner', ''],
   gefunden: ['Banner gefunden', ''],
   abgelehnt: ['Abgelehnt', 'ok'],
-  ausgeblendet: ['Banner ausgeblendet', 'ok'],
+  ausgeblendet: ['Banner ausgeblendet – nichts zugestimmt', 'ok'],
   'pur-zugestimmt': ['Zugestimmt (Zustimmen oder bezahlen)', 'pur'],
   'pur-offen': ['Zustimmen oder bezahlen – deine Entscheidung', 'pur'],
   fehlgeschlagen: ['Nicht erledigt', 'fehler'],

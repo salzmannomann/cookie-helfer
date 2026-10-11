@@ -1,6 +1,6 @@
 {
   "name": "cookie-helfer",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "Chrome-Erweiterung, die Cookie-Banner nach eigenen Vorgaben erledigt",
   "scripts": {
     "test": "node --test test/prefs.test.mjs test/ki.test.mjs && node test/e2e.mjs",

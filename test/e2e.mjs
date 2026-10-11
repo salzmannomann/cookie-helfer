@@ -216,6 +216,8 @@ test('KI-Messung in den Vorgaben: ohne Gemini Nano mit Regeln, kein Fehlgriff â†
   await sw.evaluate(() => chrome.storage.local.remove('kiMessergebnis'));
   const opt = await ctx.newPage();
   await opt.goto(`chrome-extension://${new URL(sw.url()).host}/options.html#messung`);
+  // warten, bis die Vorgaben angezeigt sind (Hinweistext wird dabei gesetzt)
+  await opt.waitForFunction(() => document.getElementById('kiSelbstHinweis').textContent.startsWith('Erst mÃ¶glich'));
   assert.equal(await opt.isDisabled('#kiSelbst'), true, 'vor der Messung gesperrt');
   await opt.click('#messungStart');
   await opt.waitForFunction(() => document.getElementById('messungStatus').textContent === 'fertig', null, { timeout: 20000 });

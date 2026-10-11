@@ -1,6 +1,7 @@
 import { laden, speichern, seitenName } from './lib/prefs.js';
 import { STATUS, zeit } from './texte.js';
-import { verfuegbarkeit, sitzung } from './lib/nano.js';
+import { verfuegbarkeit, sitzung, json } from './lib/nano.js';
+import { SYSTEM, SCHEMA, eingabe, regelEinordnung, messen } from './lib/ki.js';
 
 const $ = (id) => document.getElementById(id);
 const el = (tag, eigenschaften = {}, ...kinder) => {
@@ -39,6 +40,16 @@ async function zeigeVorgaben() {
   $('aktiv').checked = p.aktiv;
   document.querySelectorAll('input[name=pur]').forEach((r) => (r.checked = r.value === p.pur));
   document.querySelectorAll('input[name=ki]').forEach((r) => (r.checked = r.value === p.ki));
+  // „Selbst klicken“ erst nach fehlerfreier Messung
+  const { kiMessergebnis: m } = await chrome.storage.local.get('kiMessergebnis');
+  const bestanden = !!m && m.fehlgriffe === 0 && m.fehler === 0;
+  $('kiSelbst').disabled = !bestanden && p.ki !== 'selbst';
+  $('kiSelbstKarte').style.opacity = $('kiSelbst').disabled ? 0.55 : 1;
+  $('kiSelbstHinweis').textContent = bestanden
+    ? `Messung vom ${zeit(m.t)}: ${m.treffer}/${m.faelle} richtig, kein Fehlgriff (${m.quelle === 'ki' ? 'Gemini Nano' : 'feste Regeln'}). Geklickt wird nur, was auch ein Vorschlag wäre.`
+    : m
+      ? `Letzte Messung hatte ${m.fehlgriffe} Fehlgriff(e)${m.fehler ? ` und ${m.fehler} Fehler` : ''} – selbst klicken ist gesperrt.`
+      : 'Erst möglich, wenn die KI-Messung ohne Fehlgriff durchgelaufen ist (Bereich „KI-Messung“).';
   const { gelernt = {} } = await chrome.storage.local.get('gelernt');
   const eintraege = Object.entries(gelernt).flatMap(([seite, texte]) => texte.map((text) => ({ seite, text })));
   $('gelernt').replaceChildren(
@@ -139,9 +150,101 @@ $('protokollLoeschen').addEventListener('click', async () => {
 
 $('version').textContent = chrome.runtime.getManifest().version;
 
+// --- KI-Messung ---
+const faelle = await (await fetch('ki-faelle.json')).json();
+$('faelleAnzahl').textContent = String(faelle.length);
+let letzteMessung = null;
+
+function zeigeMessung(m) {
+  if (!m) return;
+  letzteMessung = m;
+  $('messungErgebnis').hidden = false;
+  const zeile = (titel, wert, klasse, info = '') =>
+    el('li', {}, el('span', {}, titel, el('small', { textContent: info })), el('span', { className: `pill ${klasse}`, textContent: wert }));
+  $('messungZahlen').replaceChildren(
+    zeile('Richtig', `${m.treffer} / ${m.faelle}`, 'ja', 'richtiger Knopf vorgeschlagen bzw. richtig kein Vorschlag'),
+    zeile('Fehlgriffe', String(m.fehlgriffe), m.fehlgriffe ? 'nein' : 'ja', 'falscher Knopf vorgeschlagen – muss 0 sein'),
+    zeile('Verpasst', String(m.verpasst), 'immer', 'richtiger Knopf da, aber kein Vorschlag (harmlos)'),
+    zeile('Modellirrtümer, von den Regeln abgefangen', String(m.modellirrtuemer), 'immer', 'Modell hielt einen Zustimmen-/Abo-Knopf für „Ablehnen“'),
+    zeile('Quelle', m.quelle === 'ki' ? 'Gemini Nano' : 'feste Regeln', 'immer', `${m.msSchnitt} ms je Banner${m.fehler ? ` · ${m.fehler} Fehler` : ''}`),
+  );
+  $('messungFaelle').replaceChildren(
+    ...m.ergebnisse.map((r) =>
+      el(
+        'li',
+        {},
+        el('span', { className: `lbl ${r.ergebnis === 'treffer' ? 'ok' : r.ergebnis === 'fehlgriff' ? 'fehler' : 'pur'}`, textContent: r.ergebnis }),
+        el('span', { className: 'name', textContent: r.seite }),
+        el('span', {
+          className: 'txt',
+          textContent: `${r.vorgeschlagen ? `„${r.vorgeschlagen}“` : 'kein Vorschlag'}${r.ergebnis === 'treffer' ? '' : ` (richtig: ${r.erwartet ? `„${r.erwartet}“` : 'keiner'})`}${r.irrtuemer.length ? ` · Modell irrte bei: ${r.irrtuemer.join(', ')}` : ''}${r.fehler ? ` · Fehler: ${r.fehler}` : ''}`,
+        }),
+      ),
+    ),
+  );
+}
+
+$('messungStart').addEventListener('click', async () => {
+  $('messungStart').disabled = true;
+  const verfuegbar = await verfuegbarkeit();
+  const mitKi = verfuegbar === 'available';
+  $('messungStatus').textContent = mitKi ? 'Gemini Nano ordnet ein …' : 'Gemini Nano nicht bereit – Messung nur mit festen Regeln …';
+  let s = null;
+  try {
+    if (mitKi) s = await sitzung(SYSTEM);
+    const einordnen = mitKi
+      ? async (b) => {
+          const k = await s.clone(); // jedes Banner für sich, ohne Verlauf
+          try {
+            return json(await k.prompt(eingabe(b), { responseConstraint: SCHEMA }));
+          } finally {
+            k.destroy();
+          }
+        }
+      : async (b) => regelEinordnung(b);
+    const r = await messen(faelle, einordnen, (i, n) => ($('messungStatus').textContent = `${i} / ${n} …`));
+    const m = { t: Date.now(), quelle: mitKi ? 'ki' : 'regeln', version: chrome.runtime.getManifest().version, ...r };
+    await chrome.storage.local.set({ kiMessergebnis: m });
+    // fällt die Messung durch, wird „selbst klicken“ zurückgenommen
+    if (m.fehlgriffe || m.fehler) await aendern((p) => p.ki === 'selbst' && (p.ki = 'vorschlag'));
+    $('messungStatus').textContent = 'fertig';
+    zeigeMessung(m);
+  } catch (e) {
+    $('messungStatus').textContent = `Fehler: ${e.message}`;
+  } finally {
+    s?.destroy();
+    $('messungStart').disabled = false;
+  }
+});
+
+$('messungKopieren').addEventListener('click', async () => {
+  if (!letzteMessung) return;
+  const { ergebnisse, ...kurz } = letzteMessung;
+  const text = JSON.stringify({ ...kurz, abweichungen: ergebnisse.filter((r) => r.ergebnis !== 'treffer' || r.irrtuemer.length || r.fehler) }, null, 1);
+  await navigator.clipboard.writeText(text);
+  $('messungStatus').textContent = 'kopiert';
+});
+
+async function zeigeAlltag() {
+  const { kiMessungen = [] } = await chrome.storage.local.get('kiMessungen');
+  const vorschlaege = kiMessungen.filter((e) => 'vorschlag' in e && !e.entscheidung && e.vorschlag).length;
+  const zahl = (x) => kiMessungen.filter((e) => e.entscheidung === x).length;
+  const zeile = (titel, wert) => el('li', {}, el('span', { textContent: titel }), el('span', { className: 'pill immer', textContent: String(wert) }));
+  $('alltag').replaceChildren(
+    zeile('Unbekannte Banner eingeordnet', kiMessungen.filter((e) => e.knoepfe).length),
+    zeile('davon mit Vorschlag', vorschlaege),
+    zeile('Vorschlag bestätigt', zahl('geklickt')),
+    zeile('Vorschlag abgelehnt („Nein“)', zahl('nein')),
+    zeile('selbst geklickt', zahl('selbst')),
+  );
+}
+zeigeAlltag();
+zeigeMessung((await chrome.storage.local.get('kiMessergebnis')).kiMessergebnis);
+
 async function zeigen() {
   await zeigeVorgaben();
   await zeigeProtokoll();
+  await zeigeAlltag();
 }
 chrome.storage.onChanged.addListener(zeigen);
 zeigen();

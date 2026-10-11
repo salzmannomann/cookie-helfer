@@ -56,3 +56,31 @@ test('„Verstanden“ bei echter Einwilligung → kein Vorschlag', () => {
   const c = banner(['Einstellungen', 'Verstanden'], 'Diese Website verwendet ausschließlich technisch notwendige Cookies.');
   assert.equal(vorschlag(regelEinordnung(c), c), null, 'zwei Knöpfe mit Wirkung');
 });
+
+test('Messfälle (echte Banner): feste Regeln treffen jeden Fall, kein Fehlgriff', async () => {
+  const fs = await import('node:fs');
+  const faelle = JSON.parse(fs.readFileSync(new URL('../extension/ki-faelle.json', import.meta.url)));
+  for (const f of faelle) {
+    const v = vorschlag(regelEinordnung(f), f);
+    assert.equal(v ? v.text : null, f.erwartet, f.seite);
+  }
+});
+
+test('messen(): Regeln allein → alle Treffer; Modell, das „Alle akzeptieren“ für Ablehnen hält → abgefangen', async () => {
+  const fs = await import('node:fs');
+  const { messen } = await import('../extension/lib/ki.js');
+  const faelle = JSON.parse(fs.readFileSync(new URL('../extension/ki-faelle.json', import.meta.url)));
+  const r = await messen(faelle, async (b) => regelEinordnung(b));
+  assert.equal(r.fehlgriffe, 0);
+  assert.equal(r.treffer, faelle.length);
+  // böswilliges Modell: jeder Knopf sei „ablehnen“
+  const boese = await messen(faelle, async (b) => ({ ...regelEinordnung(b), knoepfe: b.knoepfe.map((k) => ({ nr: k.nr, art: 'ablehnen' })) }));
+  assert.equal(boese.fehlgriffe, 0, 'Regeln verhindern Fehlgriffe');
+  assert.ok(boese.modellirrtuemer > 20);
+});
+
+test('Info-Link „Notwendige Cookies“ ist kein Ablehnen', () => {
+  assert.equal(textSicher('Notwendige Cookies'), false);
+  assert.equal(textSicher('Nur technisch notwendige Cookies'), true);
+  assert.equal(textSicher('Notwendige Cookies akzeptieren'), true);
+});

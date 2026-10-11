@@ -5,7 +5,7 @@ export const STANDARD = Object.freeze({
   aktiv: true,
   // „Zustimmen oder bezahlen“: 'zustimmen' (nie bezahlen) oder 'nichts' (selbst entscheiden)
   pur: 'zustimmen',
-  // Unbekannte Banner: 'vorschlag' (lokale KI schlägt einen Knopf vor, ich bestätige) oder 'aus'
+  // Unbekannte Banner: 'vorschlag' (ich bestätige), 'selbst' (erst nach fehlerfreier KI-Messung) oder 'aus'
   ki: 'vorschlag',
   // Ausnahmen je Seite: { 'derstandard.at': 'aus' }
   ausnahmen: {},
@@ -13,7 +13,7 @@ export const STANDARD = Object.freeze({
 
 const PUR_WERTE = ['zustimmen', 'nichts'];
 const AUSNAHME_WERTE = ['aus'];
-const KI_WERTE = ['vorschlag', 'aus'];
+const KI_WERTE = ['vorschlag', 'selbst', 'aus'];
 
 export function bereinigen(roh) {
   const p = { ...STANDARD, ausnahmen: {} };

@@ -4,7 +4,7 @@ Chrome-Erweiterung, die Cookie-Banner automatisch nach eigenen Vorgaben beantwor
 nur das Nötigste erlauben. Alles läuft lokal, nichts wird an einen Server geschickt.
 Projektbeschreibung: [docs/projektbeschreibung.md](docs/projektbeschreibung.md) · Vorgaben: [docs/vorgaben.md](docs/vorgaben.md)
 
-## Stand: Version 0.3
+## Stand: Version 0.4
 
 - **Feste Regeln** (autoconsent von DuckDuckGo, 886 Banner-Typen): Banner werden abgelehnt.
 - **„Zustimmen oder bezahlen“** (Pur-Abo, contentpass): nach Vorgabe *zustimmen* – oder in den Vorgaben auf
@@ -12,6 +12,13 @@ Projektbeschreibung: [docs/projektbeschreibung.md](docs/projektbeschreibung.md) 
   consentmanager (chefkoch, vienna.at), Didomi mit „Pur kaufen“ (kleinezeitung.at) und contentpass (wetter.com). Geklickt wird nur der vom Anbieter
   gekennzeichnete Zustimmen-Knopf, und nur wenn sein Text nach Zustimmen klingt und nichts von Abo/Bezahlen enthält.
 - **Eigene Regeln** (`extension/regeln/eigene.json`) für Anbieter, die autoconsent nicht kennt: Piwik PRO.
+- **KI-Messung und „selbst klicken“** (neu in 0.4): `extension/ki-faelle.json` enthält 30 echte Banner
+  (gesammelt mit `test/faelle-sammeln.mjs`) und 6 knifflige, je mit dem richtigen Knopf. In den Vorgaben unter
+  „KI-Messung“ läuft Gemini Nano lokal über alle Fälle (Treffer, Fehlgriffe, vom Regelwerk abgefangene Modellirrtümer).
+  Erst wenn eine Messung **ohne Fehlgriff** durchläuft, lässt sich „Selbst klicken“ wählen; scheitert eine spätere
+  Messung, wird es zurückgenommen. Geklickt wird auch dann nur, was ein Vorschlag wäre.
+  Gemessen hier ohne Nano (nur Regeln): 36/36 richtig, 0 Fehlgriffe. Mit einem absichtlich falschen „Modell“, das jeden
+  Knopf für „Ablehnen“ hält: 0 Fehlgriffe – dabei fiel der Info-Link „Notwendige Cookies“ (IKEA) auf, Regel verschärft.
 - **TCF-Kontrolle** (neu in 0.2): Nach dem Ablehnen liest `tcf-probe.js` über `__tcfapi` aus, was die Seite
   tatsächlich gespeichert hat. Ist mehr erlaubt als das Notwendige (z. B. „berechtigtes Interesse“ oder Partner),
   zeigt das Popup „Abgelehnt – aber nicht alles“ mit den Zwecken (Symbol „!“ orange). Gemessen: sn.at, tt.com und
@@ -28,7 +35,7 @@ Projektbeschreibung: [docs/projektbeschreibung.md](docs/projektbeschreibung.md) 
 - **Popup**: Status der Seite, Ablauf, frühere Besuche, Schalter „auf dieser Seite ausschalten“.
 - Symbol am Erweiterungsknopf: ✓ abgelehnt · Z zugestimmt (Zustimmen oder bezahlen) · € offen (deine Entscheidung) · ! rot nicht erledigt · ! orange abgelehnt, aber laut TCF nicht alles · ? unbekanntes Banner.
 
-Noch nicht: berechtigtes Interesse selbst ausschalten (nach Messung), KI klickt selbst (0.4, erst nach Messung).
+Noch nicht: berechtigtes Interesse selbst ausschalten (nach Messung).
 
 ## Installation (einmalig)
 

@@ -75,7 +75,9 @@ export function textSicher(text) {
   const t = String(text || '').trim();
   if (!t || t.length > 60 || VERBOTEN.test(t)) return false;
   if (ABLEHNEN.test(t)) return !(ZUSTIMMEN.test(t) && !/ablehn|refuse|reject|decline/i.test(t));
-  if (NUR_NOETIG.test(t)) return !(ALLE.test(t) && !/ablehn|reject/i.test(t));
+  // „Notwendige Cookies“ allein kann ein Info-Link sein: „nur“ oder ein Handlungswort muss dabei sein
+  if (NUR_NOETIG.test(t) && /^nur\b|\bonly\b|zulassen|erlauben|akzept|annehm|speichern|verwenden|fortfahren|weiter mit|allow|accept|use|continue/i.test(t))
+    return !(ALLE.test(t) && !/ablehn|reject/i.test(t));
   return false;
 }
 
@@ -146,4 +148,50 @@ export function vorschlag(einordnung, banner) {
   }
   passend.sort((a, b) => (art.get(a.nr) === 'ablehnen' ? 0 : 1) - (art.get(b.nr) === 'ablehnen' ? 0 : 1));
   return { nr: passend[0].nr, text: passend[0].text };
+}
+
+// --- Messung (Vorgaben → KI-Messung): Einordnung für alle Messfälle, Vergleich mit dem richtigen Knopf ---
+// einordnen(banner) liefert die (unbereinigte) Einordnung – Gemini Nano oder regelEinordnung.
+// Fehlgriff = ein falscher Knopf wäre vorgeschlagen worden (darf nie vorkommen).
+// Modellirrtum = das Modell hält einen Zustimmen-/Abo-Knopf für „ablehnen“ (die Regeln fangen das ab).
+export async function messen(faelle, einordnen, fortschritt = () => {}) {
+  const ergebnisse = [];
+  for (const [i, f] of faelle.entries()) {
+    const start = Date.now();
+    let e;
+    let fehler = null;
+    try {
+      e = bereinigen(await einordnen(f), f);
+    } catch (err) {
+      fehler = String(err?.message || err);
+      e = bereinigen({}, f);
+    }
+    const v = vorschlag(e, f);
+    const art = new Map(e.knoepfe.map((k) => [k.nr, k.art]));
+    const irrtuemer = f.knoepfe
+      .filter((k) => ['ablehnen', 'nur_notwendige'].includes(art.get(k.nr)) && k.text !== f.erwartet && !textSicher(k.text))
+      .map((k) => k.text);
+    const vorgeschlagen = v ? v.text : null;
+    ergebnisse.push({
+      seite: f.seite,
+      erwartet: f.erwartet,
+      vorgeschlagen,
+      ergebnis: vorgeschlagen === f.erwartet ? 'treffer' : vorgeschlagen ? 'fehlgriff' : 'verpasst',
+      irrtuemer,
+      fehler,
+      ms: Date.now() - start,
+    });
+    fortschritt(i + 1, faelle.length);
+  }
+  const zaehle = (x) => ergebnisse.filter((r) => r.ergebnis === x).length;
+  return {
+    faelle: ergebnisse.length,
+    treffer: zaehle('treffer'),
+    verpasst: zaehle('verpasst'),
+    fehlgriffe: zaehle('fehlgriff'),
+    modellirrtuemer: ergebnisse.reduce((n, r) => n + r.irrtuemer.length, 0),
+    fehler: ergebnisse.filter((r) => r.fehler).length,
+    msSchnitt: Math.round(ergebnisse.reduce((n, r) => n + r.ms, 0) / Math.max(1, ergebnisse.length)),
+    ergebnisse,
+  };
 }

@@ -211,6 +211,31 @@ test('Unbekanntes Banner ohne sicheren Ablehnen-Knopf: kein Vorschlag, nichts ge
   await page.close();
 });
 
+test('KI-Messung in den Vorgaben: ohne Gemini Nano mit Regeln, kein Fehlgriff → „Selbst klicken“ frei', async () => {
+  await setzePrefs(STANDARD);
+  await sw.evaluate(() => chrome.storage.local.remove('kiMessergebnis'));
+  const opt = await ctx.newPage();
+  await opt.goto(`chrome-extension://${new URL(sw.url()).host}/options.html#messung`);
+  assert.equal(await opt.isDisabled('#kiSelbst'), true, 'vor der Messung gesperrt');
+  await opt.click('#messungStart');
+  await opt.waitForFunction(() => document.getElementById('messungStatus').textContent === 'fertig', null, { timeout: 20000 });
+  const { kiMessergebnis: m } = await sw.evaluate(() => chrome.storage.local.get('kiMessergebnis'));
+  assert.equal(m.fehlgriffe, 0);
+  assert.equal(m.treffer, m.faelle);
+  assert.equal(await opt.isDisabled('#kiSelbst'), false, 'nach fehlerfreier Messung frei');
+  await opt.close();
+});
+
+test('„Selbst klicken“: unbekanntes Banner wird ohne Nachfrage abgelehnt', async () => {
+  await setzePrefs({ ...STANDARD, ki: 'selbst' });
+  await sw.evaluate(() => chrome.storage.local.set({ kiAttrappe: true, gelernt: {} }));
+  const r = await oeffnen('unbekannt.html', ['abgelehnt'], 40000);
+  assert.deepEqual(r.geklickt, ['u-nein']);
+  assert.equal(r.s.cmp, 'KI, selbst geklickt');
+  const r2 = await oeffnen('unbekannt-ohne.html', ['nie'], 15000);
+  assert.deepEqual(r2.geklickt, [], 'ohne sicheren Knopf auch im Selbst-Modus nichts');
+});
+
 test('Vorgabe „nichts tun“: Pur-Banner bleibt offen, Hinweis', async () => {
   await setzePrefs({ ...STANDARD, pur: 'nichts' });
   const r = await oeffnen('sp-pur.html', ['pur-offen']);

@@ -5,7 +5,9 @@
   if (window.__cookieHelferKi) return;
   window.__cookieHelferKi = true;
 
-  const CONSENT = /cookie|einwillig|zustimm|consent|datenschutz|tracking|privatsphäre|privacy/i;
+  const CONSENT = /cookie|einwillig|zustimm|consent|tracking/i;
+  // Mindestens ein Knopf muss nach Cookie-Entscheidung klingen (sonst ist es z. B. eine fixierte Navigation)
+  const ENTSCHEIDUNG = /akzept|ablehn|zustimm|einverstanden|einwillig|notwendig|erforderlich|essen[tz]iell|zulassen|erlauben|annehmen|verstanden|cookie|accept|reject|refuse|allow|agree|^ok$/i;
   let knopfElemente = [];
 
   const sichtbar = (el) => {
@@ -44,7 +46,7 @@
       const text = vollerText(el);
       if (text.length < 40 || !CONSENT.test(text)) continue;
       const knoepfe = knoepfeIn(el);
-      if (!knoepfe.length) continue;
+      if (!knoepfe.some((k) => ENTSCHEIDUNG.test(k.text))) continue;
       // kleinstes Element, das Text und Knöpfe enthält (nicht die ganze Seite)
       if (!bestes || text.length < bestes.text.length) bestes = { el, text, knoepfe };
     }

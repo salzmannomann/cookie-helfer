@@ -72,6 +72,7 @@
     <a href="#vorgaben" data-page="vorgaben">Vorgaben</a>
     <a href="#seiten" data-page="seiten">Seiten</a>
     <a href="#protokoll" data-page="protokoll">Protokoll</a>
+    <a href="#messung" data-page="messung">KI-Messung</a>
     <a href="#info" data-page="info">Über</a>
     <div class="foot">Alles läuft lokal auf diesem Rechner, nichts wird an einen Server geschickt. Änderungen werden sofort gespeichert.</div>
   </nav>
@@ -109,6 +110,7 @@
         <h2>Unbekannte Banner</h2>
         <p class="hint">Banner, für die es keine feste Regel gibt. Die lokale KI liest Text und Knöpfe und schlägt im Popup einen Ablehnen-Knopf vor – geklickt wird erst, wenn du bestätigst. Bestätigte Knöpfe werden je Seite gemerkt.</p>
         <label class="radio-card"><input type="radio" name="ki" value="vorschlag"><span><b>Vorschlag im Popup</b><span class="hint">Symbol „?“ am Erweiterungsknopf, im Popup „… klicken?“.</span></span></label>
+        <label class="radio-card" id="kiSelbstKarte"><input type="radio" name="ki" value="selbst" id="kiSelbst"><span><b>Selbst klicken</b><span class="hint" id="kiSelbstHinweis">Erst möglich, wenn die KI-Messung ohne Fehlgriff durchgelaufen ist.</span></span></label>
         <label class="radio-card"><input type="radio" name="ki" value="aus"><span><b>Nur Hinweis</b><span class="hint">Keine KI; Vorschläge nur aus festen Regeln für eindeutige Knöpfe wie „Ablehnen“.</span></span></label>
         <div class="row" style="justify-content:space-between;margin-top:10px">
           <span><b>Lokale KI (Gemini Nano)</b><br><span class="hint" id="kiStatus">wird geprüft …</span></span>
@@ -157,6 +159,30 @@
           <button id="protokollLoeschen">Protokoll löschen</button>
         </div>
         <ul class="liste" id="protokoll"></ul>
+      </section>
+    </div>
+
+    <!-- ───────────── KI-Messung ───────────── -->
+    <div class="page" id="page-messung">
+      <h1>KI-Messung</h1>
+      <p class="lead">Bevor die KI selbst klicken darf: Wie gut ordnet sie echte Banner ein?</p>
+      <section>
+        <h2>Messung mit echten Bannern</h2>
+        <p class="hint"><span id="faelleAnzahl"></span> Banner, gesammelt auf österreichischen und deutschen Seiten, dazu einige absichtlich knifflige. Für jedes ist festgelegt, welcher Knopf richtig ist (oder dass es keinen gibt). Die Messung läuft lokal; nichts wird geklickt.</p>
+        <div class="row" style="margin-top:10px">
+          <button class="primary" id="messungStart">Messung starten</button>
+          <span class="hint" id="messungStatus"></span>
+        </div>
+        <div id="messungErgebnis" hidden>
+          <ul class="regeln" id="messungZahlen"></ul>
+          <details style="margin-top:8px"><summary class="hint">Alle Fälle</summary><ul class="liste" id="messungFaelle"></ul></details>
+          <div class="row" style="margin-top:10px"><button id="messungKopieren">Ergebnis kopieren</button><span class="hint">zum Weitergeben, z. B. an Claude</span></div>
+        </div>
+      </section>
+      <section>
+        <h2>Aus dem Alltag</h2>
+        <p class="hint">Vorschläge bei unbekannten Bannern seit 0.3 und was du damit gemacht hast.</p>
+        <ul class="regeln" id="alltag"></ul>
       </section>
     </div>
 

@@ -33,7 +33,7 @@ const tcfLesen = () =>
   });
 
 const ergebnisse = [];
-for (const seite of seiten) {
+async function messe(seite) {
   // je Seite ein frisches Profil = frischer Besuch ohne Cookies
   const profil = fs.mkdtempSync(path.join(os.tmpdir(), 'ch-echt-'));
   const ctx = await chromium.launchPersistentContext(profil, {
@@ -82,4 +82,13 @@ for (const seite of seiten) {
   const tcf = r.tcf ? ` TCF: Zwecke [${r.tcf.zwecke}] BI [${r.tcf.bi}] Partner ${r.tcf.partner}` : '';
   console.log(`${name.padEnd(24)} ${String(r.status).padEnd(15)} ${String(r.cmp || '').padEnd(20)}${tcf}`);
 }
+
+let naechste = 0;
+const PARALLEL = Number(process.env.PARALLEL || 3);
+await Promise.all(
+  Array.from({ length: PARALLEL }, async () => {
+    while (naechste < seiten.length) await messe(seiten[naechste++]);
+  }),
+);
+ergebnisse.sort((a, b) => seiten.findIndex((s) => s.url.includes(a.name)) - seiten.findIndex((s) => s.url.includes(b.name)));
 fs.writeFileSync(path.join(root, 'messung', 'ergebnisse', filter.length ? 'echt-teil.json' : 'echt.json'), JSON.stringify(ergebnisse, null, 2));

@@ -113,7 +113,7 @@ function setzeStatus(s, status, text, extra = {}) {
 // Läuft, sobald TCF-Daten und Ergebnis beide da sind (Reihenfolge der Nachrichten ist beliebig).
 function bewerten(s) {
   if (!s.tcf || s.tcfBewertet) return s; // auch „tcloaded“: viele Seiten laden nach dem Ablehnen neu
-  if (!['abgelehnt', 'ausgeblendet'].includes(s.status) || s.purLaeuft) return s;
+  if (!['abgelehnt', 'ausgeblendet', 'abweichung'].includes(s.status) || s.purLaeuft) return s;
   s.tcfBewertet = true;
   if (!s.tcf.gdpr) {
     s.ereignisse.push({ t: Date.now(), text: 'TCF-Kontrolle: DSGVO gilt laut Seite nicht' });
@@ -122,10 +122,62 @@ function bewerten(s) {
   const abw = abweichungen(s.tcf);
   if (!abw.length) {
     s.ereignisse.push({ t: Date.now(), text: 'TCF-Kontrolle: passt (nur Notwendiges erlaubt)' });
+    if (s.status === 'abweichung') s.status = 'abgelehnt'; // nach der Korrektur
+    s.abweichungen = [];
     return s;
   }
   s.abweichungen = abw;
   return setzeStatus(s, 'abweichung', `TCF-Kontrolle: nach dem Ablehnen noch erlaubt – ${abw.join('; ')}`);
+}
+
+// Nur berechtigtes Interesse übrig, keine Zustimmung → einmal je Seitenaufruf nachkorrigieren
+function biKorrekturNoetig(s) {
+  if (!s.tcf?.gdpr || s.biKorrektur || s.modus === 'zustimmen' || s.modus === 'aus') return false;
+  if (['pur-zugestimmt', 'pur-offen', 'zugestimmt'].includes(s.status)) return false;
+  return s.tcf.bi.length > 0 && s.tcf.zwecke.every((z) => z === 1);
+}
+
+// „Berechtigtes Interesse“ nachträglich ausschalten (gemessen: willhaben/Didomi, sn.at/OneTrust → danach leer).
+// Läuft im Seitenkontext; nur Didomi und OneTrust, nur wenn keine Zustimmung erteilt wurde.
+async function biAusschaltenImSeitenkontext() {
+  const warte = (ms) => new Promise((r) => setTimeout(r, ms));
+  if (window.Didomi?.setUserStatusForAll) {
+    window.Didomi.setUserStatusForAll({ purposesConsentStatus: false, purposesLIStatus: false, vendorsConsentStatus: false, vendorsLIStatus: false, action: 'webpage' });
+    return 'Didomi';
+  }
+  if (window.OneTrust?.ToggleInfoDisplay) {
+    // Einstellungen unsichtbar öffnen, bei jedem Zweck „Widersprechen“, speichern
+    const stil = document.createElement('style');
+    stil.textContent = '#onetrust-pc-sdk,.onetrust-pc-dark-filter{opacity:0!important;pointer-events:none!important}';
+    document.documentElement.append(stil);
+    try {
+      window.OneTrust.ToggleInfoDisplay();
+      for (let i = 0; i < 30 && !document.querySelector('#onetrust-pc-sdk .save-preference-btn-handler'); i++) await warte(100);
+      const knoepfe = [...document.querySelectorAll('#onetrust-pc-sdk .ot-obj-leg-btn-handler')].filter((b) => !b.classList.contains('ot-active-leg-btn'));
+      knoepfe.forEach((b) => b.click());
+      await warte(200);
+      const speichern = document.querySelector('#onetrust-pc-sdk .save-preference-btn-handler');
+      if (!speichern) return null;
+      speichern.click();
+      return `OneTrust (${knoepfe.length} Widersprüche)`;
+    } finally {
+      setTimeout(() => stil.remove(), 1500);
+    }
+  }
+  return null;
+}
+
+async function biAusschalten(tabId) {
+  let r = null;
+  try {
+    [r] = await chrome.scripting.executeScript({ target: { tabId, frameIds: [0] }, world: 'MAIN', func: biAusschaltenImSeitenkontext });
+  } catch {
+    // Seite inzwischen weg
+  }
+  await aendern(tabId, (s) => {
+    s.ereignisse.push({ t: Date.now(), text: r?.result ? `berechtigtes Interesse wird ausgeschaltet (${r.result})` : 'berechtigtes Interesse: hier nicht abschaltbar' });
+    return s;
+  });
 }
 
 function protokollieren(seite, eintrag) {
@@ -453,15 +505,23 @@ async function eigeneNachricht(msg, sender) {
       if (sender.frameId !== 0) return null;
       let vorher = null;
       let nachher = null;
+      let korrigieren = false;
       await aendern(tabId, (s) => {
         vorher = s.status;
         s.tcf = msg.daten;
+        if (s.biKorrektur === 'laeuft') s.tcfBewertet = false; // Ergebnis der Korrektur neu prüfen
         const neu = msg.daten.status === 'tcloaded' ? 'gespeicherte Entscheidung' : 'Entscheidung';
         s.ereignisse.push({ t: Date.now(), text: `TCF (${neu}): ${tcfKurz(msg.daten)}` });
         bewerten(s);
+        if (s.biKorrektur === 'laeuft') s.biKorrektur = 'fertig';
+        if (biKorrekturNoetig(s)) {
+          s.biKorrektur = 'laeuft';
+          korrigieren = true;
+        }
         nachher = s.status;
         return s;
       });
+      if (korrigieren) await biAusschalten(tabId);
       if (nachher === 'abweichung' && vorher !== 'abweichung') {
         const s = await tabStatus(tabId);
         protokollieren(s.seite, { t: Date.now(), status: 'abweichung', cmp: s.cmp, tcf: tcfKurz(s.tcf) });

@@ -4,7 +4,7 @@ Chrome-Erweiterung, die Cookie-Banner automatisch nach eigenen Vorgaben beantwor
 nur das Nötigste erlauben. Alles läuft lokal, nichts wird an einen Server geschickt.
 Projektbeschreibung: [docs/projektbeschreibung.md](docs/projektbeschreibung.md) · Vorgaben: [docs/vorgaben.md](docs/vorgaben.md)
 
-## Stand: Version 0.6
+## Stand: Version 0.7
 
 - **Feste Regeln** (autoconsent von DuckDuckGo, 886 Banner-Typen): Banner werden abgelehnt.
 - **„Zustimmen oder bezahlen“** (Pur-Abo, contentpass): nach Vorgabe *zustimmen* – oder in den Vorgaben auf
@@ -24,9 +24,12 @@ Projektbeschreibung: [docs/projektbeschreibung.md](docs/projektbeschreibung.md) 
   Gemessen hier ohne Nano (nur Regeln): 36/36 richtig, 0 Fehlgriffe. Mit einem absichtlich falschen „Modell“, das jeden
   Knopf für „Ablehnen“ hält: 0 Fehlgriffe – dabei fiel der Info-Link „Notwendige Cookies“ (IKEA) auf, Regel verschärft.
 - **TCF-Kontrolle** (neu in 0.2): Nach dem Ablehnen liest `tcf-probe.js` über `__tcfapi` aus, was die Seite
-  tatsächlich gespeichert hat. Ist mehr erlaubt als das Notwendige (z. B. „berechtigtes Interesse“ oder Partner),
-  zeigt das Popup „Abgelehnt – aber nicht alles“ mit den Zwecken (Symbol „!“ orange). Gemessen: sn.at, tt.com und
-  willhaben lassen nach „Alle ablehnen“ das berechtigte Interesse für 6 Zwecke an.
+  tatsächlich gespeichert hat. Ist mehr erlaubt als das Notwendige, zeigt das Popup „Abgelehnt – aber nicht alles“
+  (Symbol „!“ orange). Partner-Zustimmungen ohne erlaubten Zweck zählen nicht (wirkungslos).
+- **Berechtigtes Interesse ausschalten** (neu in 0.7): Bleibt nach dem Ablehnen nur „berechtigtes Interesse“ übrig,
+  schaltet der Cookie-Helfer es nach – bei Didomi über `Didomi.setUserStatusForAll`, bei OneTrust über die
+  „Widersprechen“-Knöpfe in den (unsichtbar geöffneten) Einstellungen. Nie, wenn zugestimmt wurde.
+  Gemessen: sn.at und tt.com (OneTrust) vorher 6 Zwecke → danach keine; willhaben (Didomi) ebenso.
 - **Unbekannte Banner** (neu in 0.3): Die lokale KI (Gemini Nano, `offscreen.js` + `lib/nano.js` wie bei Ruhepol)
   ordnet Text und Knöpfe ein; das Popup fragt „„Nur Notwendige“ klicken?“. Vorgeschlagen wird nur ein Knopf, den
   zusätzlich die festen Regeln in `lib/ki.js` als eindeutiges „Ablehnen“/„Nur Notwendige“ erkennen – oder bei einem
@@ -76,6 +79,14 @@ danach in `chrome://extensions` bei Cookie-Helfer auf ↻ klicken.
 | `npm run zip` | `dist/cookie-helfer-<version>.zip` bauen |
 | `npm run vendor` | autoconsent nach einem Update nach `extension/vendor/` kopieren |
 | `npm run icons` | Symbole neu erzeugen |
+
+## Wartung: autoconsent aktualisieren
+
+DuckDuckGo veröffentlicht laufend neue Regeln (`npm view @duckduckgo/autoconsent version`). Update:
+```
+npm install -D @duckduckgo/autoconsent@latest && npm run vendor && npm test && npm run echt
+```
+danach Version hochzählen und `npm run zip`. Stand 11.10.2026: 16.50.0 (aktuell).
 
 ## Messung (Schritt 1) selbst ausführen
 

@@ -24,7 +24,8 @@ export function abweichungen(t) {
   const zuViel = t.zwecke.filter((z) => !ERLAUBT.has(z));
   if (zuViel.length) abw.push(`Zustimmung: ${namen(zuViel)}`);
   if (t.bi.length) abw.push(`berechtigtes Interesse: ${namen(t.bi)}`);
-  if (t.partner) abw.push(`${t.partner} Partner mit Zustimmung`);
+  // Partner-Zustimmung ohne erlaubten Zweck ist wirkungslos (z. B. sn.at nach „Alle ablehnen“)
+  if (t.partner && zuViel.length) abw.push(`${t.partner} Partner mit Zustimmung`);
   if (t.besondere.length) abw.push('genaue Standortdaten/Geräte-Scan');
   return abw;
 }

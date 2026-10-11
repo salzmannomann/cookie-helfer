@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Cookie-Helfer",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjjY4sY0Scumw9GyHgbBpHu8iPwiBUsJrNPh1AF8lyMyE/lQFKtmpxpZP4sLC8DpwWAV7L03yddDQbqGOwW8fyb8SVQNAlq5QlZm7FrsNJHWTFbkOW0PUnWkt1wVicben2pHeffCZ5c09e3grhYLUlbVKEx3L1vpEN0JZzdlq7NjykMCSQOXaNKxFcjW2p+bjDDZVXxS4BDLk4u6BKcnBCHBInSzjikufwYhPRvmhrnfZLzg0Gz4rCoaNZf4OyFNDu5CQp6uVH39Q2bM0IPPL4aJtgr53UFCXfcCHWfaOkrb8gYh95yHHBz8Shhw43Rh2dYQ/oQ56EFqhEVTfWsJX3wIDAQAB",
   "description": "Erledigt Cookie-Banner nach deinen Vorgaben – ablehnen, wo es geht. Alles lokal, nichts geht an einen Server.",
   "background": {

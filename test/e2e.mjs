@@ -163,9 +163,28 @@ test('TCF-Kontrolle: berechtigtes Interesse bleibt an → Hinweis', async () => 
   await setzePrefs(STANDARD);
   const r = await oeffnen('onetrust.html?bi=2,7', ['abweichung'], 20000);
   assert.equal(r.status, 'abweichung');
-  assert.deepEqual(r.s.abweichungen, ['berechtigtes Interesse: einfache Werbung, Werbemessung', '12 Partner mit Zustimmung']);
+  // Partner-Zustimmung ohne erlaubten Zweck zählt nicht; ohne Didomi/OneTrust-Schnittstelle nicht abschaltbar
+  assert.deepEqual(r.s.abweichungen, ['berechtigtes Interesse: einfache Werbung, Werbemessung']);
+  assert.ok(r.s.ereignisse.some((e) => e.text.includes('nicht abschaltbar')));
   const { protokoll } = await sw.evaluate(() => chrome.storage.local.get('protokoll'));
   assert.equal(protokoll.localhost[0].status, 'abweichung');
+});
+
+test('Didomi: berechtigtes Interesse bleibt nach Ablehnen an → wird über die Schnittstelle ausgeschaltet', async () => {
+  await setzePrefs(STANDARD);
+  const page = await ctx.newPage();
+  const url = `${basis}/didomi-bi.html`;
+  await page.goto(url);
+  const s = await warteAuf(async () => {
+    const st = await status(url);
+    return st?.ereignisse?.some((e) => e.text.includes('passt')) ? st : null;
+  }, 25000);
+  const texte = (s || (await status(url)))?.ereignisse.map((e) => e.text);
+  assert.ok(s, JSON.stringify(texte));
+  assert.equal(s.status, 'abgelehnt');
+  assert.deepEqual(await page.evaluate(() => window.geklickt), ['d-nein', 'didomi-api']);
+  assert.ok(texte.some((t) => t.includes('berechtigtes Interesse wird ausgeschaltet (Didomi)')));
+  await page.close();
 });
 
 test('Unbekanntes Banner: nichts geklickt, aber Vorschlag „Nur notwendige“', async () => {

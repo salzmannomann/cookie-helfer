@@ -1,4 +1,4 @@
-import { laden, speichern, seitenName } from './lib/prefs.js';
+import { laden, speichern, seitenName, gelerntLaden, gelerntSpeichern } from './lib/prefs.js';
 import { STATUS, zeit } from './texte.js';
 import { verfuegbarkeit, sitzung, fragen } from './lib/nano.js';
 import { SYSTEM, SCHEMA, eingabe, regelEinordnung, messen } from './lib/ki.js';
@@ -50,17 +50,17 @@ async function zeigeVorgaben() {
     : m
       ? `Letzte Messung hatte ${m.fehlgriffe} Fehlgriff(e)${m.fehler ? ` und ${m.fehler} Fehler` : ''} – selbst klicken ist gesperrt.`
       : 'Erst möglich, wenn die KI-Messung ohne Fehlgriff durchgelaufen ist (Bereich „KI-Messung“).';
-  const { gelernt = {} } = await chrome.storage.local.get('gelernt');
+  const gelernt = await gelerntLaden();
   const eintraege = Object.entries(gelernt).flatMap(([seite, texte]) => texte.map((text) => ({ seite, text })));
   $('gelernt').replaceChildren(
     ...(eintraege.length
       ? eintraege.map(({ seite, text }) => {
           const knopf = el('button', { textContent: 'vergessen' });
           knopf.addEventListener('click', async () => {
-            const { gelernt: g = {} } = await chrome.storage.local.get('gelernt');
+            const g = await gelerntLaden();
             g[seite] = (g[seite] || []).filter((t) => t !== text);
             if (!g[seite].length) delete g[seite];
-            await chrome.storage.local.set({ gelernt: g });
+            await gelerntSpeichern(g);
             gespeichert();
           });
           return el('li', {}, el('span', { className: 'name', textContent: seite }), el('span', { className: 'txt', textContent: `„${text}“` }), knopf);
@@ -149,6 +149,30 @@ $('protokollLoeschen').addEventListener('click', async () => {
 });
 
 $('version').textContent = chrome.runtime.getManifest().version;
+
+// --- Sichern / Wiederherstellen (Vorgaben, Ausnahmen, gemerkte Knöpfe) ---
+$('sichern').addEventListener('click', async () => {
+  const daten = { cookieHelfer: 1, version: chrome.runtime.getManifest().version, prefs: await laden(), gelernt: await gelerntLaden() };
+  const url = URL.createObjectURL(new Blob([JSON.stringify(daten, null, 1)], { type: 'application/json' }));
+  const a = el('a', { href: url, download: `cookie-helfer-vorgaben-${new Date().toISOString().slice(0, 10)}.json` });
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+});
+$('wiederherstellenDatei').addEventListener('change', async (e) => {
+  const datei = e.target.files[0];
+  e.target.value = '';
+  if (!datei) return;
+  try {
+    const daten = JSON.parse(await datei.text());
+    if (daten?.cookieHelfer !== 1) throw new Error('keine Sicherung des Cookie-Helfers');
+    await speichern(daten.prefs);
+    await gelerntSpeichern(daten.gelernt);
+    $('sicherungStatus').textContent = 'Wiederhergestellt.';
+    gespeichert();
+  } catch (err) {
+    $('sicherungStatus').textContent = `Nicht möglich: ${err.message}`;
+  }
+});
 
 // --- KI-Messung ---
 const faelle = await (await fetch('ki-faelle.json')).json();

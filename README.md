@@ -4,7 +4,7 @@ Chrome-Erweiterung, die Cookie-Banner automatisch nach eigenen Vorgaben beantwor
 nur das Nötigste erlauben. Alles läuft lokal, nichts wird an einen Server geschickt.
 Projektbeschreibung: [docs/projektbeschreibung.md](docs/projektbeschreibung.md) · Vorgaben: [docs/vorgaben.md](docs/vorgaben.md)
 
-## Stand: Version 0.4
+## Stand: Version 0.5
 
 - **Feste Regeln** (autoconsent von DuckDuckGo, 886 Banner-Typen): Banner werden abgelehnt.
 - **„Zustimmen oder bezahlen“** (Pur-Abo, contentpass): nach Vorgabe *zustimmen* – oder in den Vorgaben auf
@@ -40,6 +40,13 @@ Projektbeschreibung: [docs/projektbeschreibung.md](docs/projektbeschreibung.md) 
 - Symbol am Erweiterungsknopf: ✓ abgelehnt · Z zugestimmt (Zustimmen oder bezahlen) · € offen (deine Entscheidung) · ! rot nicht erledigt · ! orange abgelehnt, aber laut TCF nicht alles · ? unbekanntes Banner.
 
 Noch nicht: berechtigtes Interesse selbst ausschalten (nach Messung).
+
+## Synchronisierung (seit 0.5)
+
+Vorgaben, ausgeschaltete Seiten und gemerkte Knöpfe liegen in `chrome.storage.sync` und werden über das Google-Konto
+auf alle Rechner abgeglichen, auf denen der Cookie-Helfer installiert ist. Protokoll und Messungen bleiben lokal.
+Damit die Erweiterung überall dieselbe ID hat (`ipnlepibjmklbflkolkgalkolmfgejng`), steht ein fester `key` im Manifest.
+Vorgaben → Über → „Sichern …“ / „Wiederherstellen …“ speichert bzw. lädt dieselben Daten als Datei.
 
 ## Installation (einmalig)
 

@@ -3,7 +3,7 @@
 // „Zustimmen oder bezahlen“ nach den Vorgaben und führt Status + Protokoll je Seite.
 
 import { evalSnippets, filterCompactRules } from './vendor/autoconsent/autoconsent.esm.js';
-import { laden, istAus, seitenName } from './lib/prefs.js';
+import { laden, istAus, seitenName, gelerntLaden, gelerntSpeichern } from './lib/prefs.js';
 import { abweichungen, tcfKurz } from './lib/tcf.js';
 import { bereinigen as kiBereinigen, regelEinordnung, vorschlag as kiVorschlag, sicherFuer } from './lib/ki.js';
 
@@ -337,7 +337,7 @@ async function unbekanntesBanner(tabId, start) {
   await aendern(tabId, (s) => (OFFEN.includes(s.status) && s.status !== 'unbekannt' ? setzeStatus(s, 'unbekannt', 'Banner ohne passende Regel gefunden') : s));
 
   // Auf dieser Seite schon einmal bestätigt? Dann denselben Knopf wieder klicken.
-  const { gelernt = {} } = await chrome.storage.local.get('gelernt');
+  const gelernt = await gelerntLaden();
   const gemerkt = banner.knoepfe.find((k) => (gelernt[s0.seite] || []).includes(k.text) && sicherFuer(banner, k.text));
   if (gemerkt) {
     await klickAusfuehren(tabId, gemerkt, 'gemerkt');
@@ -405,9 +405,9 @@ async function eigeneNachricht(msg, sender) {
     kiMessen({ seite: s.seite, entscheidung: ok ? 'geklickt' : 'klick-fehler', vorschlag: v.text });
     if (ok && msg.merken) {
       await nacheinander(async () => {
-        const { gelernt = {} } = await chrome.storage.local.get('gelernt');
+        const gelernt = await gelerntLaden();
         gelernt[s.seite] = [...new Set([...(gelernt[s.seite] || []), v.text])].slice(-5);
-        await chrome.storage.local.set({ gelernt });
+        await gelerntSpeichern(gelernt);
       });
     }
     return { ok };

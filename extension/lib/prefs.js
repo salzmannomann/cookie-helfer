@@ -51,13 +51,53 @@ export function istAus(prefs, url) {
   return Object.entries(prefs.ausnahmen).some(([d, w]) => w === 'aus' && (name === d || name.endsWith('.' + d)));
 }
 
+// Vorgaben und gemerkte Knöpfe liegen in chrome.storage.sync und werden so über das Google-Konto
+// auf alle Rechner mit dieser Erweiterung abgeglichen (feste ID über „key“ im Manifest).
+// Protokoll und Messungen bleiben lokal (storage.local).
+const MAX_AUSNAHMEN = 300; // storage.sync: höchstens 8 KB je Eintrag
+const MAX_GELERNT = 150;
+
 export async function laden() {
-  const { prefs } = await chrome.storage.local.get('prefs');
-  return bereinigen(prefs);
+  const { prefs } = await chrome.storage.sync.get('prefs');
+  if (prefs) return bereinigen(prefs);
+  // einmalige Übernahme aus älteren Versionen (lokal gespeichert)
+  const { prefs: alt } = await chrome.storage.local.get('prefs');
+  if (alt) return speichern(alt);
+  return bereinigen(null);
 }
 
 export async function speichern(prefs) {
   const sauber = bereinigen(prefs);
-  await chrome.storage.local.set({ prefs: sauber });
+  const seiten = Object.keys(sauber.ausnahmen);
+  if (seiten.length > MAX_AUSNAHMEN) for (const s of seiten.slice(0, seiten.length - MAX_AUSNAHMEN)) delete sauber.ausnahmen[s];
+  await chrome.storage.sync.set({ prefs: sauber });
+  return sauber;
+}
+
+// Gemerkte Knöpfe: { 'oebb.at': ['Nicht technische Cookies ablehnen'] }
+export function gelerntBereinigen(roh) {
+  const g = {};
+  if (!roh || typeof roh !== 'object') return g;
+  for (const [seite, texte] of Object.entries(roh)) {
+    const d = seitenName(seite);
+    if (!d || !Array.isArray(texte)) continue;
+    const t = texte.filter((x) => typeof x === 'string' && x.length <= 80).slice(-5);
+    if (t.length) g[d] = t;
+  }
+  const seiten = Object.keys(g);
+  for (const s of seiten.slice(0, Math.max(0, seiten.length - MAX_GELERNT))) delete g[s];
+  return g;
+}
+
+export async function gelerntLaden() {
+  const { gelernt } = await chrome.storage.sync.get('gelernt');
+  if (gelernt) return gelerntBereinigen(gelernt);
+  const { gelernt: alt } = await chrome.storage.local.get('gelernt');
+  return alt ? gelerntSpeichern(alt) : {};
+}
+
+export async function gelerntSpeichern(gelernt) {
+  const sauber = gelerntBereinigen(gelernt);
+  await chrome.storage.sync.set({ gelernt: sauber });
   return sauber;
 }

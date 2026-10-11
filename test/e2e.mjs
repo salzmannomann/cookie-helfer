@@ -48,7 +48,7 @@ await warteAuf(() => sw.evaluate(() => typeof chrome !== 'undefined' && !!chrome
 const swFehler = [];
 sw.on?.('console', (m) => m.type() === 'error' && swFehler.push(m.text()));
 
-const setzePrefs = (prefs) => sw.evaluate((p) => chrome.storage.local.set({ prefs: p }), prefs);
+const setzePrefs = (prefs) => sw.evaluate((p) => chrome.storage.sync.set({ prefs: p }), prefs);
 const status = (url) =>
   sw.evaluate(async (u) => {
     const [tab] = await chrome.tabs.query({ url: u });
@@ -170,7 +170,7 @@ test('TCF-Kontrolle: berechtigtes Interesse bleibt an → Hinweis', async () => 
 
 test('Unbekanntes Banner: nichts geklickt, aber Vorschlag „Nur notwendige“', async () => {
   await setzePrefs(STANDARD);
-  await sw.evaluate(() => chrome.storage.local.set({ kiAttrappe: true, gelernt: {} }));
+  await sw.evaluate(() => Promise.all([chrome.storage.local.set({ kiAttrappe: true }), chrome.storage.sync.set({ gelernt: {} })]));
   const page = await ctx.newPage();
   const url = `${basis}/unbekannt.html`;
   await page.goto(url);
@@ -191,7 +191,7 @@ test('Unbekanntes Banner: nichts geklickt, aber Vorschlag „Nur notwendige“',
   await warteAuf(async () => (await status(url))?.status === 'abgelehnt', 5000);
   assert.deepEqual(await page.evaluate(() => window.geklickt), ['u-nein']);
   const gelernt = await warteAuf(async () => {
-    const { gelernt: g } = await sw.evaluate(() => chrome.storage.local.get('gelernt'));
+    const { gelernt: g } = await sw.evaluate(() => chrome.storage.sync.get('gelernt'));
     return g?.localhost ? g : null;
   }, 3000);
   assert.deepEqual(gelernt, { localhost: ['Nur notwendige'] });
@@ -202,7 +202,7 @@ test('Unbekanntes Banner: nichts geklickt, aber Vorschlag „Nur notwendige“',
   const r = await oeffnen('unbekannt.html', ['abgelehnt'], 40000);
   assert.deepEqual(r.geklickt, ['u-nein']);
   assert.equal(r.s.cmp, 'gemerkter Knopf');
-  await sw.evaluate(() => chrome.storage.local.set({ gelernt: {} }));
+  await sw.evaluate(() => chrome.storage.sync.set({ gelernt: {} }));
 });
 
 test('Unbekanntes Banner ohne sicheren Ablehnen-Knopf: kein Vorschlag, nichts geklickt', async () => {
@@ -237,12 +237,25 @@ test('KI-Messung in den Vorgaben: ohne Gemini Nano mit Regeln, kein Fehlgriff �
 
 test('„Selbst klicken“: unbekanntes Banner wird ohne Nachfrage abgelehnt', async () => {
   await setzePrefs({ ...STANDARD, ki: 'selbst' });
-  await sw.evaluate(() => chrome.storage.local.set({ kiAttrappe: true, gelernt: {} }));
+  await sw.evaluate(() => Promise.all([chrome.storage.local.set({ kiAttrappe: true }), chrome.storage.sync.set({ gelernt: {} })]));
   const r = await oeffnen('unbekannt.html', ['abgelehnt'], 40000);
   assert.deepEqual(r.geklickt, ['u-nein']);
   assert.equal(r.s.cmp, 'selbst geklickt');
   const r2 = await oeffnen('unbekannt-ohne.html', ['nie'], 15000);
   assert.deepEqual(r2.geklickt, [], 'ohne sicheren Knopf auch im Selbst-Modus nichts');
+});
+
+test('Vorgaben liegen in storage.sync; alte lokale Vorgaben werden übernommen', async () => {
+  await sw.evaluate(() => Promise.all([chrome.storage.sync.clear(), chrome.storage.local.set({ prefs: { aktiv: true, pur: 'nichts', ausnahmen: { 'orf.at': 'aus' } } })]));
+  const opt = await ctx.newPage();
+  await opt.goto(`chrome-extension://${new URL(sw.url()).host}/options.html#seiten`);
+  await opt.waitForFunction(() => document.querySelector('#ausnahmen .name')?.textContent === 'orf.at');
+  const { prefs } = await sw.evaluate(() => chrome.storage.sync.get('prefs'));
+  assert.equal(prefs.pur, 'nichts');
+  assert.deepEqual(prefs.ausnahmen, { 'orf.at': 'aus' });
+  await opt.close();
+  await sw.evaluate(() => chrome.storage.local.remove('prefs'));
+  await setzePrefs(STANDARD);
 });
 
 test('Vorgabe „nichts tun“: Pur-Banner bleibt offen, Hinweis', async () => {
@@ -285,7 +298,8 @@ test('Popup zeigt den Status der Seite', async () => {
 });
 
 let fehler = 0;
-for (const t of tests) {
+// NUR=Wort: nur Tests, deren Name das Wort enthält (zum Fehlersuchen)
+for (const t of tests.filter((x) => !process.env.NUR || x.name.includes(process.env.NUR))) {
   try {
     await t.fn();
     console.log(`✓ ${t.name}`);

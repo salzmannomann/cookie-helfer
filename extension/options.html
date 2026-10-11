@@ -52,6 +52,7 @@
     .lbl.ok { color: var(--ok); } .lbl.pur { color: var(--warn); } .lbl.fehler { color: var(--err); } .lbl.leise { color: var(--muted); }
     .leer { color: var(--muted); font-size: 13px; padding: 6px 0; }
 
+    .knopf { font: inherit; padding: 6px 12px; border-radius: 6px; border: 1px solid var(--line); background: var(--card); color: var(--fg); cursor: pointer; }
     #gespeichert { position: fixed; right: 20px; bottom: 18px; padding: 8px 14px; border-radius: 8px; background: var(--fg); color: var(--bg); font-size: 13px; opacity: 0; transform: translateY(6px); transition: opacity .2s, transform .2s; pointer-events: none; }
     #gespeichert.zeigen { opacity: 1; transform: none; }
 
@@ -74,7 +75,7 @@
     <a href="#protokoll" data-page="protokoll">Protokoll</a>
     <a href="#messung" data-page="messung">KI-Messung</a>
     <a href="#info" data-page="info">Über</a>
-    <div class="foot">Alles läuft lokal auf diesem Rechner, nichts wird an einen Server geschickt. Änderungen werden sofort gespeichert.</div>
+    <div class="foot">Alles läuft lokal auf diesem Rechner, nichts wird an einen Server geschickt. Vorgaben werden nur über die Chrome-Synchronisierung deines Google-Kontos abgeglichen. Änderungen werden sofort gespeichert.</div>
   </nav>
 
   <main>
@@ -198,6 +199,15 @@
           <li>TCF-Kontrolle: Nach dem Klick wird über die Schnittstelle der Seite gelesen, was wirklich erlaubt wurde.</li>
           <li>Unbekannte Banner: Die lokale KI (Gemini Nano, in Chrome eingebaut) ordnet die Knöpfe ein. Vorgeschlagen wird nur ein Knopf, der nach festen Regeln eindeutig „Ablehnen“ oder „Nur Notwendige“ ist.</li>
         </ul>
+      </section>
+      <section>
+        <h2>Synchronisierung und Sicherung</h2>
+        <p class="hint">Vorgaben, ausgeschaltete Seiten und gemerkte Knöpfe werden über die Chrome-Synchronisierung deines Google-Kontos auf deine anderen Rechner übertragen. Protokoll und Messungen bleiben auf diesem Rechner.</p>
+        <div class="row" style="margin-top:10px">
+          <button id="sichern">Sichern …</button>
+          <label class="knopf">Wiederherstellen …<input type="file" id="wiederherstellenDatei" accept="application/json" hidden></label>
+          <span class="hint" id="sicherungStatus"></span>
+        </div>
       </section>
       <section>
         <h2>Symbol am Erweiterungsknopf</h2>

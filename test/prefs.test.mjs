@@ -26,3 +26,11 @@ test('Ausnahme gilt auch für Unterdomains, nicht für fremde Seiten', () => {
   assert.equal(istAus(p, 'https://notderstandard.at/'), false);
   assert.equal(istAus(bereinigen({ aktiv: false }), 'https://orf.at/'), true);
 });
+
+test('gemerkte Knöpfe: nur gültige Seiten und Texte, höchstens 5 je Seite', async () => {
+  const { gelerntBereinigen } = await import('../extension/lib/prefs.js');
+  assert.deepEqual(gelerntBereinigen({ 'www.OEBB.at': ['a', 'b', 'c', 'd', 'e', 'f'], 'x y': ['a'], 'orf.at': 'kaputt', 'wien.gv.at': [7, 'Nur Notwendige'] }), {
+    'oebb.at': ['b', 'c', 'd', 'e', 'f'],
+    'wien.gv.at': ['Nur Notwendige'],
+  });
+});

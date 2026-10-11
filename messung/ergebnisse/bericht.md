@@ -1,6 +1,6 @@
 # Messung vorab: Cookie-Banner auf 60 Seiten
 
-Stand: 2026-10-11 17:53 UTC · autoconsent 16.50.0 (886 Regeln) · Standort der Messung: **Council Bluffs, US**
+Stand: 2026-10-11 18:01 UTC · autoconsent 16.50.0 (886 Regeln) · Standort der Messung: **Bad Schallerbach, AT**
 
 Aufruf jeweils der Startseite, frischer Browser ohne Cookies, Sprache de-AT, Zeitzone Wien. autoconsent mit „Ablehnen“ (opt-out), nur feste Regeln; die eingebaute Heuristik von autoconsent nur zum Erkennen, nicht zum Klicken.
 
@@ -8,32 +8,37 @@ Aufruf jeweils der Startseite, frischer Browser ohne Cookies, Sprache de-AT, Zei
 
 | Ergebnis | Seiten |
 |---|---:|
-| abgelehnt (autoconsent) | 22 |
-| Zustimmen oder bezahlen (offen) | 14 |
-| kein Banner | 13 |
+| abgelehnt (autoconsent) | 28 |
+| Zustimmen oder bezahlen (offen) | 15 |
+| kein Banner | 5 |
 | unbekanntes Banner | 5 |
-| Klick ok, Seite aber noch gesperrt | 3 |
+| Klick ok, Seite aber noch gesperrt | 4 |
 | Seite nicht geladen | 1 |
 | Ablehnen fehlgeschlagen | 1 |
 | evtl. Banner (nur Heuristik) | 1 |
 
-- „Zustimmen oder bezahlen“ erkannt: **17** (derstandard.at, heute.at, kleinezeitung.at, sn.at, nachrichten.at, spiegel.de, faz.net, sueddeutsche.de, welt.de, bild.de, heise.de, t-online.de, n-tv.de, stern.de, focus.de, chip.de, wetter.com)
-- TCF-Schnittstelle vorhanden: **31**; nach dem Klick passend zu den Vorgaben: **11**, mit Abweichung: **3**
+- „Zustimmen oder bezahlen“ erkannt: **18** (derstandard.at, heute.at, oe24.at, sn.at, nachrichten.at, spiegel.de, faz.net, sueddeutsche.de, welt.de, bild.de, heise.de, t-online.de, n-tv.de, stern.de, focus.de, chip.de, wetter.com, gutefrage.net)
+- TCF-Schnittstelle vorhanden: **33**; nach dem Klick passend zu den Vorgaben: **11**, mit Abweichung: **3**
 - Übrig für die KI (unbekannt / fehlgeschlagen): **7**
 
 ### Banner-Anbieter
 
 | Anbieter (autoconsent-Regel) | Seiten |
 |---|---:|
-| sourcepoint-top | 11 |
+| sourcepoint-top | 12 |
+| Onetrust | 9 |
 | didomi | 8 |
-| Onetrust | 8 |
-| consentmanager.net | 3 |
+| consentmanager.net | 4 |
 | Sourcepoint-frame | 3 |
 | usercentrics-api | 3 |
+| amazon.com | 1 |
 | mediamarkt.de | 1 |
 | bahn-de | 1 |
 | cookiefirst.com | 1 |
+| funding-choices | 1 |
+| youtube-desktop | 1 |
+| google.com | 1 |
+| reddit.com | 1 |
 
 ## Alle Seiten
 
@@ -45,14 +50,14 @@ Aufruf jeweils der Startseite, frischer Browser ohne Cookies, Sprache de-AT, Zei
 | kurier.at | Nachrichten AT | didomi | abgelehnt (autoconsent) |  | passt |
 | heute.at | Nachrichten AT | sourcepoint-top | Zustimmen oder bezahlen (offen) | ja („PUR ABO“) | noch keine Entscheidung |
 | diepresse.com | Nachrichten AT | didomi | abgelehnt (autoconsent) |  | passt |
-| kleinezeitung.at | Nachrichten AT | didomi | abgelehnt (autoconsent) | ja („Pur für 4,99€ / Monat“) | passt |
-| oe24.at | Nachrichten AT | – | kein Banner |  | DSGVO gilt nicht (laut CMP) |
+| kleinezeitung.at | Nachrichten AT | didomi | abgelehnt (autoconsent) |  | passt |
+| oe24.at | Nachrichten AT | sourcepoint-top, Sourcepoint-frame | abgelehnt (autoconsent) | ja („Pur-Abo“) | – |
 | sn.at | Nachrichten AT | Onetrust | abgelehnt (autoconsent) | ja („Weiter mit Werbung“) | ⚠ berecht. Interesse 2,7,8,9,10,11; 244 Partner |
 | nachrichten.at | Nachrichten AT | Onetrust | abgelehnt (autoconsent) | ja („PUR-Abo“) | passt |
 | tt.com | Nachrichten AT | Onetrust | abgelehnt (autoconsent) |  | ⚠ berecht. Interesse 2,7,8,9,10,11; 407 Partner |
 | profil.at | Nachrichten AT | didomi | abgelehnt (autoconsent) |  | passt |
 | falter.at | Nachrichten AT | didomi | abgelehnt (autoconsent) |  | passt |
-| vienna.at | Nachrichten AT | consentmanager.net | Klick ok, Seite aber noch gesperrt |  | – |
+| vienna.at | Nachrichten AT | consentmanager.net | Klick ok, Seite aber noch gesperrt |  | noch keine Entscheidung |
 | puls24.at | Nachrichten AT | – | kein Banner |  | noch keine Entscheidung |
 | spiegel.de | Nachrichten DE | sourcepoint-top | Zustimmen oder bezahlen (offen) | ja („Werbefrei lesen“) | noch keine Entscheidung |
 | zeit.de | Nachrichten DE | – | kein Banner |  | – |
@@ -70,7 +75,7 @@ Aufruf jeweils der Startseite, frischer Browser ohne Cookies, Sprache de-AT, Zei
 | tagesschau.de | Nachrichten DE | – | Seite nicht geladen |  | – |
 | willhaben.at | Einkaufen | didomi | abgelehnt (autoconsent) |  | ⚠ berecht. Interesse 2,7,8,9,10,11 |
 | geizhals.at | Einkaufen | Onetrust | abgelehnt (autoconsent) |  | passt |
-| amazon.de | Einkaufen | – | kein Banner |  | – |
+| amazon.de | Einkaufen | amazon.com | abgelehnt (autoconsent) |  | passt |
 | ebay.at | Einkaufen | – | kein Banner |  | – |
 | mediamarkt.at | Einkaufen | mediamarkt.de | Ablehnen fehlgeschlagen |  | – |
 | idealo.de | Einkaufen | usercentrics-api | abgelehnt (autoconsent) |  | – |
@@ -82,7 +87,7 @@ Aufruf jeweils der Startseite, frischer Browser ohne Cookies, Sprache de-AT, Zei
 | otto.de | Einkaufen | Onetrust | abgelehnt (autoconsent) |  | passt |
 | oebb.at | Reisen | – | unbekanntes Banner |  | – |
 | bahn.de | Reisen | bahn-de | abgelehnt (autoconsent) |  | – |
-| booking.com | Reisen | – | kein Banner |  | – |
+| booking.com | Reisen | Onetrust | abgelehnt (autoconsent) |  | – |
 | oesterreich.gv.at | Behörden | – | kein Banner |  | – |
 | wien.gv.at | Behörden | – | unbekanntes Banner |  | – |
 | bmf.gv.at | Behörden | – | kein Banner |  | – |
@@ -93,12 +98,12 @@ Aufruf jeweils der Startseite, frischer Browser ohne Cookies, Sprache de-AT, Zei
 | bankaustria.at | Banken | – | unbekanntes Banner |  | – |
 | durchblicker.at | Sonstiges | – | evtl. Banner (nur Heuristik) |  | – |
 | chefkoch.de | Sonstiges | consentmanager.net | Klick ok, Seite aber noch gesperrt |  | noch keine Entscheidung |
-| ichkoche.at | Sonstiges | – | kein Banner |  | getTCData fehlgeschlagen |
+| ichkoche.at | Sonstiges | funding-choices | abgelehnt (autoconsent) |  | getTCData fehlgeschlagen |
 | wetter.com | Sonstiges | – | Zustimmen oder bezahlen (offen) | ja („contentpass“) | noch keine Entscheidung |
-| gutefrage.net | Sonstiges | – | kein Banner |  | – |
-| youtube.com | Sonstiges | – | kein Banner |  | – |
-| google.at | Sonstiges | – | kein Banner |  | – |
-| reddit.com | Sonstiges | – | kein Banner |  | – |
+| gutefrage.net | Sonstiges | consentmanager.net | Zustimmen oder bezahlen (offen) | ja („contentpass“) | noch keine Entscheidung |
+| youtube.com | Sonstiges | youtube-desktop | abgelehnt (autoconsent) |  | – |
+| google.at | Sonstiges | google.com | abgelehnt (autoconsent) |  | – |
+| reddit.com | Sonstiges | reddit.com | Klick ok, Seite aber noch gesperrt |  | – |
 
 ## Was für die KI übrig bleibt
 
@@ -123,8 +128,8 @@ Aufruf jeweils der Startseite, frischer Browser ohne Cookies, Sprache de-AT, Zei
   > Filiale suchen Termin vereinbaren Hilfe im Notfall Cookies einstellen --- Ihre Einstellung zu Cookies Wenn Sie über 16 Jahre sind, klicken Sie auf „Ich bin einverstanden“, um allen Verarbeitungszwecken zuzustimmen. Hier …
 
 **bankaustria.at** – unbekanntes Banner (Heuristik: 3 Muster)
-  Knöpfe: „ACCEPT ALL“, „REFUSE ALL“, „Cookie Settings“, „Privatkunden“, „KONTO & KREDITKARTE“, „APPS & ONLINE SERVICES“, „KREDIT & FINANZIERUNG“, „VERSICHERN & VORSORGEN“, „SPAREN & ANLEGEN“, „Rechtliche Informationen“, „CHAT-SUPPORT“, „HILFE & KONTAKT“
-  > We use cookies to improve our services and to gain statistical insight into how they are used. Some cookies are mandatory due to operating conditions and necessary for the website to function properly. No personal data i…
+  Knöpfe: „ALLE AKZEPTIEREN“, „ALLE ABLEHNEN“, „Cookie Einstellungen“, „Privatkunden“, „KONTO & KREDITKARTE“, „APPS & ONLINE SERVICES“, „KREDIT & FINANZIERUNG“, „VERSICHERN & VORSORGEN“, „SPAREN & ANLEGEN“, „Rechtliche Informationen“, „CHAT-SUPPORT“, „HILFE & KONTAKT“
+  > Wir verwenden Cookies, um unsere Services zu verbessern und Statistiken zu deren Nutzung zu erhalten. Einige Cookies sind betriebsbedingt notwendig um das Funktionieren der Website gewährleisten zu können. Es werden jedo…
 
 **durchblicker.at** – evtl. Banner (nur Heuristik) (Heuristik: 2 Muster)
   Knöpfe: „Versicherung“, „Strom & Gas“, „Kredit & Konto“, „Handy & Internet“, „Versicherungsvergleiche“, „Energievergleiche“, „Kredit“, „Immofinanzierung“, „Giro & Sparen“, „Mobilfunk“, „Internet & TV“, „Service“, „Alle akzeptieren“

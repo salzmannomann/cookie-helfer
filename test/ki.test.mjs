@@ -84,3 +84,10 @@ test('Info-Link „Notwendige Cookies“ ist kein Ablehnen', () => {
   assert.equal(textSicher('Nur technisch notwendige Cookies'), true);
   assert.equal(textSicher('Notwendige Cookies akzeptieren'), true);
 });
+
+test('Modell erkennt „Alle ablehnen“ nicht (wie Nano bei geizhals) → Regeln schlagen trotzdem vor; Modell sagt Pur → kein Vorschlag', () => {
+  const b = banner(['Konfigurieren', 'Alle ablehnen', 'Akzeptieren']);
+  const modell = bereinigen({ zusammenfassung: '', zwecke: [], partner: 0, zustimmenOderBezahlen: false, knoepfe: b.knoepfe.map((k) => ({ nr: k.nr, art: 'sonstiges' })) }, b);
+  assert.equal(vorschlag(modell, b).text, 'Alle ablehnen');
+  assert.equal(vorschlag({ ...modell, zustimmenOderBezahlen: true }, b), null);
+});

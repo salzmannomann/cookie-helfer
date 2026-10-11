@@ -108,7 +108,7 @@
 
       <section>
         <h2>Unbekannte Banner</h2>
-        <p class="hint">Banner, für die es keine feste Regel gibt. Die lokale KI liest Text und Knöpfe und schlägt im Popup einen Ablehnen-Knopf vor – geklickt wird erst, wenn du bestätigst. Bestätigte Knöpfe werden je Seite gemerkt.</p>
+        <p class="hint">Banner, für die es keinen bekannten Anbieter gibt. Feste Regeln suchen einen eindeutigen Ablehnen-Knopf und schlagen ihn im Popup vor; die lokale KI fasst zusammen, was die Seite will, und darf einen Vorschlag nur verhindern (z. B. bei einem Pur-Abo). Bestätigte Knöpfe werden je Seite gemerkt.</p>
         <label class="radio-card"><input type="radio" name="ki" value="vorschlag"><span><b>Vorschlag im Popup</b><span class="hint">Symbol „?“ am Erweiterungsknopf, im Popup „… klicken?“.</span></span></label>
         <label class="radio-card" id="kiSelbstKarte"><input type="radio" name="ki" value="selbst" id="kiSelbst"><span><b>Selbst klicken</b><span class="hint" id="kiSelbstHinweis">Erst möglich, wenn die KI-Messung ohne Fehlgriff durchgelaufen ist.</span></span></label>
         <label class="radio-card"><input type="radio" name="ki" value="aus"><span><b>Nur Hinweis</b><span class="hint">Keine KI; Vorschläge nur aus festen Regeln für eindeutige Knöpfe wie „Ablehnen“.</span></span></label>
@@ -165,7 +165,7 @@
     <!-- ───────────── KI-Messung ───────────── -->
     <div class="page" id="page-messung">
       <h1>KI-Messung</h1>
-      <p class="lead">Bevor die KI selbst klicken darf: Wie gut ordnet sie echte Banner ein?</p>
+      <p class="lead">Bevor selbst geklickt wird: Wie gut werden echte Banner eingeordnet? Den Knopf wählen die festen Regeln, Gemini Nano darf nur bremsen.</p>
       <section>
         <h2>Messung mit echten Bannern</h2>
         <p class="hint"><span id="faelleAnzahl"></span> Banner, gesammelt auf österreichischen und deutschen Seiten, dazu einige absichtlich knifflige. Für jedes ist festgelegt, welcher Knopf richtig ist (oder dass es keinen gibt). Die Messung läuft lokal; nichts wird geklickt.</p>

@@ -330,8 +330,16 @@ async function unbekanntesBanner(tabId, start) {
   }
 
   const prefs = await laden();
+  // „Selbst klicken“: sofort nach festen Regeln, ohne auf das Modell zu warten (Messung 0.4.2)
+  const regelV = kiVorschlag(regelEinordnung(banner), banner);
+  if (regelV && prefs.ki === 'selbst') {
+    await aendern(tabId, (s) => ((s.kiLaeuft = false), s));
+    const ok = await klickAusfuehren(tabId, regelV, 'selbst');
+    kiMessen({ seite: s0.seite, entscheidung: ok ? 'selbst' : 'klick-fehler', vorschlag: regelV.text });
+    return;
+  }
   const r = prefs.ki === 'aus' ? { quelle: 'regeln', einordnung: regelEinordnung(banner), grund: 'KI ausgeschaltet' } : await kiEinordnen(banner);
-  const v = kiVorschlag(r.einordnung, banner);
+  const v = kiVorschlag(r.einordnung, banner); // Regeln wählen den Knopf, das Modell darf nur bremsen
   await aendern(tabId, (s) => {
     s.kiLaeuft = false;
     if (s.status !== 'unbekannt') return s;
@@ -350,11 +358,6 @@ async function unbekanntesBanner(tabId, start) {
     s.ereignisse.push({ t: Date.now(), text: v ? `${wer}: Vorschlag „${v.text}“ – wartet auf Bestätigung` : `${wer}: kein sicherer Ablehnen-Knopf` });
     return s;
   });
-  // 0.4: nach fehlerfreier Messung darf der Vorschlag selbst geklickt werden
-  if (v && prefs.ki === 'selbst') {
-    const ok = await klickAusfuehren(tabId, v, 'selbst');
-    kiMessen({ seite: s0.seite, entscheidung: ok ? 'selbst' : 'klick-fehler', vorschlag: v.text });
-  }
   kiMessen({ seite: s0.seite, quelle: r.quelle, knoepfe: banner.knoepfe.map((k) => ({ text: k.text, art: r.einordnung.knoepfe.find((x) => x.nr === k.nr)?.art })), vorschlag: v?.text || null });
 }
 
@@ -365,7 +368,7 @@ async function klickAusfuehren(tabId, knopf, wie) {
     await aendern(tabId, (x) => setzeStatus(x, 'fehlgeschlagen', `Klick auf „${knopf.text}“ nicht möglich (${r?.grund || 'keine Antwort'})`));
     return false;
   }
-  const cmp = { gemerkt: 'gemerkter Knopf', selbst: 'KI, selbst geklickt' }[wie] || 'KI-Vorschlag';
+  const cmp = { gemerkt: 'gemerkter Knopf', selbst: 'selbst geklickt' }[wie] || 'Vorschlag';
   const was = knopf.hinweis ? 'Hinweis geschlossen' : 'abgelehnt';
   await aendern(tabId, (x) => bewerten(setzeStatus(x, 'abgelehnt', `${was}: „${knopf.text}“ (${cmp})`, { cmp })));
   if (s) protokollieren(s.seite, { t: Date.now(), status: 'abgelehnt', cmp });

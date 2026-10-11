@@ -17,6 +17,10 @@ Projektbeschreibung: [docs/projektbeschreibung.md](docs/projektbeschreibung.md) 
   „KI-Messung“ läuft Gemini Nano lokal über alle Fälle (Treffer, Fehlgriffe, vom Regelwerk abgefangene Modellirrtümer).
   Erst wenn eine Messung **ohne Fehlgriff** durchläuft, lässt sich „Selbst klicken“ wählen; scheitert eine spätere
   Messung, wird es zurückgenommen. Geklickt wird auch dann nur, was ein Vorschlag wäre.
+  **Messung mit Gemini Nano (Mac, 0.4.2):** 27/36 richtig, 0 Fehlgriffe, 9 verpasst, 6 Modellirrtümer (u. a. „Annehmen“,
+  „Ablehnen und Abo abschließen“ als Ablehnen eingeordnet), ca. 8 s je Banner. Feste Regeln allein: 36/36.
+  → Seit 0.4.3 wählen die **Regeln** den Knopf; das Modell fasst nur zusammen und darf einen Vorschlag verhindern
+  (Pur-Abo erkannt). „Selbst klicken“ klickt sofort nach Regeln, ohne auf das Modell zu warten.
   Gemessen hier ohne Nano (nur Regeln): 36/36 richtig, 0 Fehlgriffe. Mit einem absichtlich falschen „Modell“, das jeden
   Knopf für „Ablehnen“ hält: 0 Fehlgriffe – dabei fiel der Info-Link „Notwendige Cookies“ (IKEA) auf, Regel verschärft.
 - **TCF-Kontrolle** (neu in 0.2): Nach dem Ablehnen liest `tcf-probe.js` über `__tcfapi` aus, was die Seite

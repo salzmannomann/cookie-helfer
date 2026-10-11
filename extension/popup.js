@@ -50,7 +50,10 @@ async function zeigen() {
     if (frage) $('kiKnopf').textContent = ki.vorschlag.text;
     $('kiHinweis').hidden = !(frage && ki.vorschlag.hinweis);
     $('kiListe').replaceChildren(...ki.knoepfe.map((k) => li(`${k.text} → ${ART_NAMEN[k.art] || k.art}`)));
-    $('kiQuelle').textContent = ki.quelle === 'ki' ? 'Eingeordnet von der lokalen KI (Gemini Nano).' : `Eingeordnet mit festen Regeln${ki.grund ? ` (${ki.grund})` : ''}.`;
+    $('kiQuelle').textContent =
+      ki.quelle === 'ki'
+        ? 'Knopf nach festen Regeln; Zusammenfassung von der lokalen KI (Gemini Nano).'
+        : `Knopf nach festen Regeln${ki.grund ? ` (${ki.grund})` : ''}.`;
   }
 
   // TCF: was die Seite laut eigener Schnittstelle tatsächlich erlaubt hat

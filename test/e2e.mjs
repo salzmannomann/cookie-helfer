@@ -233,7 +233,7 @@ test('„Selbst klicken“: unbekanntes Banner wird ohne Nachfrage abgelehnt', a
   await sw.evaluate(() => chrome.storage.local.set({ kiAttrappe: true, gelernt: {} }));
   const r = await oeffnen('unbekannt.html', ['abgelehnt'], 40000);
   assert.deepEqual(r.geklickt, ['u-nein']);
-  assert.equal(r.s.cmp, 'KI, selbst geklickt');
+  assert.equal(r.s.cmp, 'selbst geklickt');
   const r2 = await oeffnen('unbekannt-ohne.html', ['nie'], 15000);
   assert.deepEqual(r2.geklickt, [], 'ohne sicheren Knopf auch im Selbst-Modus nichts');
 });

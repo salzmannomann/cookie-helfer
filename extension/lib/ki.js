@@ -133,11 +133,13 @@ export function sicherFuer(banner, text) {
   return textSicher(text) || (istNurHinweis(banner) && QUITTIEREN.test(String(text).trim()));
 }
 
-// Vorschlag: ein Knopf, den Modell (bzw. Regeln) als ablehnen/nur_notwendige einordnen
-// UND dessen Text die festen Regeln als sicher erkennen. Sonst kein Vorschlag.
+// Vorschlag: Welcher Knopf, entscheiden die festen Regeln (gemessen 0.4.2: Regeln 36/36 richtig,
+// Gemini Nano 27/36 und 6 Irrtümer). Die Einordnung des Modells darf nur bremsen: Hält es das Banner
+// für „Zustimmen oder bezahlen“, gibt es keinen Vorschlag. Ohne Modell: einordnung = regelEinordnung.
 export function vorschlag(einordnung, banner) {
-  if (einordnung.zustimmenOderBezahlen) return null;
-  const art = new Map(einordnung.knoepfe.map((k) => [k.nr, k.art]));
+  const regeln = regelEinordnung(banner);
+  if (einordnung?.zustimmenOderBezahlen || regeln.zustimmenOderBezahlen) return null;
+  const art = new Map(regeln.knoepfe.map((k) => [k.nr, k.art]));
   const passend = banner.knoepfe.filter((k) => ['ablehnen', 'nur_notwendige'].includes(art.get(k.nr)) && textSicher(k.text));
   if (!passend.length) {
     // nur ein Knopf mit Wirkung, Banner nennt nur notwendige Cookies → Hinweis wegklicken

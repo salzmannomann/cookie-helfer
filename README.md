@@ -2,7 +2,7 @@
 
 Chrome-Erweiterung, die Cookie-Banner automatisch nach eigenen Vorgaben beantwortet: wo möglich ablehnen,
 nur das Nötigste erlauben. Alles läuft lokal, nichts wird an einen Server geschickt.
-Projektbeschreibung: [docs/projektbeschreibung.md](docs/projektbeschreibung.md)
+Projektbeschreibung: [docs/projektbeschreibung.md](docs/projektbeschreibung.md) · Vorgaben: [docs/vorgaben.md](docs/vorgaben.md)
 
 ## Stand
 

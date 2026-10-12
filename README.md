@@ -59,15 +59,18 @@ Vorgaben → Über → „Sichern …“ / „Wiederherstellen …“ speichert 
 
 1. ZIP herunterladen, dann im Terminal:
    ```
-   mkdir -p ~/Documents/Chrome && f=$(ls -t ~/Downloads/cookie-helfer-*.zip | head -1) && rm -rf /tmp/ch && unzip -q "$f" -d /tmp/ch && rsync -a --delete /tmp/ch/cookie-helfer/ ~/Documents/Chrome/cookie-helfer/ && echo "Installiert aus $f"
+   mkdir -p ~/Documents/Chrome && f=$(ls -t ~/Downloads/cookie-helfer-*.zip | head -1) && rm -rf /tmp/ch && unzip -q "$f" -d /tmp/ch && rsync -a --delete /tmp/ch/cookie-helfer/ ~/Documents/Chrome/cookiehelfer/ && echo "Installiert aus $f"
    ```
 2. In Chrome `chrome://extensions` öffnen, rechts oben **Entwicklermodus** einschalten,
-   **Entpackte Erweiterung laden** → Ordner `Dokumente/Chrome/cookie-helfer` wählen.
+   **Entpackte Erweiterung laden** → Ordner `Dokumente/Chrome/cookiehelfer` wählen.
+
+Hinweis: Der Ordner heißt `cookiehelfer` (ohne Bindestrich). Unter dem alten Namen `cookie-helfer` hatte Chrome noch
+einen Eintrag aus der Zeit vor 0.5 (ID aus dem Pfad), der beim Neustart die Erweiterung mit entfernt hat.
 
 ## Aktualisieren
 
 ```
-f=$(ls -t ~/Downloads/cookie-helfer-*.zip | head -1) && rm -rf /tmp/ch && unzip -q "$f" -d /tmp/ch && rsync -a --delete /tmp/ch/cookie-helfer/ ~/Documents/Chrome/cookie-helfer/ && echo "Aktualisiert mit $f"
+f=$(ls -t ~/Downloads/cookie-helfer-*.zip | head -1) && rm -rf /tmp/ch && unzip -q "$f" -d /tmp/ch && rsync -a --delete /tmp/ch/cookie-helfer/ ~/Documents/Chrome/cookiehelfer/ && echo "Aktualisiert mit $f"
 ```
 danach in `chrome://extensions` bei Cookie-Helfer auf ↻ klicken.
 

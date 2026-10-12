@@ -20,4 +20,4 @@ fs.rmSync(zip, { force: true });
 execFileSync('zip', ['-qr', '-X', zip, 'cookie-helfer'], { cwd: tmp });
 fs.rmSync(tmp, { recursive: true, force: true });
 console.log(`${path.relative(root, zip)} (${Math.round(fs.statSync(zip).size / 1024)} KB)`);
-console.log(`\nAktualisieren:\nf=$(ls -t ~/Downloads/cookie-helfer-*.zip | head -1) && rm -rf /tmp/ch && unzip -q "$f" -d /tmp/ch && rsync -a --delete /tmp/ch/cookie-helfer/ ~/Documents/Chrome/cookie-helfer/ && echo "Aktualisiert mit $f"`);
+console.log(`\nAktualisieren:\nf=$(ls -t ~/Downloads/cookie-helfer-*.zip | head -1) && rm -rf /tmp/ch && unzip -q "$f" -d /tmp/ch && rsync -a --delete /tmp/ch/cookie-helfer/ ~/Documents/Chrome/cookiehelfer/ && echo "Aktualisiert mit $f"`);

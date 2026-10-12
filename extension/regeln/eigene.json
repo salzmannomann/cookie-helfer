@@ -2,10 +2,60 @@
   {
     "name": "piwik-pro",
     "vendorUrl": "https://piwik.pro/consent-manager/",
-    "prehideSelectors": ["#ppms_cm_popup_overlay"],
-    "detectCmp": [{ "exists": "#ppms_cm_reject-all" }],
-    "detectPopup": [{ "visible": "#ppms_cm_reject-all" }],
-    "optIn": [{ "waitForThenClick": "#ppms_cm_agree-to-all" }],
-    "optOut": [{ "waitForThenClick": "#ppms_cm_reject-all" }]
+    "prehideSelectors": [
+      "#ppms_cm_popup_overlay"
+    ],
+    "detectCmp": [
+      {
+        "exists": "#ppms_cm_reject-all"
+      }
+    ],
+    "detectPopup": [
+      {
+        "visible": "#ppms_cm_reject-all"
+      }
+    ],
+    "optIn": [
+      {
+        "waitForThenClick": "#ppms_cm_agree-to-all"
+      }
+    ],
+    "optOut": [
+      {
+        "waitForThenClick": "#ppms_cm_reject-all"
+      }
+    ]
+  },
+  {
+    "name": "gem2go",
+    "vendorUrl": "https://www.gem2go.at/",
+    "prehideSelectors": [
+      ".bemCookieOverlay"
+    ],
+    "detectCmp": [
+      {
+        "exists": ".bemCookieOverlay .bemCookieOverlay__btn--save"
+      }
+    ],
+    "detectPopup": [
+      {
+        "visible": ".bemCookieOverlay__cookieBox .bemCookieOverlay__btn--save"
+      }
+    ],
+    "optIn": [
+      {
+        "waitForThenClick": ".bemCookieOverlay__cookieBox .bemCookieOverlay__btn--acceptAll"
+      }
+    ],
+    "optOut": [
+      {
+        "click": ".bemCookieOverlay__cookieBox input.bemCookieOverlay__cookieSelectionItemCheckboxInput:checked:not([disabled])",
+        "all": true,
+        "optional": true
+      },
+      {
+        "waitForThenClick": ".bemCookieOverlay__cookieBox .bemCookieOverlay__btn--save"
+      }
+    ]
   }
 ]

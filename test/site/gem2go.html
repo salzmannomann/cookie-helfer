@@ -1,0 +1,17 @@
+<!doctype html><meta charset="utf-8"><title>GEM2GO</title><script src="gemeinsam.js"></script>
+<h1>Gemeinde</h1>
+<div class="bemCookieOverlay"><div class="bemCookieOverlay__cookieBox" style="position:fixed;inset:80px;background:#fff;border:1px solid #888;padding:16px">
+  <h3>Datenschutzeinstellungen</h3><p>Wir nutzen Cookies auf unserer Website. Einige von ihnen sind essenziell.</p>
+  <label>Essenziell <input class="bemCookieOverlay__cookieSelectionItemCheckboxInput" id="ess" type="checkbox" checked disabled></label>
+  <label>Statistiken <input class="bemCookieOverlay__cookieSelectionItemCheckboxInput" id="stat" type="checkbox" checked></label>
+  <button class="bemCookieOverlay__btn bemCookieOverlay__btn--acceptAll">Alle akzeptieren</button>
+  <button class="bemCookieOverlay__btn bemCookieOverlay__btn--save">Speichern</button>
+</div></div>
+<script>
+// „Statistiken“ ist hier absichtlich vorausgewählt: der Cookie-Helfer muss es vor dem Speichern abwählen
+document.querySelector('.bemCookieOverlay__btn--save').addEventListener('click', () => {
+  window.geklickt.push(document.getElementById('stat').checked ? 'speichern-mit-statistik' : 'speichern-nur-essenziell');
+  document.querySelector('.bemCookieOverlay').remove();
+});
+merken(document.querySelector('.bemCookieOverlay__btn--acceptAll'), 'alle', '.bemCookieOverlay');
+</script>

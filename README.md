@@ -11,7 +11,8 @@ Projektbeschreibung: [docs/projektbeschreibung.md](docs/projektbeschreibung.md) 
   *nichts tun* umstellen. Erkannt werden Sourcepoint (derStandard, Spiegel, heute, FAZ, Welt, Bild, heise, golem …),
   consentmanager (chefkoch, vienna.at), Didomi mit „Pur kaufen“ (kleinezeitung.at) und contentpass (wetter.com). Geklickt wird nur der vom Anbieter
   gekennzeichnete Zustimmen-Knopf, und nur wenn sein Text nach Zustimmen klingt und nichts von Abo/Bezahlen enthält.
-- **Eigene Regeln** (`extension/regeln/eigene.json`) für Anbieter, die autoconsent nicht kennt: Piwik PRO.
+- **Eigene Regeln** (`extension/regeln/eigene.json`) für Anbieter, die autoconsent nicht kennt: Piwik PRO,
+  GEM2GO (Gemeindeseiten, z. B. haslach.ooe.gv.at: Statistik abwählen, „Speichern“).
 - **KI-Messung und „selbst klicken“** (neu in 0.4): `extension/ki-faelle.json` enthält 30 echte Banner
   (gesammelt mit `test/faelle-sammeln.mjs`) und 6 knifflige, je mit dem richtigen Knopf. In den Vorgaben unter
   „KI-Messung“ läuft Gemini Nano lokal über alle Fälle (Treffer, Fehlgriffe, vom Regelwerk abgefangene Modellirrtümer).
@@ -58,15 +59,18 @@ Vorgaben → Über → „Sichern …“ / „Wiederherstellen …“ speichert 
 
 1. ZIP herunterladen, dann im Terminal:
    ```
-   mkdir -p ~/Documents/Chrome && f=$(ls -t ~/Downloads/cookie-helfer-*.zip | head -1) && rm -rf /tmp/ch && unzip -q "$f" -d /tmp/ch && rsync -a --delete /tmp/ch/cookie-helfer/ ~/Documents/Chrome/cookie-helfer/ && echo "Installiert aus $f"
+   mkdir -p ~/Documents/Chrome && f=$(ls -t ~/Downloads/cookie-helfer-*.zip | head -1) && rm -rf /tmp/ch && unzip -q "$f" -d /tmp/ch && rsync -a --delete /tmp/ch/cookie-helfer/ ~/Documents/Chrome/cookiehelfer/ && echo "Installiert aus $f"
    ```
 2. In Chrome `chrome://extensions` öffnen, rechts oben **Entwicklermodus** einschalten,
-   **Entpackte Erweiterung laden** → Ordner `Dokumente/Chrome/cookie-helfer` wählen.
+   **Entpackte Erweiterung laden** → Ordner `Dokumente/Chrome/cookiehelfer` wählen.
+
+Hinweis: Der Ordner heißt `cookiehelfer` (ohne Bindestrich). Unter dem alten Namen `cookie-helfer` hatte Chrome noch
+einen Eintrag aus der Zeit vor 0.5 (ID aus dem Pfad), der beim Neustart die Erweiterung mit entfernt hat.
 
 ## Aktualisieren
 
 ```
-f=$(ls -t ~/Downloads/cookie-helfer-*.zip | head -1) && rm -rf /tmp/ch && unzip -q "$f" -d /tmp/ch && rsync -a --delete /tmp/ch/cookie-helfer/ ~/Documents/Chrome/cookie-helfer/ && echo "Aktualisiert mit $f"
+f=$(ls -t ~/Downloads/cookie-helfer-*.zip | head -1) && rm -rf /tmp/ch && unzip -q "$f" -d /tmp/ch && rsync -a --delete /tmp/ch/cookie-helfer/ ~/Documents/Chrome/cookiehelfer/ && echo "Aktualisiert mit $f"
 ```
 danach in `chrome://extensions` bei Cookie-Helfer auf ↻ klicken.
 
